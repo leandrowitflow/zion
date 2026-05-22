@@ -1,5 +1,7 @@
 import { experiencesAssets } from "@/lib/assets/experiences";
 
+const carouselBase = "/images/destination/carousel";
+
 export const destinationAssets = {
   heroVideo: experiencesAssets.heroVideo,
   video: experiencesAssets.heroVideo,
@@ -7,14 +9,18 @@ export const destinationAssets = {
   monastery: "/images/destination/monastery.jpg",
   penaPalace: "/images/destination/pena-palace.jpg",
   cards: {
-    algarve: "/images/destination/algarve.jpg",
-    center: "/images/destination/center.jpg",
-    north: "/images/destination/north.jpg",
+    algarve: `${carouselBase}/algarve.png`,
+    center: `${carouselBase}/center.png`,
+    north: `${carouselBase}/north.jpg`,
   },
 } as const;
 
+/** Order and titles match zion-creativeartisans.com/?page_id=17920 */
 export const destinationCards = [
-  { image: destinationAssets.cards.algarve, title: "Algarve" },
-  { image: destinationAssets.cards.center, title: "Center of Portugal" },
-  { image: destinationAssets.cards.north, title: "Porto & North" },
+  { id: "lisbon-coast", image: `${carouselBase}/lisbon-coast.png`, title: "Lisbon & Coast" },
+  { id: "alentejo", image: `${carouselBase}/alentejo.png`, title: "Alentejo" },
+  { id: "islands", image: `${carouselBase}/islands.jpg`, title: "Islands" },
+  { id: "algarve", image: `${carouselBase}/algarve.png`, title: "Algarve" },
+  { id: "center", image: `${carouselBase}/center.png`, title: "Center of Portugal" },
+  { id: "north", image: `${carouselBase}/north.jpg`, title: "Porto & North" },
 ] as const;

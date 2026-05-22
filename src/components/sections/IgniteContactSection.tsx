@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { sharedAssets } from "@/lib/assets/shared";
+import { igniteAssets } from "@/lib/assets/ignite";
 
 type FormFieldIcon = "user" | "email" | "phone" | "company" | "message";
 
@@ -75,7 +75,7 @@ function FormField({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
+      <label htmlFor={id} className="flex items-center gap-2 text-[15px] leading-none text-black">
         <span className="min-[1400px]:hidden">
           <FieldIcon icon={icon} />
         </span>
@@ -85,23 +85,9 @@ function FormField({
         id={id}
         name={id}
         type={type}
-        className="mt-2 w-full border-b border-[#696866] bg-transparent py-3 text-[15px] text-black outline-none focus:border-[#2b2e2b]"
+        className="mt-0.5 block h-[15px] w-full border-0 border-b border-[#696866] bg-transparent px-0 py-0 text-[15px] leading-none text-black outline-none focus:border-[#2b2e2b]"
       />
     </div>
-  );
-}
-
-function SendIcon() {
-  return (
-    <svg className="size-4 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path
-        d="M1.5 8 14.5 1.5 10 8l4.5 6.5L1.5 8Z"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinejoin="round"
-      />
-      <path d="M10 8H1.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>
   );
 }
 
@@ -150,26 +136,19 @@ export function IgniteContactSection() {
           </a>
         </p>
 
-        <div className="mt-8 flex justify-center gap-3 min-[1400px]:justify-start">
+        <div className="mt-8 flex justify-center gap-[7px] min-[1400px]:justify-start">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <Image src={sharedAssets.facebook} alt="" width={45} height={45} />
+            <Image src={igniteAssets.social.facebook} alt="" width={45} height={45} />
           </a>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Image src={sharedAssets.linkedin} alt="" width={45} height={45} />
+            <Image src={igniteAssets.social.linkedin} alt="" width={45} height={45} />
           </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <Image src={sharedAssets.instagram} alt="" width={45} height={45} />
+            <Image src={igniteAssets.social.instagram} alt="" width={45} height={45} />
           </a>
-          <div className="relative h-[45px] w-[45px]">
-            <Image src={sharedAssets.spotifyBg} alt="" fill className="object-cover" />
-            <Image
-              src={sharedAssets.spotifyIcon}
-              alt="Spotify"
-              width={17}
-              height={15}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-          </div>
+          <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+            <Image src={igniteAssets.social.spotify} alt="" width={45} height={45} />
+          </a>
         </div>
       </div>
 
@@ -180,15 +159,15 @@ export function IgniteContactSection() {
           e.preventDefault();
         }}
       >
-        <div className="grid grid-cols-1 gap-8 min-[1400px]:grid-cols-2 min-[1400px]:gap-x-[30px]">
+        <div className="grid grid-cols-1 gap-5 min-[1400px]:grid-cols-2 min-[1400px]:gap-x-[30px] min-[1400px]:gap-y-12">
           <FormField id="name" label="Name" icon="user" />
           <FormField id="email" label="Email Address" type="email" icon="email" />
           <FormField id="phone" label="Phone" type="tel" icon="phone" />
           <FormField id="company" label="Company" icon="company" />
         </div>
 
-        <div className="mt-8">
-          <label htmlFor="message" className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
+        <div className="mt-5 min-[1400px]:mt-8">
+          <label htmlFor="message" className="flex items-center gap-2 text-[15px] leading-none text-black">
             <span className="min-[1400px]:hidden">
               <FieldIcon icon="message" />
             </span>
@@ -198,18 +177,15 @@ export function IgniteContactSection() {
             id="message"
             name="message"
             rows={3}
-            className="mt-2 w-full resize-none border-b border-[#696866] bg-transparent py-3 text-[15px] text-black outline-none focus:border-[#2b2e2b]"
+            className="mt-0.5 w-full resize-none border-0 border-b border-[#696866] bg-transparent px-0 py-0 text-[15px] leading-[22px] text-black outline-none focus:border-[#2b2e2b]"
           />
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-6 min-[1400px]:flex-row min-[1400px]:items-center">
+        <div className="mt-6 flex flex-col items-center gap-6 min-[1400px]:mt-10 min-[1400px]:flex-row min-[1400px]:items-center">
           <button
             type="submit"
-            className="inline-flex h-[55px] w-[188px] shrink-0 items-center justify-center gap-2 bg-[#383e28] font-serif text-[19px] leading-[39px] text-white transition hover:bg-[#383e28]/90"
+            className="inline-flex h-[55px] w-[188px] shrink-0 items-center justify-center bg-[#383e28] font-serif text-[19px] leading-[39px] text-white transition hover:bg-[#383e28]/90"
           >
-            <span className="min-[1400px]:hidden">
-              <SendIcon />
-            </span>
             Get in Touch
           </button>
           <label className="flex items-start gap-3 text-[14px] leading-[27px] text-[#696866]">
