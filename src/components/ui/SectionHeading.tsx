@@ -17,7 +17,7 @@ export function SectionHeading({
 
   return (
     <h2
-      className={`font-serif text-4xl leading-tight text-foreground md:text-[61.5px] md:leading-[56px] ${alignClass} ${className}`}
+      className={`heading-section text-foreground ${alignClass} ${className}`}
     >
       {before}
       <span className="text-accent">{accent}</span>

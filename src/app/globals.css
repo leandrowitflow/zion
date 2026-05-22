@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "IvyPresto Headline";
+  src: url("/fonts/IvyPrestoHeadline-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IvyPresto Text";
+  src: url("/fonts/IvyPrestoText-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IvyPresto Text";
+  src: url("/fonts/IvyPrestoText-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #2b2e2b;
@@ -26,7 +50,8 @@
   --color-footer-muted: var(--footer-muted);
   --color-button: var(--button);
   --font-sans: var(--font-open-sans), system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-serif: "IvyPresto Headline", ivypresto-headline, Georgia, serif;
+  --font-nav: "IvyPresto Text", ivypresto-text, Georgia, serif;
 }
 
 body {
@@ -74,4 +99,22 @@ body {
 /* Adjacent sections: avoid double gap — pair with .site-section on the following block */
 .site-section-flush-bottom {
   padding-bottom: 0;
+}
+
+/* Figma IvyPresto Headline Light — section titles (e.g. 2335:102, 61.5px / 56.033px) */
+.heading-section {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5.4vw, 61.5px);
+  line-height: clamp(2.05rem, 4.9vw, 56.033px);
+}
+
+/* Figma IvyPresto Headline Light — carousel card labels (24.425px) */
+.font-card-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+}
+
+.font-nav {
+  font-family: var(--font-nav);
 }

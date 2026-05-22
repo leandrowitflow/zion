@@ -57,7 +57,7 @@ export function ExperiencesCarousel() {
   return (
     <div>
       <div className="mb-10 flex flex-col items-center gap-6 min-[1400px]:relative min-[1400px]:mb-[109px]">
-        <h2 className="text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
+        <h2 className="heading-section text-center text-[#2b2e2b]">
           Tailored <span className="text-[#ba7d7d]">Experiences</span>
         </h2>
         <div className="flex gap-2 min-[1400px]:absolute min-[1400px]:right-0 min-[1400px]:top-0">
@@ -84,7 +84,7 @@ export function ExperiencesCarousel() {
                 sizes="309px"
               />
             </div>
-            <p className="mt-3 text-center font-serif text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
+            <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
               {item.title}
             </p>
           </article>
