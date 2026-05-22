@@ -1,77 +1,75 @@
 import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
-import { CtaBanner, HeroSection, VideoBanner } from "@/components/sections/HeroSection";
-import { CardGrid, PartnersSection } from "@/components/sections/PartnersSection";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { sharedAssets } from "@/lib/assets/shared";
-
-const assets = {
-  hero: "https://www.figma.com/api/mcp/asset/53b33f1b-e20f-4aa2-94ec-a2304766f6ba",
-  video: "https://www.figma.com/api/mcp/asset/53b33f1b-e20f-4aa2-94ec-a2304766f6ba",
-  essence: "https://www.figma.com/api/mcp/asset/fe34cd3b-c0a9-4c11-a53c-bd9cf98e1456",
-  circle: "https://www.figma.com/api/mcp/asset/47872f73-1dde-4bf6-8272-0d8728bdf405",
-  sanctum: "https://www.figma.com/api/mcp/asset/66c5496a-4e35-4acd-ac6c-93f74a31d5ec",
-  affair: "https://www.figma.com/api/mcp/asset/5f4af423-f3d6-47c3-b869-b48e0987dbed",
-};
+import { LegacyEssenceSection } from "@/components/sections/LegacyEssenceSection";
+import { CtaBanner, VideoBanner } from "@/components/sections/HeroSection";
+import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
+import { legacyAssets, legacyCards } from "@/lib/assets/legacy";
 
 export default function LegacyPage() {
   return (
     <PageShell>
-      <HeroSection image={assets.hero} title="Curated for Distinction" />
+      {/* Hero — Figma 2337:285, 1070px at 1920 */}
+      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
+        <Image
+          src={legacyAssets.heroVideo}
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 px-6 text-center">
+          <h1 className="absolute left-1/2 top-[32.2%] -translate-x-1/2 whitespace-nowrap font-serif text-4xl font-light leading-tight text-white md:text-[61.5px] md:leading-[56.033px]">
+            Curated for Distinction
+          </h1>
+        </div>
+      </section>
 
+      {/* The essence of Legacy — Figma 2339:286 */}
       <SiteSection>
         <SiteContainer>
-          <div className="grid gap-12 lg:grid-cols-2" style={{ columnGap: "var(--site-column-gap)" }}>
-            <div className="relative aspect-[542/813] overflow-hidden">
-              <Image src={assets.essence} alt="Legacy experience" fill className="object-cover" />
-            </div>
-            <div>
-              <SectionHeading before="The essence of " accent="Legacy" align="left" className="mb-8" />
-              <div className="space-y-6 text-base leading-7 text-muted">
-                <p>
-                  At <strong className="text-foreground">ZION Creative Artisans</strong>, we craft
-                  events and incentives that are more than just gatherings — they&apos;re
-                  transformative experiences.
+          <LegacyEssenceSection />
+        </SiteContainer>
+      </SiteSection>
+
+      {/* Video band — Figma 2339:294, 1078px at 1920 */}
+      <VideoBanner
+        image={legacyAssets.video}
+        className="min-h-[480px] h-[clamp(480px,56.15vw,1078px)]"
+      />
+
+      {/* Crafting your Legacy — Figma 2339:296 */}
+      <SiteSection>
+        <SiteContainer>
+          <h2 className="mb-10 text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:mb-[111px] md:text-[61.5px] md:leading-[56.033px]">
+            Crafting your <span className="text-[#ba7d7d]">Legacy</span>
+          </h2>
+          <div className="grid grid-cols-3 gap-x-[19px] gap-y-8">
+            {legacyCards.map((item) => (
+              <article key={item.title} className="min-w-0">
+                <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px] min-[1400px]:max-w-none">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1399px) 33vw, 417px"
+                  />
+                </div>
+                <p className="mt-3 text-center font-serif text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
+                  {item.title}
                 </p>
-                <p>
-                  From corporate incentives that blend leisure and business to black-tie galas in
-                  historic settings, we meticulously curate each detail to ensure a holistic and
-                  meaningful experience.
-                </p>
-                <p>
-                  <strong className="text-foreground">Legacy</strong> is where sophistication meets
-                  purpose, where indulgence harmonizes with intention, and where each meticulously
-                  curated detail tells a story of exclusivity and meaning.
-                </p>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
         </SiteContainer>
       </SiteSection>
 
-      <VideoBanner image={assets.video} />
+      {/* Create your Legacy — Figma 2339:368 */}
+      <CtaBanner image={legacyAssets.cta} title="Create your Legacy" buttonLabel="Contact Us" />
 
-      <SiteSection>
-        <SiteContainer>
-          <SectionHeading before="Crafting your " accent="Legacy" className="mb-12" />
-          <CardGrid
-            items={[
-              { image: assets.circle, title: "The Circle of Influence" },
-              { image: assets.sanctum, title: "The Executive Sanctum" },
-              { image: assets.affair, title: "The Grand Affair" },
-            ]}
-          />
-        </SiteContainer>
-      </SiteSection>
-
-      <CtaBanner
-        image={sharedAssets.ctaImage}
-        title="Create your Legacy"
-        buttonLabel="Contact Us"
-      />
-
-      <PartnersSection />
+      <PartnersCarousel />
     </PageShell>
   );
 }
