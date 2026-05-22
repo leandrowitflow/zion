@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef } from "react";
 
 import { destinationCards } from "@/lib/assets/destination";
+import {
+  buildInfiniteSlides,
+  isInfiniteSlideClone,
+  useInfiniteCarousel,
+} from "@/hooks/useInfiniteCarousel";
+
+const SLIDE_GAP = 19;
 
 function CarouselArrow({
   direction,
@@ -39,42 +45,35 @@ function CarouselArrow({
   );
 }
 
-/** Figma "Tailored Destinations" (2337:194) — 417×500 cards, 19px gaps, centered title + arrows */
+/** Figma "Tailored Destinations" (2337:194) — 417×500 cards, 19px gaps, infinite forward carousel */
 export function DestinationsCarousel() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const scrollBySlide = useCallback((direction: "prev" | "next") => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const slide = track.querySelector("article") as HTMLElement | null;
-    const gap = 19;
-    const amount = slide ? slide.offsetWidth + gap : track.clientWidth;
-    track.scrollBy({ left: direction === "next" ? amount : -amount, behavior: "smooth" });
-  }, []);
+  const { trackRef, scrollNext, scrollPrev } = useInfiniteCarousel(destinationCards.length, SLIDE_GAP);
+  const slides = buildInfiniteSlides(destinationCards);
 
   return (
     <div>
-      <div className="mb-10 flex flex-col items-center gap-6 min-[1400px]:relative min-[1400px]:mb-[111px]">
+      <div className="relative grid grid-cols-[108px_1fr_108px] items-start min-[1400px]:block">
+        <div className="min-[1400px]:hidden" aria-hidden="true" />
         <h2 className="heading-section text-center text-[#2b2e2b]">
           Tailored <span className="text-[#ba7d7d]">Destinations</span>
         </h2>
-        <div className="flex gap-2 min-[1400px]:absolute min-[1400px]:right-0 min-[1400px]:top-0">
-          <CarouselArrow direction="prev" onClick={() => scrollBySlide("prev")} />
-          <CarouselArrow direction="next" onClick={() => scrollBySlide("next")} />
+        <div className="flex justify-end gap-2 min-[1400px]:absolute min-[1400px]:right-0 min-[1400px]:top-0">
+          <CarouselArrow direction="prev" onClick={scrollPrev} />
+          <CarouselArrow direction="next" onClick={scrollNext} />
         </div>
       </div>
 
       <div
         ref={trackRef}
-        className="flex snap-x snap-mandatory gap-[19px] overflow-x-auto scroll-smooth [scrollbar-width:none] min-[1400px]:grid min-[1400px]:grid-cols-3 min-[1400px]:overflow-visible [&::-webkit-scrollbar]:hidden"
+        className="mt-[clamp(1.5rem,5.8vw,55px)] flex gap-[19px] overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {destinationCards.map((item) => (
+        {slides.map((item, index) => (
           <article
-            key={item.title}
-            className="w-[min(92vw,417px)] shrink-0 snap-start min-[1400px]:w-auto"
+            key={`${item.id}-${index}`}
+            aria-hidden={isInfiniteSlideClone(index, destinationCards.length) || undefined}
+            className="w-[min(92vw,417px)] shrink-0 min-[1400px]:w-[417px]"
           >
-            <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px] min-[1400px]:max-w-none">
+            <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px]">
               <Image
                 src={item.image}
                 alt={item.title}

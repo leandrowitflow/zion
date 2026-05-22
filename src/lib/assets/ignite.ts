@@ -1,4 +1,12 @@
 export const igniteAssets = {
+  /** Figma 2559:105–108 — 45×45 contact-section social icons */
+  social: {
+    facebook: "/images/ignite/facebook.png",
+    linkedin: "/images/ignite/linkedin.png",
+    instagram: "/images/ignite/instagram.png",
+    spotify: "/images/ignite/spotify.png",
+  },
+
   /** Google Maps place — ZION HQ */
   mapPlaceUrl:
     "https://www.google.com/maps/place/Av.+Defensores+de+Chaves+15,+1000-109+Lisboa/@38.733766,-9.1432536,17z/data=!3m1!4b1!4m6!3m5!1s0xd19339f87446a67:0x400ffb2c16db28ca!8m2!3d38.733766!4d-9.1432536!16s%2Fg%2F11snp_z1yn",

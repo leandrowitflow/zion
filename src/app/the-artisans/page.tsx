@@ -146,22 +146,22 @@ export default function TheArtisansPage() {
           </h2>
           <div className="grid grid-cols-1 gap-x-7 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
-              <article key={member.name}>
+              <article key={member.name} className="flex flex-col">
                 <div className="relative aspect-[411/502] overflow-hidden">
                   <Image src={member.image} alt={member.name} fill className="object-cover" sizes="411px" />
                 </div>
-                <div className="mt-2 flex flex-col gap-1">
+                <div className="mt-6 flex flex-col gap-2 text-left">
                   {"href" in member && member.href ? (
                     <Link
                       href={member.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-serif text-[24.425px] leading-none text-[#292725] hover:text-[#ba7d7d]"
+                      className="font-card-title text-[24.425px] leading-none text-[#292725] hover:text-[#ba7d7d]"
                     >
                       {member.name}
                     </Link>
                   ) : (
-                    <p className="font-serif text-[24.425px] leading-none text-[#292725]">{member.name}</p>
+                    <p className="font-card-title text-[24.425px] leading-none text-[#292725]">{member.name}</p>
                   )}
                   <p className="text-[16px] leading-[28px] text-[#787774]">{member.role}</p>
                 </div>

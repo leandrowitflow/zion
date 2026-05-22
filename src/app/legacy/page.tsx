@@ -42,10 +42,10 @@ export default function LegacyPage() {
       {/* Crafting your Legacy — Figma 2339:296 */}
       <SiteSection>
         <SiteContainer>
-          <h2 className="mb-10 text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:mb-[111px] md:text-[61.5px] md:leading-[56.033px]">
+          <h2 className="heading-section text-center text-[#2b2e2b]">
             Crafting your <span className="text-[#ba7d7d]">Legacy</span>
           </h2>
-          <div className="grid grid-cols-1 gap-8 min-[1400px]:grid-cols-3 min-[1400px]:gap-x-[19px] min-[1400px]:gap-y-8">
+          <div className="mt-[clamp(1.5rem,5.8vw,55px)] grid grid-cols-1 gap-8 min-[1400px]:grid-cols-3 min-[1400px]:gap-x-[19px] min-[1400px]:gap-y-8">
             {legacyCards.map((item) => (
               <article key={item.title} className="min-w-0">
                 <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px] min-[1400px]:max-w-none">
@@ -57,7 +57,7 @@ export default function LegacyPage() {
                     sizes="(max-width: 1399px) 33vw, 417px"
                   />
                 </div>
-                <p className="mt-3 text-center font-serif text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
+                <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
                   {item.title}
                 </p>
               </article>
