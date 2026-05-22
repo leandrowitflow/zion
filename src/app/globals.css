@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #2b2e2b;
+  --accent: #ba7d7d;
+  --muted: #787774;
+  --footer: #1a1815;
+  --footer-muted: #c4c4bc;
+  --button: #383e2a;
+
+  /* Layout — derived from Figma 1920px artboard */
+  --site-max-width: 1920px;
+  --site-gutter: clamp(1.25rem, 15.729vw, 302px);
+  --site-section-gap: clamp(3.5rem, 6.2vw, 119px);
+  --site-column-gap: clamp(2rem, 7.604vw, 146px);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-footer: var(--footer);
+  --color-footer-muted: var(--footer-muted);
+  --color-button: var(--button);
+  --font-sans: var(--font-open-sans), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-open-sans), system-ui, sans-serif;
+}
+
+.site-container {
+  width: 100%;
+  max-width: var(--site-max-width);
+  margin-inline: auto;
+  padding-inline: var(--site-gutter);
+}
+
+.site-main {
+  width: 100%;
+}
+
+/* Full-bleed bands span the viewport; content stays in .site-container */
+.site-full-bleed {
+  width: 100%;
+}
+
+.site-section {
+  padding-block: var(--site-section-gap);
+}
+
+.site-section-compact {
+  padding-block: calc(var(--site-section-gap) * 0.55);
+}

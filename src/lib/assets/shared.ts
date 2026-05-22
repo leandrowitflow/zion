@@ -1,0 +1,15 @@
+export const sharedAssets = {
+  logo: "https://www.figma.com/api/mcp/asset/b4eeeeef-e959-44d1-918b-f08511e42d52",
+  footerLogos: "/images/footer/cert-logos-full.png",
+  facebook: "/images/footer/facebook.png",
+  linkedin: "/images/footer/linkedin.png",
+  instagram: "/images/footer/instagram.png",
+  spotifyBg: "/images/footer/spotify-bg.png",
+  spotifyIcon: "/images/footer/spotify-icon.png",
+  ctaImage: "https://www.figma.com/api/mcp/asset/bc224062-301b-4c8c-83c1-6dc40803cd42",
+  asta: "https://www.figma.com/api/mcp/asset/0770d8e0-73df-4578-921d-f94b01e0153d",
+  savoy: "https://www.figma.com/api/mcp/asset/1e731251-136a-4dc8-9cf0-cc3b70995c11",
+  vilaVitaParc: "https://www.figma.com/api/mcp/asset/05eae656-0e92-455d-b582-f8f0e3f427ce",
+  scroller: "https://www.figma.com/api/mcp/asset/e159e46b-cb7a-4fe6-8bb9-d5d60c29f675",
+  heroVideo: "https://www.figma.com/api/mcp/asset/4f8ee7b6-72bd-4094-84ca-eaafa4f11317",
+} as const;

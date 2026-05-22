@@ -1,0 +1,17 @@
+export const artisansAssets = {
+  sculpture: "/images/artisans/sculpture.jpg",
+  gallery: "/images/artisans/gallery.jpg",
+  portrait: "/images/artisans/portrait.jpg",
+  sunset: "/images/artisans/sunset.jpg",
+  video: "/images/artisans/video.jpg",
+  cta: "/images/artisans/cta.jpg",
+  team: {
+    carlos: "/images/artisans/team-1.jpg",
+    andre: "/images/artisans/team-2.jpg",
+    vitor: "/images/artisans/team-3.jpg",
+    jessica: "/images/artisans/team-4.jpg",
+    anabela: "/images/artisans/team-5.jpg",
+    ana: "/images/artisans/team-6.jpg",
+    margarida: "/images/artisans/team-7.jpg",
+  },
+} as const;
