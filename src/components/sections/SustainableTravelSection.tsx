@@ -22,46 +22,51 @@ const bodyCopy = (
   </p>
 );
 
-function PicnicImage() {
+function PicnicImage({ className = "" }: { className?: string }) {
   return (
-    <div className="relative mt-6 aspect-[620/413] w-full max-w-[620px] overflow-hidden min-[1400px]:mt-[180px] min-[1400px]:h-[413px] min-[1400px]:w-[620px]">
+    <div
+      className={`relative aspect-[620/413] w-full max-w-[620px] overflow-hidden ${className}`}
+    >
       <Image
         src={sustainabilityAssets.picnic}
         alt="Orchard picnic"
         fill
         className="object-cover"
-        sizes="(max-width: 1399px) 85vw, 620px"
+        sizes="(max-width: 1399px) 92vw, 620px"
+      />
+    </div>
+  );
+}
+
+function HikingImage({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`relative aspect-[530/795] w-full max-w-[530px] overflow-hidden ${className}`}
+    >
+      <Image
+        src={sustainabilityAssets.hiking}
+        alt="Sustainable hiking"
+        fill
+        className="object-cover"
+        sizes="(max-width: 1399px) 92vw, 530px"
       />
     </div>
   );
 }
 
 /**
- * Figma "Sustainable Travel" (2341:10) at 1920px
- * Hiking 530×795 top-aligned with title | text 543px + picnic 620×413 right | gap 128px
+ * Figma desktop (2341:10) | mobile (2552:34) title → text → picnic → hiking
  */
 export function SustainableTravelSection() {
   return (
     <div>
-      {/* Mobile / tablet — title + hiking share top row */}
       <div className="min-[1400px]:hidden">
-        <div className="flex items-start justify-between gap-x-4">
-          {heading}
-          <div className="relative aspect-[530/795] w-[min(48%,530px)] shrink-0 overflow-hidden">
-            <Image
-              src={sustainabilityAssets.hiking}
-              alt="Sustainable hiking"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1399px) 48vw, 530px"
-            />
-          </div>
-        </div>
+        {heading}
         {bodyCopy}
-        <PicnicImage />
+        <PicnicImage className="mt-6" />
+        <HikingImage className="mt-6" />
       </div>
 
-      {/* Desktop — hiking left, content right, top-aligned */}
       <div className="hidden min-[1400px]:grid min-[1400px]:grid-cols-[530px_1fr] min-[1400px]:items-start min-[1400px]:gap-x-[128px]">
         <div className="relative h-[795px] w-[530px] overflow-hidden">
           <Image
@@ -75,7 +80,7 @@ export function SustainableTravelSection() {
         <div className="pt-[3px]">
           {heading}
           {bodyCopy}
-          <PicnicImage />
+          <PicnicImage className="mt-[180px] min-[1400px]:h-[413px] min-[1400px]:w-[620px]" />
         </div>
       </div>
     </div>

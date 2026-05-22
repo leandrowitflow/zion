@@ -55,11 +55,11 @@ export function DestinationsCarousel() {
 
   return (
     <div>
-      <div className="relative mb-10 min-[1400px]:mb-[111px]">
+      <div className="mb-10 flex flex-col items-center gap-6 min-[1400px]:relative min-[1400px]:mb-[111px]">
         <h2 className="text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
           Tailored <span className="text-[#ba7d7d]">Destinations</span>
         </h2>
-        <div className="absolute right-0 top-0 hidden gap-2 min-[1400px]:flex">
+        <div className="flex gap-2 min-[1400px]:absolute min-[1400px]:right-0 min-[1400px]:top-0">
           <CarouselArrow direction="prev" onClick={() => scrollBySlide("prev")} />
           <CarouselArrow direction="next" onClick={() => scrollBySlide("next")} />
         </div>
@@ -72,7 +72,7 @@ export function DestinationsCarousel() {
         {destinationCards.map((item) => (
           <article
             key={item.title}
-            className="w-[min(85vw,417px)] shrink-0 snap-start min-[1400px]:w-auto"
+            className="w-[min(92vw,417px)] shrink-0 snap-start min-[1400px]:w-auto"
           >
             <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px] min-[1400px]:max-w-none">
               <Image

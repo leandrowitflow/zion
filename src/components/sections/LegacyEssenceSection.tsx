@@ -13,8 +13,8 @@ export function LegacyEssenceSection() {
         The essence of <span className="text-[#ba7d7d]">Legacy</span>
       </h2>
 
-      <div className="mt-[37px] grid grid-cols-1 items-start gap-12 min-[1400px]:mt-[25px] min-[1400px]:grid-cols-[628px_528px] min-[1400px]:gap-x-[128px]">
-        <div className="relative ml-[clamp(2rem,17vw,91px)] aspect-[542/813] w-full max-w-[542px] min-[1400px]:ml-[91px] min-[1400px]:h-[813px] min-[1400px]:w-[542px]">
+      <div className="mt-[37px] grid grid-cols-1 items-start gap-8 min-[1400px]:mt-[25px] min-[1400px]:grid-cols-[628px_528px] min-[1400px]:gap-x-[128px]">
+        <div className="relative aspect-[542/813] w-full max-w-[542px] min-[1400px]:ml-[91px] min-[1400px]:h-[813px] min-[1400px]:w-[542px]">
           <Image
             src={legacyAssets.essence}
             alt="Legacy experience"

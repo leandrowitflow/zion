@@ -56,11 +56,11 @@ export function ExperiencesCarousel() {
 
   return (
     <div>
-      <div className="relative mb-10 min-[1400px]:mb-[109px]">
+      <div className="mb-10 flex flex-col items-center gap-6 min-[1400px]:relative min-[1400px]:mb-[109px]">
         <h2 className="text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
           Tailored <span className="text-[#ba7d7d]">Experiences</span>
         </h2>
-        <div className="absolute right-0 top-0 hidden gap-2 min-[1400px]:flex">
+        <div className="flex gap-2 min-[1400px]:absolute min-[1400px]:right-0 min-[1400px]:top-0">
           <CarouselArrow direction="prev" onClick={() => scrollBySlide("prev")} />
           <CarouselArrow direction="next" onClick={() => scrollBySlide("next")} />
         </div>
@@ -73,7 +73,7 @@ export function ExperiencesCarousel() {
         {experienceCategories.map((item) => (
           <article
             key={item.title}
-            className="w-[min(85vw,309px)] shrink-0 snap-start min-[1400px]:w-auto"
+            className="w-[min(92vw,309px)] shrink-0 snap-start min-[1400px]:w-auto"
           >
             <div className="relative aspect-[309/369] overflow-hidden">
               <Image
@@ -84,7 +84,7 @@ export function ExperiencesCarousel() {
                 sizes="309px"
               />
             </div>
-            <p className="mt-3 text-center font-serif text-[24.425px] leading-none text-[#292725] min-[1400px]:mt-3">
+            <p className="mt-3 text-center font-serif text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
               {item.title}
             </p>
           </article>

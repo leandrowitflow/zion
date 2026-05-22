@@ -36,7 +36,7 @@ export function OurCommitmentSection() {
         </div>
       </div>
 
-      <div className="relative aspect-[669/704] w-full max-w-[669px] min-[1400px]:h-[704px] min-[1400px]:w-[669px] min-[1400px]:max-w-none min-[1400px]:justify-self-end">
+      <div className="relative aspect-[669/704] w-full min-[1400px]:h-[704px] min-[1400px]:w-[669px] min-[1400px]:max-w-none min-[1400px]:justify-self-end">
         <Image
           src={sustainabilityAssets.commitment}
           alt="Fashion editorial"

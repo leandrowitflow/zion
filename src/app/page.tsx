@@ -70,13 +70,13 @@ export default function HomePage() {
               priority
             />
           </div>
-          {/* Figma 2292:80 — title top 271px, button top 422px within 1081px hero */}
-          <div className="absolute inset-0 px-6 text-center">
-            <h1 className="absolute left-1/2 top-[25.07%] w-max max-w-[min(100%,720px)] -translate-x-1/2 font-serif text-4xl font-light leading-[1.15] text-white md:text-[61.5px] md:leading-[56.033px]">
-              <span className="block md:whitespace-nowrap">Where true sophistication</span>
-              <span className="block md:whitespace-nowrap">embraces effortless luxury</span>
+          {/* Figma desktop: title top 271px, button top 422px within 1081px hero */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-6 text-center min-[1400px]:block">
+            <h1 className="font-serif text-4xl font-light leading-[1.15] text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+              <span className="block min-[1400px]:whitespace-nowrap">Where true sophistication</span>
+              <span className="block min-[1400px]:whitespace-nowrap">embraces effortless luxury</span>
             </h1>
-            <div className="absolute left-1/2 top-[39.04%] -translate-x-1/2">
+            <div className="min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[39.04%] min-[1400px]:-translate-x-1/2">
               <OutlineButton href="/ignite-us">Contact Us</OutlineButton>
             </div>
           </div>
@@ -125,8 +125,8 @@ export default function HomePage() {
           </SiteContainer>
         </SiteSection>
 
-        {/* Destinations & Experiences — full bleed */}
-        <section className="site-full-bleed flex w-full flex-col lg:flex-row">
+        {/* Destinations & Experiences — stack on mobile/tablet (Figma 2552:28) */}
+        <section className="site-full-bleed flex w-full flex-col min-[1400px]:flex-row">
           <SplitPanel image={homeAssets.destinations} title="Destinations" />
           <SplitPanel image={homeAssets.experiences} title="Experiences" />
         </section>

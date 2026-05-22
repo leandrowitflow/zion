@@ -13,6 +13,7 @@
   --site-max-width: 1920px;
   --site-gutter: clamp(1.25rem, 15.729vw, 302px);
   --site-section-gap: clamp(3.5rem, 6.2vw, 119px);
+  --site-section-gap-mobile: clamp(2.5rem, 8vw, 80px);
   --site-column-gap: clamp(2rem, 7.604vw, 146px);
 }
 
@@ -51,11 +52,23 @@ body {
 }
 
 .site-section {
-  padding-block: var(--site-section-gap);
+  padding-block: var(--site-section-gap-mobile);
+}
+
+@media (min-width: 1400px) {
+  .site-section {
+    padding-block: var(--site-section-gap);
+  }
 }
 
 .site-section-compact {
-  padding-block: calc(var(--site-section-gap) * 0.55);
+  padding-block: calc(var(--site-section-gap-mobile) * 0.55);
+}
+
+@media (min-width: 1400px) {
+  .site-section-compact {
+    padding-block: calc(var(--site-section-gap) * 0.55);
+  }
 }
 
 /* Adjacent sections: avoid double gap — pair with .site-section on the following block */
