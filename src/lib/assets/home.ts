@@ -15,13 +15,13 @@ export const homeAssets = {
   scroller: "/images/home/scroller.png",
 } as const;
 
-/** Figma Header (2265:250) nav item specs at 1920px */
+/** Header + footer navigation labels */
 export const headerNavItems = [
-  { label: "Home", href: "/", fontSize: 15, lineHeight: 12, color: "#2b3433" },
-  { label: "The Artisans", href: "/the-artisans", fontSize: 14, lineHeight: 13, color: "#302820" },
-  { label: "Experiences", href: "/experiences", fontSize: 14, lineHeight: 17, color: "#272f2d" },
-  { label: "Legacy", href: "/legacy", fontSize: 14, lineHeight: 17, color: "#242a2a" },
-  { label: "Destination", href: "/destination", fontSize: 14, lineHeight: 19, color: "#262826" },
-  { label: "Sustainability", href: "/sustainability", fontSize: 14, lineHeight: 19, color: "#262826" },
-  { label: "Ignite Us", href: "/ignite-us", fontSize: 14, lineHeight: 19, color: "#262826" },
+  { label: "Home", href: "/" },
+  { label: "The Artisans", href: "/the-artisans" },
+  { label: "Experiences", href: "/experiences" },
+  { label: "Legacy", href: "/legacy" },
+  { label: "Destination", href: "/destination" },
+  { label: "Sustainability", href: "/sustainability" },
+  { label: "Ignite Us", href: "/ignite-us" },
 ] as const;

@@ -27,12 +27,12 @@ export function NavLink({
     <Link
       href={href}
       style={style}
-      className={`inline-flex w-fit flex-col gap-0 ${className}`.trim()}
+      className={`inline-flex w-fit flex-col gap-[2px] ${className}`.trim()}
       onClick={onClick}
     >
       <span className="block leading-none">{label}</span>
       {isActive && (
-        <span className={`h-px w-full ${underlineClassName}`} aria-hidden="true" />
+        <span className={`h-[2px] w-full ${underlineClassName}`} aria-hidden="true" />
       )}
     </Link>
   );

@@ -44,10 +44,10 @@ export function Header() {
   return (
     <>
       <header className="relative z-50 h-[111px] w-full bg-white">
-        <div className="relative mx-auto h-[111px] w-full max-w-[1920px]">
+        <div className="site-container relative h-[111px]">
           <Link
             href="/"
-            className="absolute left-[max(1.25rem,21px)] top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
+            className="absolute left-0 top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
           >
             <div className="relative h-full w-full overflow-hidden">
               <Image
@@ -64,7 +64,7 @@ export function Header() {
           {!menuOpen && (
             <button
               type="button"
-              className="absolute right-[var(--site-gutter)] top-1/2 -translate-y-1/2 p-2 min-[1400px]:hidden"
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 min-[1400px]:hidden"
               aria-label="Open menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
@@ -73,15 +73,14 @@ export function Header() {
             </button>
           )}
 
-          <nav className="absolute right-[var(--site-gutter)] top-0 hidden h-[111px] items-center justify-end gap-[clamp(0.75rem,1.2vw,1.75rem)] min-[1400px]:flex">
+          <nav className="absolute right-0 top-0 hidden h-[111px] items-center justify-end gap-8 min-[1400px]:flex">
             {headerNavItems.map((item) => (
               <NavLink
                 key={item.href}
                 href={item.href}
                 label={item.label}
                 isActive={pathname === item.href}
-                className="shrink-0 whitespace-nowrap font-serif not-italic leading-normal transition-opacity hover:opacity-70"
-                style={{ fontSize: item.fontSize, color: item.color }}
+                className="font-nav shrink-0 whitespace-nowrap text-[17px] font-bold leading-[39px] text-[#262826] transition-opacity hover:opacity-70"
               />
             ))}
           </nav>
@@ -91,10 +90,10 @@ export function Header() {
       {/* Mobile menu — Figma 2552:33 */}
       {menuOpen && (
         <div className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#1a1815] min-[1400px]:hidden">
-          <div className="relative mx-auto h-[111px] w-full max-w-[1920px] shrink-0">
+          <div className="site-container relative h-[111px] shrink-0">
             <Link
               href="/"
-              className="absolute left-[max(1.25rem,21px)] top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
+              className="absolute left-0 top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
               onClick={() => setMenuOpen(false)}
             >
               <div className="relative h-full w-full overflow-hidden brightness-0 invert">
@@ -110,7 +109,7 @@ export function Header() {
 
             <button
               type="button"
-              className="absolute right-[var(--site-gutter)] top-1/2 -translate-y-1/2 p-2"
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2"
               aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
             >
@@ -118,7 +117,7 @@ export function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-col gap-5 px-[var(--site-gutter)] pb-10 pt-2 text-left">
+          <nav className="site-container flex flex-col gap-5 pb-10 pt-2 text-left">
             {headerNavItems.map((item) => {
               const isActive = pathname === item.href;
               return (
