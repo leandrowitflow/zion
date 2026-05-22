@@ -26,6 +26,39 @@ function CloseIcon() {
   );
 }
 
+function LogoLink({
+  inverted = false,
+  onClick,
+  className,
+}: {
+  inverted?: boolean;
+  onClick?: () => void;
+  className?: string;
+}) {
+  return (
+    <Link
+      href="/"
+      className={
+        className ??
+        "absolute left-0 top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
+      }
+      onClick={onClick}
+    >
+      <div className={`relative h-full w-full overflow-hidden ${inverted ? "brightness-0 invert" : ""}`}>
+        <Image
+          src={homeAssets.logo}
+          alt="ZION Creative Artisans"
+          width={230}
+          height={228}
+          className="absolute left-0 top-[-72.07%] h-[245.05%] w-full max-w-none"
+          priority={!inverted}
+        />
+      </div>
+    </Link>
+  );
+}
+
+/** Figma header (2559:48) — logo x=21, nav flush right; mobile unchanged */
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,27 +77,14 @@ export function Header() {
   return (
     <>
       <header className="relative z-50 h-[111px] w-full bg-white">
-        <div className="site-container relative h-[111px]">
-          <Link
-            href="/"
-            className="absolute left-0 top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
-          >
-            <div className="relative h-full w-full overflow-hidden">
-              <Image
-                src={homeAssets.logo}
-                alt="ZION Creative Artisans"
-                width={230}
-                height={228}
-                className="absolute left-0 top-[-72.07%] h-[245.05%] w-full max-w-none"
-                priority
-              />
-            </div>
-          </Link>
+        {/* Mobile — original site-container layout */}
+        <div className="site-container relative h-[111px] min-[1400px]:hidden">
+          <LogoLink />
 
           {!menuOpen && (
             <button
               type="button"
-              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 min-[1400px]:hidden"
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2"
               aria-label="Open menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
@@ -72,15 +92,20 @@ export function Header() {
               <MenuIcon />
             </button>
           )}
+        </div>
 
-          <nav className="absolute right-0 top-0 hidden h-[111px] items-center justify-end gap-8 min-[1400px]:flex">
+        {/* Desktop — logo 21px from left, nav 71px from right */}
+        <div className="relative hidden h-[111px] w-full min-[1400px]:block">
+          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] h-[93px] w-[230px]" />
+
+          <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-8">
             {headerNavItems.map((item) => (
               <NavLink
                 key={item.href}
                 href={item.href}
                 label={item.label}
                 isActive={pathname === item.href}
-                className="font-nav shrink-0 whitespace-nowrap text-[17px] font-bold leading-[39px] text-[#262826] transition-opacity hover:opacity-70"
+                className="font-nav shrink-0 whitespace-nowrap text-[17px] font-light leading-[39px] text-[#262826] transition-opacity hover:opacity-70"
               />
             ))}
           </nav>
@@ -91,21 +116,7 @@ export function Header() {
       {menuOpen && (
         <div className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#1a1815] min-[1400px]:hidden">
           <div className="site-container relative h-[111px] shrink-0">
-            <Link
-              href="/"
-              className="absolute left-0 top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
-              onClick={() => setMenuOpen(false)}
-            >
-              <div className="relative h-full w-full overflow-hidden brightness-0 invert">
-                <Image
-                  src={homeAssets.logo}
-                  alt="ZION Creative Artisans"
-                  width={230}
-                  height={228}
-                  className="absolute left-0 top-[-72.07%] h-[245.05%] w-full max-w-none"
-                />
-              </div>
-            </Link>
+            <LogoLink inverted onClick={() => setMenuOpen(false)} />
 
             <button
               type="button"
@@ -126,7 +137,7 @@ export function Header() {
                   href={item.href}
                   label={item.label}
                   isActive={isActive}
-                  className={`font-serif text-[clamp(1.625rem,6.5vw,2.75rem)] leading-[1.2] transition-opacity hover:opacity-70 ${
+                  className={`font-serif font-light text-[clamp(1.625rem,6.5vw,2.75rem)] leading-[1.2] transition-opacity hover:opacity-70 ${
                     isActive ? "text-white" : "text-[#c4c4bc]"
                   }`}
                   underlineClassName="bg-white"
