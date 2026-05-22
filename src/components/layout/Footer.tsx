@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NavLink } from "@/components/layout/NavLink";
 import { navItems } from "@/lib/navigation";
 import { sharedAssets } from "@/lib/assets/shared";
 
@@ -115,22 +116,16 @@ export function Footer() {
         <div className="mt-[72px] border-t border-[#c4c4bc]/30 pt-[17px]">
           <div className="flex flex-col items-center gap-6 min-[1320px]:flex-row min-[1320px]:items-end min-[1320px]:justify-between">
             <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 min-[1320px]:justify-start">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`relative inline-block font-serif text-[17px] leading-[39px] text-white transition-opacity hover:opacity-80 ${
-                      isActive
-                        ? "after:absolute after:bottom-[3px] after:left-0 after:h-px after:w-full after:bg-white after:content-['']"
-                        : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                  isActive={pathname === item.href}
+                  className="font-serif text-[17px] text-white transition-opacity hover:opacity-80"
+                  underlineClassName="bg-white"
+                />
+              ))}
             </nav>
             <p className="shrink-0 text-center text-[16px] leading-[26px] text-[#c4c4bc] min-[1320px]:text-right">
               ® ZION CREATIVE ARTISANS 2026

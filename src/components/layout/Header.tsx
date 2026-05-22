@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { NavLink } from "@/components/layout/NavLink";
 import { headerNavItems, homeAssets } from "@/lib/assets/home";
 
 function MenuIcon() {
@@ -73,34 +74,16 @@ export function Header() {
           )}
 
           <nav className="absolute right-[var(--site-gutter)] top-0 hidden h-[111px] items-center justify-end gap-[clamp(0.75rem,1.2vw,1.75rem)] min-[1400px]:flex">
-            {headerNavItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="relative shrink-0 whitespace-nowrap font-serif not-italic transition-opacity hover:opacity-70"
-                  style={{
-                    fontSize: item.fontSize,
-                    lineHeight: `${item.lineHeight}px`,
-                    color: item.color,
-                  }}
-                >
-                  {item.label}
-                  {isActive && (
-                    <span className="absolute left-1/2 top-[calc(100%+7px)] block h-px w-[40px] -translate-x-1/2">
-                      <Image
-                        src={homeAssets.navUnderline}
-                        alt=""
-                        width={40}
-                        height={1}
-                        className="h-px w-[40px]"
-                      />
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
+            {headerNavItems.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                isActive={pathname === item.href}
+                className="shrink-0 whitespace-nowrap font-serif not-italic leading-normal transition-opacity hover:opacity-70"
+                style={{ fontSize: item.fontSize, color: item.color }}
+              />
+            ))}
           </nav>
         </div>
       </header>
@@ -139,16 +122,17 @@ export function Header() {
             {headerNavItems.map((item) => {
               const isActive = pathname === item.href;
               return (
-                <Link
+                <NavLink
                   key={item.href}
                   href={item.href}
+                  label={item.label}
+                  isActive={isActive}
                   className={`font-serif text-[clamp(1.625rem,6.5vw,2.75rem)] leading-[1.2] transition-opacity hover:opacity-70 ${
                     isActive ? "text-white" : "text-[#c4c4bc]"
                   }`}
+                  underlineClassName="bg-white"
                   onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                />
               );
             })}
           </nav>
