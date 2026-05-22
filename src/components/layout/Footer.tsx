@@ -13,13 +13,13 @@ export function Footer() {
     <footer className="bg-[#1a1815] text-[#c4c4bc]">
       <div className="site-container min-h-[560px] pb-10 pt-[115px]">
         {/* Main columns — Figma 2326:46 (401 | 267 | 267 at 1920) */}
-        <div className="flex flex-col gap-12 min-[1320px]:grid min-[1320px]:grid-cols-[401px_267px_267px] min-[1320px]:justify-between min-[1320px]:gap-y-0">
+        <div className="flex flex-col items-center gap-12 text-center min-[1320px]:grid min-[1320px]:grid-cols-[401px_267px_267px] min-[1320px]:items-start min-[1320px]:justify-between min-[1320px]:gap-y-0 min-[1320px]:text-left">
           {/* Column 1 — tagline + certification logos (2326:50, 2326:53) */}
           <div className="w-full min-[1320px]:w-[401px]">
-            <p className="max-w-[401px] font-serif text-[35px] leading-[39px] text-white">
+            <p className="mx-auto max-w-[401px] font-serif text-[35px] leading-[39px] text-white min-[1320px]:mx-0">
               Redefining luxury through Unique Journeys
             </p>
-            <div className="relative mt-10 h-[57px] w-[373px] max-w-full overflow-hidden">
+            <div className="relative mx-auto mt-10 h-[57px] w-[373px] max-w-full overflow-hidden min-[1320px]:mx-0">
               <Image
                 src={sharedAssets.footerLogos}
                 alt="Partner certifications"
@@ -48,7 +48,7 @@ export function Footer() {
               </span>
             </p>
 
-            <div className="mt-[22px] flex gap-2">
+            <div className="mt-[22px] flex justify-center gap-2 min-[1320px]:justify-start">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <Image src={sharedAssets.facebook} alt="" width={47} height={47} />
               </a>
@@ -113,8 +113,8 @@ export function Footer() {
 
         {/* Bottom bar — Figma 2326:54 */}
         <div className="mt-[72px] border-t border-[#c4c4bc]/30 pt-[17px]">
-          <div className="flex flex-col gap-6 min-[1320px]:flex-row min-[1320px]:items-end min-[1320px]:justify-between">
-            <nav className="flex flex-wrap gap-x-8 gap-y-4">
+          <div className="flex flex-col items-center gap-6 min-[1320px]:flex-row min-[1320px]:items-end min-[1320px]:justify-between">
+            <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 min-[1320px]:justify-start">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -132,7 +132,7 @@ export function Footer() {
                 );
               })}
             </nav>
-            <p className="shrink-0 text-[16px] leading-[26px] text-[#c4c4bc] min-[1320px]:text-right">
+            <p className="shrink-0 text-center text-[16px] leading-[26px] text-[#c4c4bc] min-[1320px]:text-right">
               ® ZION CREATIVE ARTISANS 2026
             </p>
           </div>

@@ -19,8 +19,8 @@ export default function LegacyPage() {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 px-6 text-center">
-          <h1 className="absolute left-1/2 top-[32.2%] -translate-x-1/2 whitespace-nowrap font-serif text-4xl font-light leading-tight text-white md:text-[61.5px] md:leading-[56.033px]">
+        <div className="absolute inset-0 flex items-center justify-center px-6 text-center min-[1400px]:block">
+          <h1 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[32.2%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:px-4 min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px] min-[1400px]:whitespace-nowrap">
             Curated for Distinction
           </h1>
         </div>
@@ -45,7 +45,7 @@ export default function LegacyPage() {
           <h2 className="mb-10 text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:mb-[111px] md:text-[61.5px] md:leading-[56.033px]">
             Crafting your <span className="text-[#ba7d7d]">Legacy</span>
           </h2>
-          <div className="grid grid-cols-3 gap-x-[19px] gap-y-8">
+          <div className="grid grid-cols-1 gap-8 min-[1400px]:grid-cols-3 min-[1400px]:gap-x-[19px] min-[1400px]:gap-y-8">
             {legacyCards.map((item) => (
               <article key={item.title} className="min-w-0">
                 <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px] min-[1400px]:max-w-none">
