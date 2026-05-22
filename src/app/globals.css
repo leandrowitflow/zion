@@ -57,3 +57,8 @@ body {
 .site-section-compact {
   padding-block: calc(var(--site-section-gap) * 0.55);
 }
+
+/* Adjacent sections: avoid double gap — pair with .site-section on the following block */
+.site-section-flush-bottom {
+  padding-bottom: 0;
+}

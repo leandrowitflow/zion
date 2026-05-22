@@ -1,67 +1,56 @@
 import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
-import { CtaBanner, HeroSection, VideoBanner } from "@/components/sections/HeroSection";
-import { CardGrid, PartnersSection } from "@/components/sections/PartnersSection";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { sharedAssets } from "@/lib/assets/shared";
-
-const assets = {
-  hero: "https://www.figma.com/api/mcp/asset/81cdf795-3b54-4d24-9731-60aebe6f168e",
-  video: "https://www.figma.com/api/mcp/asset/81cdf795-3b54-4d24-9731-60aebe6f168e",
-  monastery: "https://www.figma.com/api/mcp/asset/55ab11ac-646a-4021-a248-f571189be59f",
-  pena: "https://www.figma.com/api/mcp/asset/2a684c43-bba6-4f97-aec3-05ad872ebdd7",
-  algarve: "https://www.figma.com/api/mcp/asset/cbea50cb-ee33-400f-8b60-336c737c9f67",
-  center: "https://www.figma.com/api/mcp/asset/79564b84-dfc5-40f1-b697-bf864bfa54b2",
-  north: "https://www.figma.com/api/mcp/asset/4a6476fd-6e47-4d52-af9e-8c4caaa3d627",
-};
+import { DestinationsCarousel } from "@/components/sections/DestinationsCarousel";
+import { CtaBanner, VideoBanner } from "@/components/sections/HeroSection";
+import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
+import { WhyPortugalSection } from "@/components/sections/WhyPortugalSection";
+import { destinationAssets } from "@/lib/assets/destination";
 
 export default function DestinationPage() {
   return (
     <PageShell>
-      <HeroSection image={assets.hero} title="Portugal" />
+      {/* Hero — Figma 2337:133, 1080px at 1920 */}
+      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1080px)]">
+        <Image
+          src={destinationAssets.heroVideo}
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 px-6 text-center">
+          <h1 className="absolute left-1/2 top-[32.4%] -translate-x-1/2 whitespace-nowrap font-serif text-4xl font-light leading-tight text-white md:text-[61.5px] md:leading-[56.033px]">
+            Portugal
+          </h1>
+        </div>
+      </section>
 
+      {/* Why Portugal? — Figma 2337:148 */}
       <SiteSection>
         <SiteContainer>
-          <SectionHeading before="Why " accent="Portugal?" className="mb-12" />
-          <div className="grid gap-8 lg:grid-cols-2" style={{ columnGap: "var(--site-column-gap)" }}>
-            <div className="relative aspect-[542/813] overflow-hidden">
-              <Image src={assets.monastery} alt="Jerónimos Monastery" fill className="object-cover" />
-            </div>
-            <div>
-              <div className="relative mb-8 aspect-[531/708] overflow-hidden">
-                <Image src={assets.pena} alt="Pena Palace" fill className="object-cover" />
-              </div>
-              <p className="text-base leading-7 text-muted">
-                A country of captivating contrasts, Portugal is where history meets modern
-                sophistication, where ancient traditions blend seamlessly with contemporary luxury. At{" "}
-                <strong className="text-foreground">ZION Creative Artisans</strong>, we unveil
-                Portugal through a curated lens, offering bespoke experiences that immerse you in its
-                culture, heritage, and refined beauty.
-              </p>
-            </div>
-          </div>
+          <WhyPortugalSection />
         </SiteContainer>
       </SiteSection>
 
-      <VideoBanner image={assets.video} />
+      {/* Video band — Figma 2337:149, 1080px at 1920 */}
+      <VideoBanner
+        image={destinationAssets.video}
+        className="min-h-[480px] h-[clamp(480px,56.25vw,1080px)]"
+      />
 
+      {/* Tailored Destinations — Figma 2337:194 */}
       <SiteSection>
         <SiteContainer>
-          <SectionHeading before="Tailored " accent="Destinations" className="mb-12" />
-          <CardGrid
-            items={[
-              { image: assets.algarve, title: "Algarve" },
-              { image: assets.center, title: "Center of Portugal" },
-              { image: assets.north, title: "Porto & North" },
-            ]}
-          />
+          <DestinationsCarousel />
         </SiteContainer>
       </SiteSection>
 
-      <CtaBanner image={sharedAssets.ctaImage} title="Ignite Us" buttonLabel="Contact Us" />
+      {/* Ignite Us — Figma 2337:163 */}
+      <CtaBanner image={destinationAssets.cta} title="Ignite Us" buttonLabel="Contact Us" />
 
-      <PartnersSection />
+      <PartnersCarousel />
     </PageShell>
   );
 }
