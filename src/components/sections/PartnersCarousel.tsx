@@ -34,11 +34,11 @@ function PartnersCarouselStatic() {
   return (
     <SiteSection>
       <SiteContainer>
-        <p className="font-partners-heading text-center text-[#2b2e2b]">
+        <p className="font-partners-heading text-center text-foreground">
           Check Our Partners
         </p>
 
-        <div className="mt-9 w-full overflow-hidden">
+        <div className="mt-[var(--space-small)] w-full overflow-hidden">
           <div
             className="flex items-end justify-center gap-[clamp(24px,4vw,72px)]"
             aria-roledescription="carousel"
@@ -70,7 +70,7 @@ function PartnersCarouselStatic() {
               aria-selected={index === 0}
               aria-label={`Show ${partner.alt}`}
               className={`h-[9px] w-[9px] rounded-full ${
-                index === 0 ? "bg-[#2b2e2b]" : "bg-[#d9d9d9]"
+                index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
               }`}
             />
           ))}
@@ -93,11 +93,11 @@ function PartnersCarouselInteractive() {
   return (
     <SiteSection>
       <SiteContainer>
-        <p className="font-partners-heading text-center text-[#2b2e2b]">
+        <p className="font-partners-heading text-center text-foreground">
           Check Our Partners
         </p>
 
-        <div className="mt-9 w-full overflow-hidden">
+        <div className="mt-[var(--space-small)] w-full overflow-hidden">
           <div
             ref={trackRef}
             className="flex overflow-x-auto scroll-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -142,7 +142,7 @@ function PartnersCarouselInteractive() {
                 aria-label={`Show ${partner.alt}`}
                 onClick={() => scrollToIndex(index)}
                 className={`h-[9px] w-[9px] rounded-full transition-colors ${
-                  isActive ? "bg-[#2b2e2b]" : "bg-[#d9d9d9] hover:bg-[#b8b8b8]"
+                  isActive ? "bg-foreground" : "bg-[#d9d9d9] hover:bg-[#b8b8b8]"
                 }`}
               />
             );

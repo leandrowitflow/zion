@@ -29,12 +29,15 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #2b2e2b;
+  --foreground: #2a2826;
   --accent: #ba7d7d;
-  --muted: #787774;
+  --muted: #696866;
   --footer: #1a1815;
   --footer-muted: #c4c4bc;
-  --button: #383e2a;
+  --button: #383e28;
+
+  /* Live Splendour theme typography (uyr3aws.css + __custom.css) */
+  --font-display: ivypresto-display, serif;
 
   /* Breakpoint tiers (see src/lib/breakpoints.ts)
      lg 1024px — Figma mobile → staggered columns
@@ -44,9 +47,14 @@
   --site-gutter: 1.5rem;
   --header-gutter-left: 21px;
   --header-gutter-right: 71px;
-  --site-section-gap: clamp(3.5rem, 6.2vw, 119px);
-  --site-section-gap-mobile: clamp(2.5rem, 8vw, 80px);
+  /* Elementor sc_height_huge at desktop */
+  --site-section-gap: clamp(3.375rem, 5.2vw, 100px);
+  --site-section-gap-mobile: clamp(2.25rem, 7vw, 54px);
   --site-column-gap: clamp(2rem, 7.604vw, 146px);
+  /* Elementor spacers */
+  --space-small: 35px;
+  --space-medium: 50px;
+  --space-huge: 100px;
 }
 
 @media (min-width: 768px) {
@@ -82,8 +90,9 @@
   --color-footer-muted: var(--footer-muted);
   --color-button: var(--button);
   --font-sans: var(--font-open-sans), system-ui, sans-serif;
-  --font-serif: "IvyPresto Headline", ivypresto-headline, Georgia, serif;
-  --font-nav: ivypresto-display, serif;
+  --font-serif: var(--font-display);
+  --font-nav: var(--font-display);
+  --font-display: ivypresto-display, serif;
 }
 
 body {
@@ -156,35 +165,52 @@ body {
   padding-bottom: 0;
 }
 
-/* IvyPresto Headline Light — section & hero titles (2335:102, 61.5px / 56.033px) */
+/* Shared display family alias */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ivypresto-display — section & hero titles (57px / 60px) */
 .heading-section {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.25rem, 5.4vw, 61.5px);
-  line-height: clamp(2.05rem, 4.9vw, 56.033px);
+  font-size: clamp(2rem, 4.2vw, 57px);
+  line-height: clamp(2.1rem, 4.4vw, 60px);
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0.46em;
 }
 
-/* IvyPresto Headline Light — carousel / card labels (2335:104, 24.425px / 56.034px) */
+@media (min-width: 1024px) {
+  .heading-section {
+    font-size: 57px;
+    line-height: 60px;
+  }
+}
+
+/* ivypresto-display — carousel / card labels (live h5 ≈ 1.5rem) */
 .font-card-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  line-height: 56.034px;
+  font-size: 1.5rem;
+  line-height: 1.208em;
 }
 
-/* IvyPresto Headline SemiBold — CTA buttons (2337:18, 17px / 16.247px) */
+/* ivypresto-display — CTA buttons (live: 17px / 21px / 400) */
 .font-button {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 16.247px;
-}
-
-/* IvyPresto Display — header nav (Figma, 17px / 26px, #2a2826) */
-.font-nav {
-  font-family: var(--font-nav);
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 17px;
-  line-height: 26px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+/* ivypresto-display — header nav (live menu: 17px / 1.5em / 400) */
+.font-nav {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5em;
 }
 
 @keyframes ken-burns-in {
@@ -201,58 +227,154 @@ body {
   animation: ken-burns-in 5s ease-out forwards;
 }
 
-/* IvyPresto Headline Light — footer tagline (2559:91, 35px / 39px) */
+/* ivypresto-display h3 — footer tagline (live: 2.188rem / 1.086em / 300) */
 .footer-tagline {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  font-size: 35px;
-  line-height: 39px;
+  font-size: 2.188rem;
+  line-height: 1.086em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* IvyPresto Headline Light — footer labels e.g. Say Hello (2559:92, 19px / 39px) */
+/* ivypresto-display h6 — footer labels e.g. Say Hello (live: 1.188rem / 1.474em / 300) */
 .footer-label {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  font-size: 19px;
-  line-height: 39px;
+  font-size: 1.188rem;
+  line-height: 1.474em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* IvyPresto Headline Light — footer bottom nav (2335:13, 17px / 39px) */
+/* ivypresto-display — footer bottom nav (live menu: 17px / 1.5em / 400) */
 .footer-nav-link {
-  font-family: var(--font-serif);
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-weight: 400;
   font-size: 17px;
-  line-height: 39px;
+  line-height: 1.5em;
 }
 
-/* IvyPresto Headline Light — partners heading (2337:22, 19.957px / 19px) */
+/* ivypresto-display h6 — partners heading (live: 1.188rem / 1.474em / 300) */
 .font-partners-heading {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  font-size: 19.957px;
-  line-height: 19px;
+  font-size: 1.188rem;
+  line-height: 1.474em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* IvyPresto Headline Light — Ignite contact page (2559:102, 2559:104) */
+/* ivypresto-display — Ignite contact page titles */
 .contact-page-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  font-size: 28.256px;
-  line-height: 58px;
+  font-size: 1.75rem;
+  line-height: 1.214em;
 }
 
 .contact-page-phone {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 300;
-  font-size: 21.704px;
-  line-height: 44.551px;
+  font-size: 1.375rem;
+  line-height: 1.4em;
 }
 
-/* Open Sans — body copy (2335:286, 16px / 28px, #787774) */
+/* Open Sans — body copy (live p: 1rem / 1.8em / #696866) */
 .text-body {
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 1rem;
+  line-height: 1.8em;
   color: var(--muted);
+  margin-top: 0;
+  margin-bottom: 1.8em;
+}
+
+.text-body:last-child,
+.text-body > :last-child {
+  margin-bottom: 0;
+}
+
+.heading-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Figma 2339:368 — "Create your Legacy" CTA band */
+.cta-banner-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.2vw, 61.5px);
+  line-height: clamp(2rem, 3.9vw, 56.033px);
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .cta-banner-title {
+    font-size: 61.5px;
+    line-height: 56.033px;
+  }
+}
+
+/* Figma 2339:373 — 189×57 bordered CTA button (see .btn-outline-light.btn-outline-fixed) */
+
+/* CTA buttons — live sc_button_bordered / sc_button_default */
+.btn-outline {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 48px;
+  border: 2px solid currentColor;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 21px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-filled {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 48px;
+  background-color: var(--button);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 21px;
+  transition: background-color 0.2s;
+}
+
+.btn-filled:hover {
+  background-color: color-mix(in srgb, var(--button) 90%, black);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 48px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 21px;
+  transition: background-color 0.2s;
+}
+
+.btn-outline-light:hover {
+  background-color: rgb(255 255 255 / 0.1);
+}
+
+.btn-outline-light.btn-outline-fixed {
+  width: 189px;
+  height: 57px;
+  padding: 0;
+  font-weight: 600;
+  line-height: 16.247px;
 }
 
 /* Open Sans — footer contact block (2559:90, 16px, #c4c4bc) */

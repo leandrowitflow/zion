@@ -5,7 +5,7 @@ export const experiencesAssets = {
   heroVideoSrc: "/videos/experiences-hero.mp4?v=1080",
   video: "/images/experiences/video-poster.jpg",
   videoSrc: "/videos/experiences-video-band.mp4?v=1080",
-  cta: "/images/experiences/cta.jpg",
+  cta: "/images/experiences/cta.png",
   sculpture: "/images/experiences/sculpture.jpg",
   lounge: "/images/experiences/lounge.jpg",
   cards: {

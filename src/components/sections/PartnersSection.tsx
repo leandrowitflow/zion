@@ -39,12 +39,12 @@ export function CardGrid({ items, columns = 3 }: CardGridProps) {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 block text-center font-serif text-2xl text-[#292725] hover:text-accent"
+              className="font-card-title mt-4 block text-center text-foreground hover:text-accent"
             >
               {item.title}
             </a>
           ) : (
-            <p className="mt-4 text-center font-serif text-2xl text-[#292725]">{item.title}</p>
+            <p className="font-card-title mt-4 text-center text-foreground">{item.title}</p>
           )}
         </article>
       ))}
@@ -72,12 +72,12 @@ export function TeamGrid({ members }: { members: TeamMember[] }) {
               href={member.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 block font-serif text-2xl text-[#292725] hover:text-accent"
+              className="font-card-title mt-4 block text-foreground hover:text-accent"
             >
               {member.name}
             </a>
           ) : (
-            <p className="mt-4 font-serif text-2xl text-[#292725]">{member.name}</p>
+            <p className="font-card-title mt-4 text-foreground">{member.name}</p>
           )}
           <p className="mt-1 text-base text-muted">{member.role}</p>
         </article>

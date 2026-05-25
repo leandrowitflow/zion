@@ -2,11 +2,12 @@ import Image from "next/image";
 
 import { legacyAssets } from "@/lib/assets/legacy";
 import { MOBILE_ONLY, STAGGER_GRID } from "@/lib/breakpoints";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const bodyCopy = (
-  <div className="space-y-6 text-[16px] leading-[28px] text-[#787774]">
+  <div className="space-y-6 text-body">
     <p>
-      At <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, we craft
+      At <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, we craft
       events/Incentives that are more than just gatherings, they&apos;re transformative experiences.
       Imagine a corporate retreat at a serene farmhouse, where your team discusses quarterly results in
       an immersive, peaceful environment.
@@ -22,13 +23,13 @@ const bodyCopy = (
       sophistication with intention, crafting legacies that linger long after the event ends.
     </p>
     <p>
-      With <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, your incentive
+      With <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, your incentive
       becomes a journey, one where every moment is thoughtfully curated to inspire, connect, and elevate.
       Let&apos;s create an experience that speaks to the heart of your vision and motivates everyone
       involved.
     </p>
     <p>
-      <strong className="font-bold text-[#787774]">Legacy</strong> is where sophistication meets purpose,
+      <strong className="font-bold text-foreground">Legacy</strong> is where sophistication meets purpose,
       where indulgence harmonizes with intention, and where each meticulously curated detail tells a
       story of exclusivity and meaning.
     </p>
@@ -36,9 +37,7 @@ const bodyCopy = (
 );
 
 const heading = (
-  <h2 className="heading-section text-[#2b2e2b]">
-    The essence of <span className="text-[#ba7d7d]">Legacy</span>
-  </h2>
+  <SectionHeading before="The essence of " accent="Legacy" align="left" />
 );
 
 /**

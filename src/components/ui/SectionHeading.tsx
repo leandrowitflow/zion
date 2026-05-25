@@ -5,20 +5,35 @@ type SectionHeadingProps = {
   accent: string;
   align?: "left" | "center";
   className?: string;
+  /** White text on dark/image backgrounds */
+  inverted?: boolean;
+  /** Stack accent word on its own line (e.g. Crafted for the / Extraordinary) */
+  accentOnNewLine?: boolean;
 };
 
+/** Section h2 — ivypresto-display 57/60 via .heading-section + theme color tokens */
 export function SectionHeading({
   before,
   accent,
   align = "center",
   className = "",
+  inverted = false,
+  accentOnNewLine = false,
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "text-center" : "text-left";
+  const colorClass = inverted ? "text-white" : "text-foreground";
+
+  if (accentOnNewLine) {
+    return (
+      <h2 className={`heading-section ${colorClass} ${alignClass} ${className}`.trim()}>
+        <span className="block">{before}</span>
+        <span className="block text-accent">{accent}</span>
+      </h2>
+    );
+  }
 
   return (
-    <h2
-      className={`heading-section text-foreground ${alignClass} ${className}`}
-    >
+    <h2 className={`heading-section ${colorClass} ${alignClass} ${className}`.trim()}>
       {before}
       <span className="text-accent">{accent}</span>
     </h2>
@@ -33,10 +48,7 @@ type OutlineButtonProps = {
 
 export function OutlineButton({ href, children, className = "" }: OutlineButtonProps) {
   return (
-    <Link
-      href={href}
-      className={`inline-flex h-[57px] min-w-[189px] items-center justify-center border-2 border-white px-8 font-button text-white transition hover:bg-white/10 ${className}`}
-    >
+    <Link href={href} className={`btn-outline-light ${className}`.trim()}>
       {children}
     </Link>
   );
@@ -50,10 +62,7 @@ type FilledButtonProps = {
 
 export function FilledButton({ href, children, className = "" }: FilledButtonProps) {
   return (
-    <Link
-      href={href}
-      className={`inline-flex h-[57px] min-w-[173px] items-center justify-center bg-button px-8 font-button text-white transition hover:bg-button/90 ${className}`}
-    >
+    <Link href={href} className={`btn-filled ${className}`.trim()}>
       {children}
     </Link>
   );

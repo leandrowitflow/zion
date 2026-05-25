@@ -5,6 +5,7 @@ import { LegacyEssenceSection } from "@/components/sections/LegacyEssenceSection
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { legacyAssets, legacyCards } from "@/lib/assets/legacy";
 
 export default function LegacyPage() {
@@ -43,9 +44,7 @@ export default function LegacyPage() {
       {/* Crafting your Legacy — Figma 2339:296 */}
       <SiteSection>
         <SiteContainer>
-          <h2 className="heading-section text-center text-[#2b2e2b]">
-            Crafting your <span className="text-[#ba7d7d]">Legacy</span>
-          </h2>
+          <SectionHeading before="Crafting your " accent="Legacy" />
           <div className="mt-[clamp(1.5rem,5.8vw,55px)] grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-x-[19px] lg:gap-y-8">
             {legacyCards.map((item) => (
               <article key={item.title} className="min-w-0">

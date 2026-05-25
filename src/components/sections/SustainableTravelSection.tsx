@@ -2,16 +2,13 @@ import Image from "next/image";
 
 import { sustainabilityAssets } from "@/lib/assets/sustainability";
 import { FIGMA_GRID, LAPTOP_GRID, MOBILE_ONLY } from "@/lib/breakpoints";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const heading = (
-  <h2 className="heading-section text-[#2b2e2b]">
-    Sustainable <span className="text-[#ba7d7d]">Travel</span>
-  </h2>
-);
+const heading = <SectionHeading before="Sustainable " accent="Travel" align="left" />;
 
 const bodyCopy = (
-  <p className="mt-[25px] max-w-[543px] text-[16px] leading-[28px] text-[#787774]">
-    At <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, we curate journeys that
+  <p className="text-body max-w-[543px]">
+    At <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, we curate journeys that
     marry elegance with responsibility, where every experience is thoughtfully designed to honor both the
     traveler and the destination.
     <br />

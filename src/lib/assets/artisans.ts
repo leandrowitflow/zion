@@ -7,7 +7,7 @@ export const artisansAssets = {
   heroVideoSrc: "/videos/artisans-hero.mp4?v=1080b",
   video: "/images/artisans/video-poster.jpg",
   videoSrc: "/videos/artisans-video-band.mp4?v=1080b",
-  cta: "/images/artisans/cta.jpg",
+  cta: "/images/artisans/cta.png",
   team: {
     carlos: "/images/artisans/team-1.jpg",
     andre: "/images/artisans/team-2.jpg",

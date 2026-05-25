@@ -47,8 +47,8 @@ export default function DestinationPage() {
         </SiteContainer>
       </SiteSection>
 
-      {/* Create your Legacy — Figma 2339:368 */}
-      <CtaBanner image={destinationAssets.cta} title="Create your Legacy" buttonLabel="Contact Us" />
+      {/* Craft a Destination — Figma 2339:368 */}
+      <CtaBanner image={destinationAssets.cta} title="Craft a Destination" buttonLabel="Contact Us" />
 
       <PartnersCarousel />
     </PageShell>

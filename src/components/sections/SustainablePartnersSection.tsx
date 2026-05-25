@@ -2,16 +2,21 @@ import Image from "next/image";
 
 import { sustainabilityAssets } from "@/lib/assets/sustainability";
 import { FIGMA_GRID, LAPTOP_GRID, MOBILE_ONLY } from "@/lib/breakpoints";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+const partnersHeading = (
+  <SectionHeading before="Sustainable " accent="Partners" align="left" />
+);
 
 const partnersCopy = (
-  <div className="mt-[25px] space-y-6 text-[16px] leading-[28px] text-[#787774]">
+  <div className="text-body space-y-6">
     <p>
-      <strong className="font-bold text-[#787774]">
+      <strong className="font-bold text-foreground">
         &ldquo;We collaborate with those who share our vision for a more sustainable world.&rdquo;
       </strong>
     </p>
     <p>
-      At <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, we partner with
+      At <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, we partner with
       tourism suppliers who share our commitment to sustainability and responsible travel. We seek those who
       honor the environment, local communities, and ethical practices, from boutique hotels with sustainability
       certifications to restaurants that embrace local, organic sourcing and transportation providers offering
@@ -32,9 +37,7 @@ export function SustainablePartnersSection() {
   return (
     <div>
       <div className={MOBILE_ONLY}>
-        <h2 className="heading-section text-[#2b2e2b]">
-          Sustainable <span className="text-[#ba7d7d]">Partners</span>
-        </h2>
+        {partnersHeading}
         {partnersCopy}
         <div className="relative mt-8 aspect-[410/450] w-full overflow-hidden">
           <Image
@@ -50,9 +53,7 @@ export function SustainablePartnersSection() {
       {/* Laptop — text + hands only (no overlapping collage) */}
       <div className={`${LAPTOP_GRID} grid-cols-2 items-start gap-x-12`}>
         <div className="pt-[clamp(0px,5vw,103px)]">
-          <h2 className="heading-section text-[#2b2e2b]">
-            Sustainable <span className="text-[#ba7d7d]">Partners</span>
-          </h2>
+          {partnersHeading}
           {partnersCopy}
         </div>
         <div className="relative aspect-[410/450] w-full max-w-[410px] justify-self-end overflow-hidden">
@@ -69,9 +70,7 @@ export function SustainablePartnersSection() {
       {/* Desktop — Figma 2341:19 collage */}
       <div className={`${FIGMA_GRID} grid-cols-[542px_655px] items-start justify-between gap-0`}>
         <div className="pt-[103px]">
-          <h2 className="heading-section text-[#2b2e2b]">
-            Sustainable <span className="text-[#ba7d7d]">Partners</span>
-          </h2>
+          {partnersHeading}
           {partnersCopy}
         </div>
 

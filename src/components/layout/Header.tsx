@@ -10,9 +10,9 @@ import { headerNavItems, homeAssets } from "@/lib/assets/home";
 function MenuIcon() {
   return (
     <span className="flex flex-col gap-1.5" aria-hidden="true">
-      <span className="block h-px w-6 bg-[#2b2e2b]" />
-      <span className="block h-px w-6 bg-[#2b2e2b]" />
-      <span className="block h-px w-6 bg-[#2b2e2b]" />
+      <span className="block h-px w-6 bg-foreground" />
+      <span className="block h-px w-6 bg-foreground" />
+      <span className="block h-px w-6 bg-foreground" />
     </span>
   );
 }
@@ -137,7 +137,7 @@ export function Header() {
                   href={item.href}
                   label={item.label}
                   isActive={isActive}
-                  className={`font-serif font-light text-[clamp(1.625rem,6.5vw,2.75rem)] leading-[1.2] transition-opacity hover:opacity-70 ${
+                  className={`font-display font-light text-[clamp(1.625rem,6.5vw,2.75rem)] leading-[1.086] transition-opacity hover:opacity-70 ${
                     isActive ? "text-white" : "text-[#c4c4bc]"
                   }`}
                   underlineClassName="bg-white"

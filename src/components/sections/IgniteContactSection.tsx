@@ -122,7 +122,7 @@ export function IgniteContactSection() {
             <p className="mt-4 font-normal leading-[46px]">
               <a
                 href="mailto:ignite@zion-creativeartisans.com"
-                className="hover:text-[#2b2e2b]"
+                className="hover:text-foreground"
               >
                 ignite@zion-creativeartisans.com
               </a>
