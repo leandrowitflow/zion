@@ -20,6 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${openSans.variable} h-full antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
+        <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
+      </head>
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );

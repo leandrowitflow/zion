@@ -83,7 +83,7 @@
   --color-button: var(--button);
   --font-sans: var(--font-open-sans), system-ui, sans-serif;
   --font-serif: "IvyPresto Headline", ivypresto-headline, Georgia, serif;
-  --font-nav: "IvyPresto Text", ivypresto-text, Georgia, serif;
+  --font-nav: ivypresto-display, serif;
 }
 
 body {
@@ -179,10 +179,26 @@ body {
   line-height: 16.247px;
 }
 
-/* IvyPresto Text Light — header nav (2335:73–79, 14–15px) */
+/* IvyPresto Display — header nav (Figma, 17px / 26px, #2a2826) */
 .font-nav {
   font-family: var(--font-nav);
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+}
+
+@keyframes ken-burns-in {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns-in {
+  animation: ken-burns-in 5s ease-out forwards;
 }
 
 /* IvyPresto Headline Light — footer tagline (2559:91, 35px / 39px) */

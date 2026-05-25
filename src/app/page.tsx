@@ -3,9 +3,12 @@ import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
+import { BackgroundSlideshow } from "@/components/sections/BackgroundSlideshow";
 import { CraftCollage } from "@/components/sections/CraftCollage";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
+import { homeDestinationsSlideshow } from "@/lib/assets/destinations-slideshow";
+import { homeExperiencesSlideshow } from "@/lib/assets/experiences-slideshow";
 import { homeAssets } from "@/lib/assets/home";
 
 function OutlineButton({ href, children }: { href: string; children: React.ReactNode }) {
@@ -41,20 +44,28 @@ function FilledButton({
 
 function SplitPanel({
   image,
+  images,
   title,
   href = "/ignite-us",
   buttonLabel = "Contact Us",
 }: {
-  image: string;
+  image?: string;
+  images?: readonly string[];
   title: string;
   href?: string;
   buttonLabel?: string;
 }) {
+  const slides = images ?? (image ? [image] : []);
+
   return (
     <div className="relative min-h-[500px] flex-1 overflow-hidden lg:min-h-[min(859px,45vw)]">
-      <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 1920px) 50vw, 960px" />
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-6 text-center">
+      {slides.length > 1 ? (
+        <BackgroundSlideshow images={slides} />
+      ) : slides.length === 1 ? (
+        <Image src={slides[0]} alt="" fill className="object-cover" sizes="(max-width: 1920px) 50vw, 960px" />
+      ) : null}
+      <div className="absolute inset-0 z-10 bg-black/20" />
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-8 px-6 text-center">
         <h2 className="heading-section text-white">
           {title}
         </h2>
@@ -74,7 +85,7 @@ export default function HomePage() {
           <HeroVideoBackground src={homeAssets.heroVideoSrc} poster={homeAssets.heroVideo} />
           {/* Figma desktop (1400+): title top 25.07%, button top 39.04% within 1081px hero */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 text-center min-[1400px]:block">
-            <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2">
+            <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:leading-[60px]">
               <span className="block min-[1400px]:whitespace-nowrap">Where true sophistication</span>
               <span className="block min-[1400px]:whitespace-nowrap">embraces effortless luxury</span>
             </h1>
@@ -130,13 +141,13 @@ export default function HomePage() {
         {/* Destinations & Experiences — stack on mobile/tablet (Figma 2552:28) */}
         <section className="site-full-bleed flex w-full flex-col lg:flex-row">
           <SplitPanel
-            image={homeAssets.destinations}
+            images={homeDestinationsSlideshow}
             title="Destinations"
             href="/destination"
             buttonLabel="View More"
           />
           <SplitPanel
-            image={homeAssets.experiences}
+            images={homeExperiencesSlideshow}
             title="Experiences"
             href="/experiences"
             buttonLabel="View More"

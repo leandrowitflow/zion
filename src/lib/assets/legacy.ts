@@ -1,10 +1,10 @@
-import { experiencesAssets } from "@/lib/assets/experiences";
-
 export const legacyAssets = {
-  heroVideo: experiencesAssets.heroVideo,
-  video: experiencesAssets.heroVideo,
+  heroVideo: "/images/legacy/hero-poster.jpg",
+  heroVideoSrc: "/videos/legacy-hero.mp4?v=1080",
+  video: "/images/legacy/video-poster.jpg",
+  videoSrc: "/videos/legacy-video-band.mp4?v=1080",
   essence: "/images/legacy/essence.jpg",
-  cta: "/images/experiences/cta.jpg",
+  cta: "/images/legacy/cta.jpg",
   cards: {
     circle: "/images/legacy/circle.jpg",
     sanctum: "/images/legacy/sanctum.jpg",

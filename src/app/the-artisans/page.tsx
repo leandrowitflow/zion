@@ -153,20 +153,22 @@ export default function TheArtisansPage() {
                 <div className="relative aspect-[411/502] overflow-hidden">
                   <Image src={member.image} alt={member.name} fill className="object-cover" sizes="411px" />
                 </div>
-                <div className="mt-6 flex flex-col gap-2 text-left">
+                <div className="mt-6 flex flex-col gap-1.5 text-left">
                   {"href" in member && member.href ? (
                     <Link
                       href={member.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-card-title text-[24.425px] text-[#292725] hover:text-[#ba7d7d]"
+                      className="font-serif font-light text-[24.425px] leading-[1.05] text-[#292725] hover:text-[#ba7d7d]"
                     >
                       {member.name}
                     </Link>
                   ) : (
-                    <p className="font-card-title text-[24.425px] text-[#292725]">{member.name}</p>
+                    <p className="font-serif font-light text-[24.425px] leading-[1.05] text-[#292725]">
+                      {member.name}
+                    </p>
                   )}
-                  <p className="text-[16px] leading-[28px] text-[#787774]">{member.role}</p>
+                  <p className="text-[16px] leading-[20px] text-[#787774]">{member.role}</p>
                 </div>
               </article>
             ))}
