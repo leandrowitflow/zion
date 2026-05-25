@@ -74,7 +74,7 @@ export default function HomePage() {
           <HeroVideoBackground src={homeAssets.heroVideoSrc} poster={homeAssets.heroVideo} />
           {/* Figma desktop (1400+): title top 25.07%, button top 39.04% within 1081px hero */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 text-center min-[1400px]:block">
-            <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2">
+            <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:leading-[60px]">
               <span className="block min-[1400px]:whitespace-nowrap">Where true sophistication</span>
               <span className="block min-[1400px]:whitespace-nowrap">embraces effortless luxury</span>
             </h1>

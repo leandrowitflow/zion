@@ -30,7 +30,7 @@ export function NavLink({
       className={`inline-flex w-fit flex-col gap-[2px] ${className}`.trim()}
       onClick={onClick}
     >
-      <span className="block leading-none">{label}</span>
+      <span className="block leading-[26px]">{label}</span>
       {isActive && (
         <span className={`h-[2px] w-full ${underlineClassName}`} aria-hidden="true" />
       )}
