@@ -38,16 +38,26 @@ function FilledButton({
   );
 }
 
-function SplitPanel({ image, title }: { image: string; title: string }) {
+function SplitPanel({
+  image,
+  title,
+  href = "/ignite-us",
+  buttonLabel = "Contact Us",
+}: {
+  image: string;
+  title: string;
+  href?: string;
+  buttonLabel?: string;
+}) {
   return (
-    <div className="relative min-h-[500px] flex-1 overflow-hidden lg:min-h-[859px] 2xl:min-h-[min(859px,45vw)]">
+    <div className="relative min-h-[500px] flex-1 overflow-hidden min-[1400px]:min-h-[min(859px,45vw)]">
       <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 1920px) 50vw, 960px" />
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-6 text-center">
-        <h2 className="font-serif text-4xl font-light leading-tight text-white md:text-[61.5px] md:leading-[56.033px]">
+        <h2 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
           {title}
         </h2>
-        <OutlineButton href="/ignite-us">Contact Us</OutlineButton>
+        <OutlineButton href={href}>{buttonLabel}</OutlineButton>
       </div>
     </div>
   );
@@ -86,16 +96,16 @@ export default function HomePage() {
         <SiteSection>
           <SiteContainer>
             <div
-              className="grid grid-cols-1 md:grid-cols-[minmax(0,524px)_1fr] md:items-end"
+              className="grid grid-cols-1 min-[1400px]:grid-cols-[minmax(0,524px)_1fr] min-[1400px]:items-end"
               style={{ gap: "var(--site-column-gap)" }}
             >
-              <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden md:max-w-none">
+              <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden min-[1400px]:max-w-none">
                 <Image src={homeAssets.window} alt="Elegant interior" fill className="object-cover" sizes="524px" />
               </div>
 
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-8">
-                  <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
+                  <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
                     The Art of <span className="text-[#ba7d7d]">Zion</span>
                   </h2>
 
@@ -127,20 +137,30 @@ export default function HomePage() {
 
         {/* Destinations & Experiences — stack on mobile/tablet (Figma 2552:28) */}
         <section className="site-full-bleed flex w-full flex-col min-[1400px]:flex-row">
-          <SplitPanel image={homeAssets.destinations} title="Destinations" />
-          <SplitPanel image={homeAssets.experiences} title="Experiences" />
+          <SplitPanel
+            image={homeAssets.destinations}
+            title="Destinations"
+            href="/destination"
+            buttonLabel="View More"
+          />
+          <SplitPanel
+            image={homeAssets.experiences}
+            title="Experiences"
+            href="/experiences"
+            buttonLabel="View More"
+          />
         </section>
 
         {/* Craft a Destination — text left, collage right (Figma 2306:56) */}
         <SiteSection>
           <SiteContainer>
             <div
-              className="grid grid-cols-1 items-start md:grid-cols-[minmax(0,540px)_1fr]"
+              className="grid grid-cols-1 items-start min-[1400px]:grid-cols-[minmax(0,540px)_1fr]"
               style={{ gap: "var(--site-column-gap)" }}
             >
               {/* Figma: title starts ~212px below collage top — offset text when side-by-side */}
-              <div className="flex flex-col gap-8 md:pt-[clamp(1.5rem,11vw,212px)]">
-                <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
+              <div className="flex flex-col gap-8 min-[1400px]:pt-[clamp(1.5rem,11vw,212px)]">
+                <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
                   Craft a <span className="text-[#ba7d7d]">Destination</span>
                 </h2>
 
@@ -174,7 +194,7 @@ export default function HomePage() {
           <Image src={homeAssets.sustainability} alt="" fill className="object-cover object-bottom" sizes="100vw" />
           <div className="absolute inset-0 bg-black/25" />
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-10 px-6 text-center">
-            <h2 className="font-serif text-4xl font-light leading-tight text-white md:text-[61.5px] md:leading-[56.033px]">
+            <h2 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
               Sustainability
             </h2>
             <OutlineButton href="/ignite-us">Contact Us</OutlineButton>

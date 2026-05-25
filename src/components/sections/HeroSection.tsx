@@ -99,7 +99,7 @@ type SplitCtaProps = {
 
 export function SplitCta({ image, title, buttonLabel = "Contact Us" }: SplitCtaProps) {
   return (
-    <div className="group relative min-h-[500px] w-full overflow-hidden lg:min-h-[859px] 2xl:min-h-[min(859px,45vw)]">
+    <div className="group relative min-h-[500px] w-full overflow-hidden min-[1400px]:min-h-[min(859px,45vw)]">
       <Image
         src={image}
         alt=""
