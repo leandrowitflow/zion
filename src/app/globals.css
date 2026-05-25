@@ -402,3 +402,66 @@ body {
   font-size: 16px;
   line-height: 26px;
 }
+
+/* Mouse helper — smooth follower dot + image magnet (live site trx_addons) */
+.mouse-helper {
+  --mouse-helper-size: 8px;
+  --mouse-helper-left: 5px;
+  --mouse-helper-top: 25px;
+  position: fixed;
+  z-index: 999999;
+  top: var(--mouse-helper-top);
+  left: var(--mouse-helper-left);
+  width: var(--mouse-helper-size);
+  height: var(--mouse-helper-size);
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, width, height, opacity;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.mouse-helper-visible {
+  opacity: 1;
+}
+
+.mouse-helper-active {
+  --mouse-helper-size: 12px;
+}
+
+/* Soft image drift — inner img transform applied via JS */
+main.site-main .relative.overflow-hidden img {
+  will-change: transform;
+}
+
+/* Scroll reveal — splendour-fadeinup style (live site Elementor blocks) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 44px, 0);
+  transition:
+    opacity 1.05s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 1.05s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mouse-helper {
+    display: none;
+  }
+}
