@@ -23,9 +23,9 @@ export function HeroSection({
       <Image src={image} alt="" fill className={`object-cover ${objectPosition}`} sizes="100vw" priority />
       <div className="absolute inset-0 bg-black/20" />
       {(title || button) && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center text-white">
           {title && (
-            <h1 className="max-w-4xl heading-section text-white">
+            <h1 className="max-w-4xl heading-section mb-0 text-white">
               {title.split("\n").map((line, i) => (
                 <span key={i}>
                   {line}
@@ -35,12 +35,10 @@ export function HeroSection({
             </h1>
           )}
           {subtitle && (
-            <p className="mt-4 font-serif text-2xl md:text-4xl">{subtitle}</p>
+            <p className="font-display text-2xl font-light md:text-4xl">{subtitle}</p>
           )}
           {button && (
-            <div className="mt-10">
-              <OutlineButton href={button.href}>{button.label}</OutlineButton>
-            </div>
+            <OutlineButton href={button.href}>{button.label}</OutlineButton>
           )}
         </div>
       )}
@@ -78,14 +76,31 @@ export function CtaBanner({
   buttonHref = "/ignite-us",
 }: CtaBannerProps) {
   return (
-    <section className="site-full-bleed relative w-full overflow-hidden min-h-[500px] h-[clamp(500px,33.4vw,900px)]">
-      <Image src={image} alt="" fill className="object-cover" sizes="100vw" />
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-        <h2 className="heading-section text-white">{title}</h2>
-        <div className="mt-10">
-          <OutlineButton href={buttonHref}>{buttonLabel}</OutlineButton>
+    <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,33.39vw,641px)]">
+      <div className="absolute inset-0 z-0">
+        <div className="relative h-full w-full">
+          <Image
+            src={image}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+            unoptimized
+          />
         </div>
+      </div>
+      {/* Figma 2339:368 — 641px band; title y=38.22%, button y=53.04% at 1920 */}
+      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-[38px] px-6 text-center text-white min-[1024px]:block">
+        <h2 className="cta-banner-title pointer-events-auto whitespace-nowrap min-[1024px]:absolute min-[1024px]:left-1/2 min-[1024px]:top-[38.22%] min-[1024px]:w-max min-[1024px]:max-w-[min(100%,464px)] min-[1024px]:-translate-x-1/2">
+          {title}
+        </h2>
+        <OutlineButton
+          href={buttonHref}
+          className="btn-outline-fixed pointer-events-auto min-[1024px]:absolute min-[1024px]:left-1/2 min-[1024px]:top-[53.04%] min-[1024px]:-translate-x-1/2"
+        >
+          {buttonLabel}
+        </OutlineButton>
       </div>
     </section>
   );
@@ -108,8 +123,8 @@ export function SplitCta({ image, title, buttonLabel = "Contact Us" }: SplitCtaP
         sizes="(max-width: 1920px) 50vw, 960px"
       />
       <div className="absolute inset-0 bg-black/35" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-        <h2 className="heading-section text-white">{title}</h2>
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center text-white">
+        <h2 className="heading-section mb-0 text-white">{title}</h2>
         <div className="mt-8 opacity-0 transition group-hover:opacity-100">
           <OutlineButton href="/ignite-us">{buttonLabel}</OutlineButton>
         </div>

@@ -8,6 +8,7 @@ import {
   isInfiniteSlideClone,
   useInfiniteCarousel,
 } from "@/hooks/useInfiniteCarousel";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const SLIDE_GAP = 19;
 
@@ -23,7 +24,7 @@ function CarouselArrow({
       type="button"
       aria-label={direction === "prev" ? "Previous destinations" : "Next destinations"}
       onClick={onClick}
-      className="flex h-[50px] w-[50px] items-center justify-center rounded-full border border-[#D9D9D9] text-[#787774] transition hover:border-[#787774]"
+      className="flex h-[50px] w-[50px] items-center justify-center rounded-full border border-[#D9D9D9] text-muted transition hover:border-muted"
     >
       <svg
         width="17"
@@ -54,9 +55,7 @@ export function DestinationsCarousel() {
     <div>
       <div className="relative grid grid-cols-[108px_1fr_108px] items-start lg:block">
         <div className="lg:hidden" aria-hidden="true" />
-        <h2 className="heading-section text-center text-[#2b2e2b]">
-          Tailored <span className="text-[#ba7d7d]">Destinations</span>
-        </h2>
+        <SectionHeading before="Tailored " accent="Destinations" />
         <div className="flex justify-end gap-2 lg:absolute lg:right-0 lg:top-0">
           <CarouselArrow direction="prev" onClick={scrollPrev} />
           <CarouselArrow direction="next" onClick={scrollNext} />

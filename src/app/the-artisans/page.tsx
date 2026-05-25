@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ArtisansCollage } from "@/components/sections/ArtisansCollage";
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
@@ -41,15 +42,18 @@ export default function TheArtisansPage() {
       {/* The Art of Zion — title full width; body + collage aligned (Figma 2326:9) */}
       <SiteSection>
         <SiteContainer>
-          <h2 className="heading-section mb-8 text-[#2b2e2b] lg:mb-10">
-            The Art of <span className="text-[#ba7d7d]">Zion</span>
-          </h2>
+          <SectionHeading
+            before="The Art of "
+            accent="Zion"
+            align="left"
+            className="mb-8 lg:mb-10"
+          />
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-8">
-            <div className="max-w-[628px] space-y-6 text-[16px] leading-[28px] text-[#787774]">
+            <div className="max-w-[628px] space-y-6 text-body">
               <p>
-                At <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, we
+                At <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, we
                 redefine luxury as an experience rooted in simplicity, authenticity, and depth. As a{" "}
-                <strong className="font-bold text-[#787774]">Destination Alchemist Lab</strong>, we
+                <strong className="font-bold text-foreground">Destination Alchemist Lab</strong>, we
                 craft highly personalized journeys that go beyond the ordinary, offering a unique blend
                 of exclusivity and genuine connection.
               </p>
@@ -61,7 +65,7 @@ export default function TheArtisansPage() {
               <p>
                 We curate stays in both authentic boutique hotels and glamorous five-star properties,
                 ensuring your accommodations reflect the elegance of your journey. At{" "}
-                <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, we also
+                <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, we also
                 create moments that bridge the simple and the extraordinary.
               </p>
               <p>
@@ -85,9 +89,12 @@ export default function TheArtisansPage() {
       <SiteSection>
         <SiteContainer>
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-8">
-            <h2 className="heading-section text-[#2b2e2b] lg:col-start-2 lg:row-start-1">
-              Who we <span className="text-[#ba7d7d]">are</span>
-            </h2>
+            <SectionHeading
+              before="Who we "
+              accent="are"
+              align="left"
+              className="lg:col-start-2 lg:row-start-1"
+            />
             <div className="relative mx-auto aspect-[521/780] w-full max-w-[521px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:row-span-3">
               <Image
                 src={artisansAssets.portrait}
@@ -97,7 +104,7 @@ export default function TheArtisansPage() {
                 sizes="(max-width: 1023px) 100vw, 521px"
               />
             </div>
-            <div className="max-w-[628px] space-y-6 text-[16px] leading-[28px] text-[#787774] lg:col-start-2 lg:row-start-2">
+            <div className="max-w-[628px] space-y-6 text-body lg:col-start-2 lg:row-start-2">
               <p>
                 We are a collective of visionary travel artisans, storytellers, and experience curators
                 who believe in crafting more than just itineraries — we create deeply immersive journeys
@@ -105,7 +112,7 @@ export default function TheArtisansPage() {
               </p>
               <p>
                 As a{" "}
-                <strong className="font-bold text-[#787774]">Destination Alchemist Lab</strong>, we bring
+                <strong className="font-bold text-foreground">Destination Alchemist Lab</strong>, we bring
                 a wealth of expertise within the destination, cultural immersion, and personalized service,
                 shaping each journey to be as unique as the traveler themselves.
               </p>
@@ -144,9 +151,7 @@ export default function TheArtisansPage() {
       {/* Our Artisans (Figma 2326:39) */}
       <SiteSection>
         <SiteContainer>
-          <h2 className="heading-section mb-12 text-center text-[#2b2e2b]">
-            Our <span className="text-[#ba7d7d]">Artisans</span>
-          </h2>
+          <SectionHeading before="Our " accent="Artisans" className="mb-12" />
           <div className="grid grid-cols-1 gap-x-7 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
               <article key={member.name} className="flex flex-col">
@@ -159,16 +164,16 @@ export default function TheArtisansPage() {
                       href={member.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-serif font-light text-[24.425px] leading-[1.05] text-[#292725] hover:text-[#ba7d7d]"
+                      className="font-card-title text-foreground hover:text-accent"
                     >
                       {member.name}
                     </Link>
                   ) : (
-                    <p className="font-serif font-light text-[24.425px] leading-[1.05] text-[#292725]">
+                    <p className="font-card-title text-foreground">
                       {member.name}
                     </p>
                   )}
-                  <p className="text-[16px] leading-[20px] text-[#787774]">{member.role}</p>
+                  <p className="text-sm leading-[1.5] text-muted">{member.role}</p>
                 </div>
               </article>
             ))}

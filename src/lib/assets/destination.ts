@@ -5,7 +5,7 @@ export const destinationAssets = {
   heroVideoSrc: "/videos/destination-hero.mp4?v=1080",
   video: "/images/destination/video-poster.jpg",
   videoSrc: "/videos/destination-video-band.mp4?v=1080",
-  cta: "/images/destination/cta.jpg",
+  cta: "/images/destination/cta.png",
   monastery: "/images/destination/monastery.jpg",
   penaPalace: "/images/destination/pena-palace.jpg",
   cards: {
