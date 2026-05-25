@@ -2,7 +2,8 @@ import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { LegacyEssenceSection } from "@/components/sections/LegacyEssenceSection";
-import { CtaBanner, VideoBanner } from "@/components/sections/HeroSection";
+import { CtaBanner } from "@/components/sections/HeroSection";
+import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { legacyAssets, legacyCards } from "@/lib/assets/legacy";
 
@@ -11,15 +12,11 @@ export default function LegacyPage() {
     <PageShell>
       {/* Hero — Figma 2337:285, 1070px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
-        <Image
-          src={legacyAssets.heroVideo}
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
+        <HeroVideoBackground
+          src={legacyAssets.heroVideoSrc}
+          poster={legacyAssets.heroVideo}
         />
-        <div className="absolute inset-0 flex items-center justify-center px-6 text-center min-[1400px]:block">
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center min-[1400px]:block">
           <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[32.2%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:px-4 min-[1400px]:whitespace-nowrap">
             Curated for Distinction
           </h1>
@@ -34,10 +31,14 @@ export default function LegacyPage() {
       </SiteSection>
 
       {/* Video band — Figma 2339:294, 1078px at 1920 */}
-      <VideoBanner
-        image={legacyAssets.video}
-        className="min-h-[480px] h-[clamp(480px,56.15vw,1078px)]"
-      />
+      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.15vw,1078px)]">
+        <HeroVideoBackground
+          src={legacyAssets.videoSrc}
+          poster={legacyAssets.video}
+          objectPosition="object-bottom"
+        />
+        <div className="absolute inset-0 z-10 bg-black/10" />
+      </section>
 
       {/* Crafting your Legacy — Figma 2339:296 */}
       <SiteSection>

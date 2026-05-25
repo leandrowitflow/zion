@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
+import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { OurCommitmentSection } from "@/components/sections/OurCommitmentSection";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { SustainablePartnersSection } from "@/components/sections/SustainablePartnersSection";
 import { SustainableTravelSection } from "@/components/sections/SustainableTravelSection";
-import { VideoBanner } from "@/components/sections/HeroSection";
 import { sustainabilityAssets } from "@/lib/assets/sustainability";
 
 export default function SustainabilityPage() {
@@ -13,15 +12,12 @@ export default function SustainabilityPage() {
     <PageShell>
       {/* Hero — Figma 2339:462, 1070px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
-        <Image
-          src={sustainabilityAssets.heroVideo}
-          alt=""
-          fill
-          className="object-cover object-bottom"
-          sizes="100vw"
-          priority
+        <HeroVideoBackground
+          src={sustainabilityAssets.heroVideoSrc}
+          poster={sustainabilityAssets.heroVideo}
+          objectPosition="object-bottom"
         />
-        <div className="absolute inset-0 flex items-center justify-center px-6 text-center min-[1400px]:block">
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center min-[1400px]:block">
           <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[28.7%] min-[1400px]:-translate-x-1/2 min-[1400px]:whitespace-nowrap">
             Sustainability
           </h1>
@@ -37,10 +33,14 @@ export default function SustainabilityPage() {
       </SiteSection>
 
       {/* Video band — Figma 2341:11, 1078px at 1920 */}
-      <VideoBanner
-        image={sustainabilityAssets.video}
-        className="min-h-[480px] h-[clamp(480px,56.15vw,1078px)]"
-      />
+      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.15vw,1078px)]">
+        <HeroVideoBackground
+          src={sustainabilityAssets.videoSrc}
+          poster={sustainabilityAssets.video}
+          objectPosition="object-bottom"
+        />
+        <div className="absolute inset-0 z-10 bg-black/10" />
+      </section>
 
       {/* Sustainable Partners — Figma 2341:19 */}
       <SiteSection className="site-section-flush-bottom">

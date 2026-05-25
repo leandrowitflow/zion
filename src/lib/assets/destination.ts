@@ -1,11 +1,11 @@
-import { experiencesAssets } from "@/lib/assets/experiences";
-
 const carouselBase = "/images/destination/carousel";
 
 export const destinationAssets = {
-  heroVideo: experiencesAssets.heroVideo,
-  video: experiencesAssets.heroVideo,
-  cta: experiencesAssets.cta,
+  heroVideo: "/images/destination/hero-poster.jpg",
+  heroVideoSrc: "/videos/destination-hero.mp4?v=1080",
+  video: "/images/destination/video-poster.jpg",
+  videoSrc: "/videos/destination-video-band.mp4?v=1080",
+  cta: "/images/destination/cta.jpg",
   monastery: "/images/destination/monastery.jpg",
   penaPalace: "/images/destination/pena-palace.jpg",
   cards: {
