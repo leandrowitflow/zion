@@ -4,9 +4,9 @@ export const artisansAssets = {
   portrait: "/images/artisans/portrait.jpg",
   sunset: "/images/artisans/sunset.jpg",
   heroVideo: "/images/artisans/hero-poster.jpg",
-  heroVideoSrc: "/videos/artisans-hero.mp4?v=1080",
+  heroVideoSrc: "/videos/artisans-hero.mp4?v=1080b",
   video: "/images/artisans/video-poster.jpg",
-  videoSrc: "/videos/artisans-video-band.mp4?v=1080",
+  videoSrc: "/videos/artisans-video-band.mp4?v=1080b",
   cta: "/images/artisans/cta.jpg",
   team: {
     carlos: "/images/artisans/team-1.jpg",

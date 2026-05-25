@@ -1,8 +1,10 @@
 const carouselBase = "/images/experiences/carousel";
 
 export const experiencesAssets = {
-  heroVideo: "/images/experiences/hero-video.jpg",
-  video: "/images/experiences/hero-video.jpg",
+  heroVideo: "/images/experiences/hero-poster.jpg",
+  heroVideoSrc: "/videos/experiences-hero.mp4?v=1080",
+  video: "/images/experiences/video-poster.jpg",
+  videoSrc: "/videos/experiences-video-band.mp4?v=1080",
   cta: "/images/experiences/cta.jpg",
   sculpture: "/images/experiences/sculpture.jpg",
   lounge: "/images/experiences/lounge.jpg",
