@@ -48,8 +48,8 @@ export default function TheArtisansPage() {
             align="left"
             className="mb-8 lg:mb-10"
           />
-          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-8">
-            <div className="max-w-[628px] space-y-6 text-body">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-8">
+            <div className="max-w-[628px] space-y-6 text-body lg:max-w-none">
               <p>
                 At <strong className="font-bold text-foreground">ZION Creative Artisans</strong>, we
                 redefine luxury as an experience rooted in simplicity, authenticity, and depth. As a{" "}
@@ -95,7 +95,8 @@ export default function TheArtisansPage() {
               align="left"
               className="lg:col-start-2 lg:row-start-1"
             />
-            <div className="relative mx-auto aspect-[521/780] w-full max-w-[521px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:row-span-3">
+            {/* Portrait — desktop only; on mobile it stacks under gallery in Art of Zion */}
+            <div className="relative mx-auto hidden aspect-[521/780] w-full max-w-[521px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:block lg:row-span-3">
               <Image
                 src={artisansAssets.portrait}
                 alt="The team"
@@ -104,7 +105,7 @@ export default function TheArtisansPage() {
                 sizes="(max-width: 1023px) 100vw, 521px"
               />
             </div>
-            <div className="max-w-[628px] space-y-6 text-body lg:col-start-2 lg:row-start-2">
+            <div className="max-w-[628px] space-y-6 text-body lg:col-start-2 lg:row-start-2 lg:max-w-none">
               <p>
                 We are a collective of visionary travel artisans, storytellers, and experience curators
                 who believe in crafting more than just itineraries — we create deeply immersive journeys
@@ -126,7 +127,7 @@ export default function TheArtisansPage() {
                 leave a lasting impression, stories that stay with you long after your journey has ended.
               </p>
             </div>
-            <div className="relative aspect-[625/416] w-full max-w-[625px] lg:col-start-2 lg:row-start-3 overflow-hidden">
+            <div className="relative aspect-[625/416] w-full overflow-hidden lg:col-start-2 lg:row-start-3 lg:max-w-[625px]">
               <Image
                 src={artisansAssets.sunset}
                 alt="Couple at sunset"
@@ -151,8 +152,8 @@ export default function TheArtisansPage() {
       {/* Our Artisans (Figma 2326:39) */}
       <SiteSection>
         <SiteContainer>
-          <SectionHeading before="Our " accent="Artisans" className="mb-12" />
-          <div className="grid grid-cols-1 gap-x-7 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHeading before="Our " accent="Artisans" className="mb-8 lg:mb-12" />
+          <div className="grid grid-cols-1 gap-x-7 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-6">
             {teamMembers.map((member) => (
               <article key={member.name} className="flex flex-col">
                 <div className="relative aspect-[411/502] overflow-hidden">

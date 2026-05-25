@@ -14,7 +14,7 @@ import { homeAssets } from "@/lib/assets/home";
 
 function OutlineButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="btn-outline-light">
+    <Link href={href} className="btn-outline-light max-lg:mx-auto max-lg:block max-lg:w-fit lg:mx-0">
       {children}
     </Link>
   );
@@ -28,7 +28,7 @@ function FilledButton({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className="btn-filled">
+    <Link href={href} className="btn-filled max-lg:mx-auto max-lg:block max-lg:w-fit lg:mx-0">
       {children}
     </Link>
   );

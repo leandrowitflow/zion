@@ -377,6 +377,21 @@ body {
   line-height: 16.247px;
 }
 
+/* Center CTA buttons on mobile (block + auto margins; inline-flex ignores mx-auto in normal flow) */
+@media (max-width: 1023px) {
+  a.btn-filled,
+  a.btn-outline-light,
+  a.btn-outline,
+  .btn-filled,
+  .btn-outline-light,
+  .btn-outline {
+    display: flex !important;
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
 /* Open Sans — footer contact block (2559:90, 16px, #c4c4bc) */
 .footer-body {
   font-size: 16px;

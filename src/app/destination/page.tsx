@@ -23,8 +23,8 @@ export default function DestinationPage() {
         </div>
       </section>
 
-      {/* Why Portugal? — Figma 2337:148 */}
-      <SiteSection>
+      {/* Why Portugal? — Figma 2337:148 (desktop artboard breaks out of container) */}
+      <SiteSection className="overflow-x-clip">
         <SiteContainer>
           <WhyPortugalSection />
         </SiteContainer>

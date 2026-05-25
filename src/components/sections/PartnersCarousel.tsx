@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import {
@@ -9,27 +9,44 @@ import {
   isInfiniteSlideClone,
   useInfiniteCarousel,
 } from "@/hooks/useInfiniteCarousel";
+import { BP_LG } from "@/lib/breakpoints";
 import { partnerLogos } from "@/lib/assets/partners";
-
-const LOGOS_PER_SLIDE = 3;
 
 type PartnerLogo = (typeof partnerLogos)[number];
 
-function buildPartnerPages(): PartnerLogo[][] {
+function buildPartnerPages(logosPerSlide: number): PartnerLogo[][] {
   return Array.from({ length: partnerLogos.length }, (_, start) =>
-    Array.from({ length: LOGOS_PER_SLIDE }, (_, offset) => {
+    Array.from({ length: logosPerSlide }, (_, offset) => {
       return partnerLogos[(start + offset) % partnerLogos.length];
     }),
   );
 }
 
-const partnerPages = buildPartnerPages();
+function useLogosPerSlide() {
+  const [logosPerSlide, setLogosPerSlide] = useState(1);
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(min-width: ${BP_LG}px)`);
+    const update = () => setLogosPerSlide(mq.matches ? 3 : 1);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  return logosPerSlide;
+}
+
+function partnerLogoClassName(logosPerSlide: number) {
+  return logosPerSlide === 1
+    ? "h-[clamp(80px,22vw,180px)] w-auto max-w-[min(72vw,280px)] object-contain object-bottom"
+    : "h-[clamp(56px,9vw,180px)] w-auto max-w-[min(28vw,233px)] object-contain object-bottom";
+}
 
 const PARTNERS_AUTOPLAY_MS = 8000;
 const PARTNERS_SCROLL_MS = 1600;
 
 function PartnersCarouselStatic() {
-  const firstPage = partnerPages[0];
+  const partner = partnerLogos[0];
 
   return (
     <SiteSection>
@@ -40,21 +57,18 @@ function PartnersCarouselStatic() {
 
         <div className="mt-[var(--space-small)] w-full overflow-hidden">
           <div
-            className="flex items-end justify-center gap-[clamp(24px,4vw,72px)]"
+            className="flex items-end justify-center"
             aria-roledescription="carousel"
             aria-label="Partner logos"
           >
-            {firstPage.map((partner) => (
-              <Image
-                key={partner.id}
-                src={partner.image}
-                alt={partner.alt}
-                width={partner.width}
-                height={partner.height}
-                className="h-[clamp(56px,9vw,180px)] w-auto max-w-[min(28vw,233px)] object-contain object-bottom"
-                sizes="(max-width: 1023px) 28vw, 233px"
-              />
-            ))}
+            <Image
+              src={partner.image}
+              alt={partner.alt}
+              width={partner.width}
+              height={partner.height}
+              className={partnerLogoClassName(1)}
+              sizes="(max-width: 1023px) 72vw, 233px"
+            />
           </div>
         </div>
 
@@ -63,12 +77,12 @@ function PartnersCarouselStatic() {
           role="tablist"
           aria-label="Partner logos"
         >
-          {partnerLogos.map((partner, index) => (
+          {partnerLogos.map((item, index) => (
             <span
-              key={partner.id}
+              key={item.id}
               role="tab"
               aria-selected={index === 0}
-              aria-label={`Show ${partner.alt}`}
+              aria-label={`Show ${item.alt}`}
               className={`h-[9px] w-[9px] rounded-full ${
                 index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
               }`}
@@ -81,6 +95,8 @@ function PartnersCarouselStatic() {
 }
 
 function PartnersCarouselInteractive() {
+  const logosPerSlide = useLogosPerSlide();
+  const partnerPages = useMemo(() => buildPartnerPages(logosPerSlide), [logosPerSlide]);
   const { trackRef, scrollToIndex, activeIndex } = useInfiniteCarousel(
     partnerPages.length,
     0,
@@ -88,7 +104,8 @@ function PartnersCarouselInteractive() {
     1,
     PARTNERS_SCROLL_MS,
   );
-  const slides = buildInfiniteSlides(partnerPages);
+  const slides = useMemo(() => buildInfiniteSlides(partnerPages), [partnerPages]);
+  const logoClassName = partnerLogoClassName(logosPerSlide);
 
   return (
     <SiteSection>
@@ -99,6 +116,7 @@ function PartnersCarouselInteractive() {
 
         <div className="mt-[var(--space-small)] w-full overflow-hidden">
           <div
+            key={logosPerSlide}
             ref={trackRef}
             className="flex overflow-x-auto scroll-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             aria-roledescription="carousel"
@@ -117,8 +135,8 @@ function PartnersCarouselInteractive() {
                     alt={partner.alt}
                     width={partner.width}
                     height={partner.height}
-                    className="h-[clamp(56px,9vw,180px)] w-auto max-w-[min(28vw,233px)] object-contain object-bottom"
-                    sizes="(max-width: 1023px) 28vw, 233px"
+                    className={logoClassName}
+                    sizes={logosPerSlide === 1 ? "(max-width: 1023px) 72vw, 233px" : "(max-width: 1023px) 28vw, 233px"}
                   />
                 ))}
               </article>
@@ -153,7 +171,7 @@ function PartnersCarouselInteractive() {
   );
 }
 
-/** Partner logos — 3 visible, slides one logo at a time, infinite forward loop */
+/** Partner logos — 1 on mobile (2552:34), 3 on desktop; slides one logo at a time */
 export function PartnersCarousel() {
   const [mounted, setMounted] = useState(false);
 
