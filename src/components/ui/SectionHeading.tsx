@@ -48,7 +48,10 @@ type OutlineButtonProps = {
 
 export function OutlineButton({ href, children, className = "" }: OutlineButtonProps) {
   return (
-    <Link href={href} className={`btn-outline-light ${className}`.trim()}>
+    <Link
+      href={href}
+      className={`btn-outline-light max-lg:mx-auto max-lg:block max-lg:w-fit lg:mx-0 ${className}`.trim()}
+    >
       {children}
     </Link>
   );
@@ -62,7 +65,10 @@ type FilledButtonProps = {
 
 export function FilledButton({ href, children, className = "" }: FilledButtonProps) {
   return (
-    <Link href={href} className={`btn-filled ${className}`.trim()}>
+    <Link
+      href={href}
+      className={`btn-filled max-lg:mx-auto max-lg:block max-lg:w-fit lg:mx-0 ${className}`.trim()}
+    >
       {children}
     </Link>
   );

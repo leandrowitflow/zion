@@ -5,11 +5,11 @@ import { FIGMA_GRID, LAPTOP_GRID, MOBILE_ONLY } from "@/lib/breakpoints";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const partnersHeading = (
-  <SectionHeading before="Sustainable " accent="Partners" align="left" />
+  <SectionHeading before="Sustainable " accent="Partners" align="center" className="lg:text-left" />
 );
 
 const partnersCopy = (
-  <div className="text-body space-y-6">
+  <div className="text-body space-y-6 text-center lg:text-left">
     <p>
       <strong className="font-bold text-foreground">
         &ldquo;We collaborate with those who share our vision for a more sustainable world.&rdquo;
@@ -38,7 +38,7 @@ export function SustainablePartnersSection() {
     <div>
       <div className={MOBILE_ONLY}>
         {partnersHeading}
-        {partnersCopy}
+        <div className="mt-8">{partnersCopy}</div>
         <div className="relative mt-8 aspect-[410/450] w-full overflow-hidden">
           <Image
             src={sustainabilityAssets.hands}

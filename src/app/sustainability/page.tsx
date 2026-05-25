@@ -17,23 +17,32 @@ export default function SustainabilityPage() {
           poster={sustainabilityAssets.heroVideo}
           objectPosition="object-bottom"
         />
-        <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center min-[1400px]:block">
-          <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[28.7%] min-[1400px]:-translate-x-1/2 min-[1400px]:whitespace-nowrap">
+        <div className="absolute inset-0 z-10 hidden min-[1400px]:block">
+          <h1 className="heading-section absolute left-1/2 top-[28.7%] -translate-x-1/2 whitespace-nowrap text-white">
             Sustainability
           </h1>
         </div>
       </section>
 
       {/* Our Commitment + Sustainable Travel — Figma 2341:9 / 2341:10 */}
-      <SiteSection>
+      <SiteSection className="overflow-x-clip">
         <SiteContainer className="flex flex-col gap-[clamp(3rem,6.2vw,118px)]">
           <OurCommitmentSection />
           <SustainableTravelSection />
         </SiteContainer>
       </SiteSection>
 
-      {/* Video band — Figma 2341:11, 1078px at 1920 */}
-      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.15vw,1078px)]">
+      {/* Video band — mobile: after picnic (2552:34); desktop: Figma 2341:11 */}
+      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.15vw,1078px)] lg:hidden">
+        <HeroVideoBackground
+          src={sustainabilityAssets.videoSrc}
+          poster={sustainabilityAssets.video}
+          objectPosition="object-bottom"
+        />
+        <div className="absolute inset-0 z-10 bg-black/10" />
+      </section>
+
+      <section className="site-full-bleed relative hidden w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.15vw,1078px)] lg:block">
         <HeroVideoBackground
           src={sustainabilityAssets.videoSrc}
           poster={sustainabilityAssets.video}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import { MouseHelper } from "@/components/ui/MouseHelper";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -24,7 +26,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
         <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
       </head>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <MouseHelper />
+        <ScrollReveal />
+        {children}
+      </body>
     </html>
   );
 }
