@@ -58,7 +58,7 @@ function LogoLink({
   );
 }
 
-/** Figma header (2559:48) — logo x=21, nav flush right; mobile unchanged */
+/** Figma header (2559:48) — logo x=21, nav flush right; hamburger below 1000px */
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -77,14 +77,14 @@ export function Header() {
   return (
     <>
       <header className="relative z-50 h-[111px] w-full bg-white">
-        {/* Mobile — original site-container layout */}
-        <div className="site-container relative h-[111px] min-[1400px]:hidden">
-          <LogoLink />
+        {/* Mobile — logo + menu icon aligned to desktop header gutters */}
+        <div className="header-nav-mobile relative h-[111px]">
+          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]" />
 
           {!menuOpen && (
             <button
               type="button"
-              className="absolute right-0 top-1/2 -translate-y-1/2 p-2"
+              className="absolute right-[var(--header-gutter-right)] top-1/2 -translate-y-1/2 p-2"
               aria-label="Open menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
@@ -95,10 +95,10 @@ export function Header() {
         </div>
 
         {/* Desktop — logo 21px from left, nav 71px from right */}
-        <div className="relative hidden h-[111px] w-full min-[1400px]:block">
+        <div className="header-nav-desktop relative h-[111px] w-full">
           <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] h-[93px] w-[230px]" />
 
-          <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-8">
+          <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-5 min-[1400px]:gap-8">
             {headerNavItems.map((item) => (
               <NavLink
                 key={item.href}
@@ -114,7 +114,7 @@ export function Header() {
 
       {/* Mobile menu — Figma 2552:33 */}
       {menuOpen && (
-        <div className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#1a1815] min-[1400px]:hidden">
+        <div className="header-menu-overlay fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#1a1815]">
           <div className="site-container relative h-[111px] shrink-0">
             <LogoLink inverted onClick={() => setMenuOpen(false)} />
 
