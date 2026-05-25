@@ -8,7 +8,7 @@ import { homeAssets } from "@/lib/assets/home";
 export function CraftCollage({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`relative mx-auto aspect-[657/696] w-full max-w-[657px] min-[1400px]:mx-0 min-[1400px]:max-w-none ${className}`.trim()}
+      className={`relative mx-auto aspect-[657/696] w-full max-w-[657px] lg:mx-0 lg:max-w-none ${className}`.trim()}
     >
       <div className="absolute right-0 top-0 h-[84.34%] w-[67.12%] overflow-hidden">
         <Image

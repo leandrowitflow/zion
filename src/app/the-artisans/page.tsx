@@ -45,10 +45,10 @@ export default function TheArtisansPage() {
       {/* The Art of Zion — title full width; body + collage aligned (Figma 2326:9) */}
       <SiteSection>
         <SiteContainer>
-          <h2 className="mb-8 font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:mb-10 md:text-[61.5px] md:leading-[56.033px]">
+          <h2 className="heading-section mb-8 text-[#2b2e2b] lg:mb-10">
             The Art of <span className="text-[#ba7d7d]">Zion</span>
           </h2>
-          <div className="grid grid-cols-1 items-start min-[1400px]:grid-cols-[628px_630px] min-[1400px]:gap-[29px]">
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-8">
             <div className="max-w-[628px] space-y-6 text-[16px] leading-[28px] text-[#787774]">
               <p>
                 At <strong className="font-bold text-[#787774]">ZION Creative Artisans</strong>, we
@@ -88,20 +88,20 @@ export default function TheArtisansPage() {
       {/* Who we are — portrait top aligns with title (Figma 2326:10) */}
       <SiteSection>
         <SiteContainer>
-          <div className="grid grid-cols-1 items-start gap-8 min-[1400px]:grid-cols-[521px_628px] min-[1400px]:gap-x-[141px] min-[1400px]:gap-y-8">
-            <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:col-start-2 min-[1400px]:row-start-1 md:text-[61.5px] md:leading-[56.033px]">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-8">
+            <h2 className="heading-section text-[#2b2e2b] lg:col-start-2 lg:row-start-1">
               Who we <span className="text-[#ba7d7d]">are</span>
             </h2>
-            <div className="relative mx-auto aspect-[521/780] w-full max-w-[521px] min-[1400px]:col-start-1 min-[1400px]:row-start-1 min-[1400px]:mx-0 min-[1400px]:h-[780px] min-[1400px]:w-[521px] min-[1400px]:row-span-3">
+            <div className="relative mx-auto aspect-[521/780] w-full max-w-[521px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:row-span-3">
               <Image
                 src={artisansAssets.portrait}
                 alt="The team"
                 fill
                 className="object-cover"
-                sizes="(max-width: 1399px) 100vw, 521px"
+                sizes="(max-width: 1023px) 100vw, 521px"
               />
             </div>
-            <div className="max-w-[628px] space-y-6 text-[16px] leading-[28px] text-[#787774] min-[1400px]:col-start-2 min-[1400px]:row-start-2">
+            <div className="max-w-[628px] space-y-6 text-[16px] leading-[28px] text-[#787774] lg:col-start-2 lg:row-start-2">
               <p>
                 We are a collective of visionary travel artisans, storytellers, and experience curators
                 who believe in crafting more than just itineraries — we create deeply immersive journeys
@@ -123,13 +123,13 @@ export default function TheArtisansPage() {
                 leave a lasting impression, stories that stay with you long after your journey has ended.
               </p>
             </div>
-            <div className="relative aspect-[625/416] w-full max-w-[625px] min-[1400px]:col-start-2 min-[1400px]:row-start-3 min-[1400px]:h-[416px] min-[1400px]:w-[625px] overflow-hidden">
+            <div className="relative aspect-[625/416] w-full max-w-[625px] lg:col-start-2 lg:row-start-3 overflow-hidden">
               <Image
                 src={artisansAssets.sunset}
                 alt="Couple at sunset"
                 fill
                 className="object-cover"
-                sizes="(max-width: 1399px) 100vw, 625px"
+                sizes="(max-width: 1023px) 100vw, 625px"
               />
             </div>
           </div>
@@ -141,7 +141,7 @@ export default function TheArtisansPage() {
       {/* Our Artisans (Figma 2326:39) */}
       <SiteSection>
         <SiteContainer>
-          <h2 className="mb-12 text-center font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
+          <h2 className="heading-section mb-12 text-center text-[#2b2e2b]">
             Our <span className="text-[#ba7d7d]">Artisans</span>
           </h2>
           <div className="grid grid-cols-1 gap-x-7 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">

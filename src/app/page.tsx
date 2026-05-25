@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { CraftCollage } from "@/components/sections/CraftCollage";
+import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { homeAssets } from "@/lib/assets/home";
 
@@ -50,11 +51,11 @@ function SplitPanel({
   buttonLabel?: string;
 }) {
   return (
-    <div className="relative min-h-[500px] flex-1 overflow-hidden min-[1400px]:min-h-[min(859px,45vw)]">
+    <div className="relative min-h-[500px] flex-1 overflow-hidden lg:min-h-[min(859px,45vw)]">
       <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 1920px) 50vw, 960px" />
       <div className="absolute inset-0 bg-black/20" />
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-6 text-center">
-        <h2 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+        <h2 className="heading-section text-white">
           {title}
         </h2>
         <OutlineButton href={href}>{buttonLabel}</OutlineButton>
@@ -70,19 +71,10 @@ export default function HomePage() {
       <main className="site-main bg-white">
         {/* Hero — full bleed */}
         <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
-          <div className="absolute inset-0 overflow-hidden">
-            <Image
-              src={homeAssets.heroVideo}
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          {/* Figma desktop: title top 271px, button top 422px within 1081px hero */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-6 text-center min-[1400px]:block">
-            <h1 className="font-serif text-4xl font-light leading-[1.15] text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+          <HeroVideoBackground src={homeAssets.heroVideoSrc} poster={homeAssets.heroVideo} />
+          {/* Figma desktop (1400+): title top 25.07%, button top 39.04% within 1081px hero */}
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 px-6 text-center min-[1400px]:block">
+            <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2">
               <span className="block min-[1400px]:whitespace-nowrap">Where true sophistication</span>
               <span className="block min-[1400px]:whitespace-nowrap">embraces effortless luxury</span>
             </h1>
@@ -96,16 +88,16 @@ export default function HomePage() {
         <SiteSection>
           <SiteContainer>
             <div
-              className="grid grid-cols-1 min-[1400px]:grid-cols-[minmax(0,524px)_1fr] min-[1400px]:items-end"
+              className="grid grid-cols-1 lg:grid-cols-2 lg:items-end"
               style={{ gap: "var(--site-column-gap)" }}
             >
-              <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden min-[1400px]:max-w-none">
+              <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden lg:max-w-none">
                 <Image src={homeAssets.window} alt="Elegant interior" fill className="object-cover" sizes="524px" />
               </div>
 
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-8">
-                  <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+                  <h2 className="heading-section text-[#2b2e2b]">
                     The Art of <span className="text-[#ba7d7d]">Zion</span>
                   </h2>
 
@@ -136,7 +128,7 @@ export default function HomePage() {
         </SiteSection>
 
         {/* Destinations & Experiences — stack on mobile/tablet (Figma 2552:28) */}
-        <section className="site-full-bleed flex w-full flex-col min-[1400px]:flex-row">
+        <section className="site-full-bleed flex w-full flex-col lg:flex-row">
           <SplitPanel
             image={homeAssets.destinations}
             title="Destinations"
@@ -155,12 +147,12 @@ export default function HomePage() {
         <SiteSection>
           <SiteContainer>
             <div
-              className="grid grid-cols-1 items-start min-[1400px]:grid-cols-[minmax(0,540px)_1fr]"
+              className="grid grid-cols-1 items-start lg:grid-cols-2"
               style={{ gap: "var(--site-column-gap)" }}
             >
               {/* Figma: title starts ~212px below collage top — offset text when side-by-side */}
-              <div className="flex flex-col gap-8 min-[1400px]:pt-[clamp(1.5rem,11vw,212px)]">
-                <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+              <div className="flex flex-col gap-8 lg:pt-[clamp(1.5rem,11vw,212px)]">
+                <h2 className="heading-section text-[#2b2e2b]">
                   Craft a <span className="text-[#ba7d7d]">Destination</span>
                 </h2>
 
@@ -191,10 +183,14 @@ export default function HomePage() {
 
         {/* Sustainability — full bleed */}
         <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
-          <Image src={homeAssets.sustainability} alt="" fill className="object-cover object-bottom" sizes="100vw" />
-          <div className="absolute inset-0 bg-black/25" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-10 px-6 text-center">
-            <h2 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+          <HeroVideoBackground
+            src={homeAssets.sustainabilityVideoSrc}
+            poster={homeAssets.sustainability}
+            objectPosition="object-bottom"
+          />
+          <div className="absolute inset-0 z-10 bg-black/25" />
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-10 px-6 text-center">
+            <h2 className="heading-section text-white">
               Sustainability
             </h2>
             <OutlineButton href="/ignite-us">Contact Us</OutlineButton>

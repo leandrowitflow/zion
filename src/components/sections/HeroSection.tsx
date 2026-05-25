@@ -25,7 +25,7 @@ export function HeroSection({
       {(title || button) && (
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
           {title && (
-            <h1 className="max-w-4xl font-serif text-4xl leading-tight md:text-[61.5px] md:leading-[56px]">
+            <h1 className="max-w-4xl heading-section text-white">
               {title.split("\n").map((line, i) => (
                 <span key={i}>
                   {line}
@@ -82,7 +82,7 @@ export function CtaBanner({
       <Image src={image} alt="" fill className="object-cover" sizes="100vw" />
       <div className="absolute inset-0 bg-black/30" />
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-        <h2 className="font-serif text-4xl md:text-[61.5px] md:leading-[56px]">{title}</h2>
+        <h2 className="heading-section text-white">{title}</h2>
         <div className="mt-10">
           <OutlineButton href={buttonHref}>{buttonLabel}</OutlineButton>
         </div>
@@ -99,7 +99,7 @@ type SplitCtaProps = {
 
 export function SplitCta({ image, title, buttonLabel = "Contact Us" }: SplitCtaProps) {
   return (
-    <div className="group relative min-h-[500px] w-full overflow-hidden min-[1400px]:min-h-[min(859px,45vw)]">
+    <div className="group relative min-h-[500px] w-full overflow-hidden lg:min-h-[min(859px,45vw)]">
       <Image
         src={image}
         alt=""
@@ -109,7 +109,7 @@ export function SplitCta({ image, title, buttonLabel = "Contact Us" }: SplitCtaP
       />
       <div className="absolute inset-0 bg-black/35" />
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-        <h2 className="font-serif text-4xl md:text-[61.5px] md:leading-[56px]">{title}</h2>
+        <h2 className="heading-section text-white">{title}</h2>
         <div className="mt-8 opacity-0 transition group-hover:opacity-100">
           <OutlineButton href="/ignite-us">{buttonLabel}</OutlineButton>
         </div>

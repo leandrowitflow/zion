@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { destinationAssets } from "@/lib/assets/destination";
+import { MOBILE_ONLY, STAGGER_GRID } from "@/lib/breakpoints";
 
 const bodyCopy = (
   <>
@@ -13,19 +14,20 @@ const bodyCopy = (
 );
 
 const heading = (
-  <h2 className="font-serif text-4xl font-light leading-tight text-[#2b2e2b] md:text-[61.5px] md:leading-[56.033px]">
+  <h2 className="heading-section text-[#2b2e2b]">
     Why <span className="text-[#ba7d7d]">Portugal?</span>
   </h2>
 );
 
 /**
- * Figma desktop (2337:148) | mobile (2552:24) title → pena → text
+ * Figma mobile (2552:24) stacked | desktop (2337:148) staggered 2-col — not overlapping.
+ * Pena sits higher in the right column; monastery drops below the title on the left.
  */
 export function WhyPortugalSection() {
   return (
     <div>
-      {/* Mobile / tablet — Figma 2552:24 */}
-      <div className="min-[1400px]:hidden">
+      {/* Mobile — title → pena → text */}
+      <div className={MOBILE_ONLY}>
         {heading}
         <div className="relative mt-8 aspect-[531/708] w-full overflow-hidden">
           <Image
@@ -33,39 +35,43 @@ export function WhyPortugalSection() {
             alt="Pena Palace"
             fill
             className="object-cover"
-            sizes="(max-width: 1399px) 92vw, 531px"
+            sizes="(max-width: 1023px) 92vw, 531px"
           />
         </div>
         <p className="mt-8 text-[16px] leading-[28px] text-[#787774]">{bodyCopy}</p>
       </div>
 
-      {/* Desktop — Figma 2337:148 */}
-      <div className="hidden min-[1400px]:grid min-[1400px]:grid-cols-[628px_528px] min-[1400px]:gap-x-[128px]">
-        <div className="col-start-1 row-start-1 self-start">{heading}</div>
-
-        <div className="relative col-start-2 row-start-1 h-[708px] w-[531px] shrink-0 self-start justify-self-end overflow-hidden">
-          <Image
-            src={destinationAssets.penaPalace}
-            alt="Pena Palace"
-            fill
-            className="object-cover"
-            sizes="531px"
-          />
+      {/* lg+ — Figma 2337:148 staggered columns (fluid, no grid overlap) */}
+      <div
+        className={`${STAGGER_GRID} grid-cols-2 items-start gap-x-[clamp(2rem,7vw,128px)]`}
+      >
+        <div>
+          {heading}
+          <div className="relative mt-[clamp(1.5rem,7vw,137px)] ml-[clamp(0px,4.7vw,91px)] aspect-[542/813] w-full max-w-[542px] overflow-hidden">
+            <Image
+              src={destinationAssets.monastery}
+              alt="Jerónimos Monastery"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1399px) 42vw, 542px"
+            />
+          </div>
         </div>
 
-        <div className="relative col-start-1 row-start-1 ml-[91px] mt-[137px] h-[813px] w-[542px] overflow-hidden">
-          <Image
-            src={destinationAssets.monastery}
-            alt="Jerónimos Monastery"
-            fill
-            className="object-cover"
-            sizes="542px"
-          />
+        <div>
+          <div className="relative ml-auto aspect-[531/708] w-full max-w-[531px] overflow-hidden">
+            <Image
+              src={destinationAssets.penaPalace}
+              alt="Pena Palace"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1399px) 42vw, 531px"
+            />
+          </div>
+          <p className="ml-auto mt-8 max-w-[528px] text-[16px] leading-[28px] text-[#787774]">
+            {bodyCopy}
+          </p>
         </div>
-
-        <p className="col-start-2 row-start-1 w-[528px] self-end justify-self-end text-[16px] leading-[28px] text-[#787774]">
-          {bodyCopy}
-        </p>
       </div>
     </div>
   );

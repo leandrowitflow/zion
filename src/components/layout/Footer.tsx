@@ -14,13 +14,13 @@ export function Footer() {
     <footer className="bg-[#1a1815] text-[#c4c4bc]">
       <div className="site-container min-h-[560px] pb-10 pt-[115px]">
         {/* Main columns — Figma 2326:46 (401 | 267 | 267 at 1920) */}
-        <div className="flex flex-col items-center gap-12 text-center min-[1320px]:grid min-[1320px]:grid-cols-[401px_267px_267px] min-[1320px]:items-start min-[1320px]:justify-between min-[1320px]:gap-y-0 min-[1320px]:text-left">
+        <div className="flex flex-col items-center gap-12 text-center xl:grid xl:grid-cols-[401px_267px_267px] xl:items-start xl:justify-between xl:gap-y-0 xl:text-left">
           {/* Column 1 — tagline + certification logos (2326:50, 2326:53) */}
-          <div className="w-full min-[1320px]:w-[401px]">
-            <p className="footer-tagline mx-auto max-w-[401px] text-white min-[1320px]:mx-0">
+          <div className="w-full xl:w-[401px]">
+            <p className="footer-tagline mx-auto max-w-[401px] text-white xl:mx-0">
               Redefining luxury through Unique Journeys
             </p>
-            <div className="relative mx-auto mt-10 h-[57px] w-[373px] max-w-full overflow-hidden min-[1320px]:mx-0">
+            <div className="relative mx-auto mt-10 h-[57px] w-[373px] max-w-full overflow-hidden xl:mx-0">
               <Image
                 src={sharedAssets.footerLogos}
                 alt="Partner certifications"
@@ -32,7 +32,7 @@ export function Footer() {
           </div>
 
           {/* Column 2 — headquarters + social (2326:48, 2326:64) */}
-          <div className="w-full min-[1320px]:w-[267px]">
+          <div className="w-full xl:w-[267px]">
             <p className="footer-body font-bold">
               Headquarters :
               <br />
@@ -49,7 +49,7 @@ export function Footer() {
               </span>
             </p>
 
-            <div className="mt-[22px] flex justify-center gap-2 min-[1320px]:justify-start">
+            <div className="mt-[22px] flex justify-center gap-2 xl:justify-start">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <Image src={sharedAssets.facebook} alt="" width={47} height={47} />
               </a>
@@ -73,7 +73,7 @@ export function Footer() {
           </div>
 
           {/* Column 3 — contact (2326:51, 2326:49, 2326:52) */}
-          <div className="w-full min-[1320px]:w-[267px]">
+          <div className="w-full xl:w-[267px]">
             <p className="footer-label text-white">Say Hello</p>
             <div className="footer-body-tight mt-2 font-bold">
               <a
@@ -114,8 +114,8 @@ export function Footer() {
 
         {/* Bottom bar — Figma 2326:54 */}
         <div className="mt-[72px] border-t border-[#c4c4bc]/30 pt-[17px]">
-          <div className="flex flex-col items-center gap-6 min-[1320px]:flex-row min-[1320px]:items-end min-[1320px]:justify-between">
-            <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 min-[1320px]:justify-start">
+          <div className="flex flex-col items-center gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 xl:justify-start">
               {navItems.map((item) => (
                 <NavLink
                   key={item.href}
@@ -127,7 +127,7 @@ export function Footer() {
                 />
               ))}
             </nav>
-            <p className="shrink-0 text-center text-[16px] leading-[26px] text-[#c4c4bc] min-[1320px]:text-right">
+            <p className="shrink-0 text-center text-[16px] leading-[26px] text-[#c4c4bc] xl:text-right">
               ® ZION CREATIVE ARTISANS 2026
             </p>
           </div>
