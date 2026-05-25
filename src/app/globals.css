@@ -187,6 +187,20 @@ body {
   line-height: 26px;
 }
 
+@keyframes ken-burns-in {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns-in {
+  animation: ken-burns-in 5s ease-out forwards;
+}
+
 /* IvyPresto Headline Light — footer tagline (2559:91, 35px / 39px) */
 .footer-tagline {
   font-family: var(--font-serif);
