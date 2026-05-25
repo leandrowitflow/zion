@@ -2,24 +2,27 @@
 
 @font-face {
   font-family: "IvyPresto Headline";
-  src: url("/fonts/IvyPrestoHeadline-Light.woff2") format("woff2");
+  src: url("/Ivy-Presto-font-Family/fonts/fonnts.com-Ivy-Presto-Headline-Light.otf")
+    format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IvyPresto Text";
-  src: url("/fonts/IvyPrestoText-Light.woff2") format("woff2");
-  font-weight: 300;
+  font-family: "IvyPresto Headline";
+  src: url("/Ivy-Presto-font-Family/fonts/fonnts.com-Ivy-Presto-Headline-Semi-Bold.otf")
+    format("opentype");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "IvyPresto Text";
-  src: url("/fonts/IvyPrestoText-Bold.woff2") format("woff2");
-  font-weight: 700;
+  src: url("/Ivy-Presto-font-Family/fonts/fonnts.com-Ivy-Presto-Text-Light.otf")
+    format("opentype");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -103,7 +106,7 @@ body {
   padding-bottom: 0;
 }
 
-/* Figma IvyPresto Headline Light — section titles (e.g. 2335:102, 61.5px / 56.033px) */
+/* IvyPresto Headline Light — section & hero titles (2335:102, 61.5px / 56.033px) */
 .heading-section {
   font-family: var(--font-serif);
   font-weight: 300;
@@ -111,12 +114,88 @@ body {
   line-height: clamp(2.05rem, 4.9vw, 56.033px);
 }
 
-/* Figma IvyPresto Headline Light — carousel card labels (24.425px) */
+/* IvyPresto Headline Light — carousel / card labels (2335:104, 24.425px / 56.034px) */
 .font-card-title {
   font-family: var(--font-serif);
   font-weight: 300;
+  line-height: 56.034px;
 }
 
+/* IvyPresto Headline SemiBold — CTA buttons (2337:18, 17px / 16.247px) */
+.font-button {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 16.247px;
+}
+
+/* IvyPresto Text Light — header nav (2335:73–79, 14–15px) */
 .font-nav {
   font-family: var(--font-nav);
+  font-weight: 300;
+}
+
+/* IvyPresto Headline Light — footer tagline (2559:91, 35px / 39px) */
+.footer-tagline {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 35px;
+  line-height: 39px;
+}
+
+/* IvyPresto Headline Light — footer labels e.g. Say Hello (2559:92, 19px / 39px) */
+.footer-label {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 39px;
+}
+
+/* IvyPresto Headline Light — footer bottom nav (2335:13, 17px / 39px) */
+.footer-nav-link {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 39px;
+}
+
+/* IvyPresto Headline Light — partners heading (2337:22, 19.957px / 19px) */
+.font-partners-heading {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 19.957px;
+  line-height: 19px;
+}
+
+/* IvyPresto Headline Light — Ignite contact page (2559:102, 2559:104) */
+.contact-page-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 28.256px;
+  line-height: 58px;
+}
+
+.contact-page-phone {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 21.704px;
+  line-height: 44.551px;
+}
+
+/* Open Sans — body copy (2335:286, 16px / 28px, #787774) */
+.text-body {
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--muted);
+}
+
+/* Open Sans — footer contact block (2559:90, 16px, #c4c4bc) */
+.footer-body {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.footer-body-tight {
+  font-size: 16px;
+  line-height: 26px;
 }

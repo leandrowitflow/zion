@@ -75,7 +75,7 @@ function FormField({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="flex items-center gap-2 text-[15px] leading-none text-black">
+      <label htmlFor={id} className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
         <span className="min-[1400px]:hidden">
           <FieldIcon icon={icon} />
         </span>
@@ -99,9 +99,9 @@ export function IgniteContactSection() {
     <div className="grid grid-cols-1 gap-12 min-[1400px]:grid-cols-[267px_1fr] min-[1400px]:gap-x-[162px] min-[1400px]:gap-y-0">
       {/* Contact Details — Figma x=316, w=267 */}
       <div className="text-center min-[1400px]:text-left">
-        <h1 className="font-serif text-[28px] leading-[58px] text-black">Contact Details</h1>
+        <h1 className="contact-page-title text-black">Contact Details</h1>
 
-        <div className="mt-6 space-y-6 text-[16px] leading-[28px] text-[#696866]">
+        <div className="footer-body mt-6 space-y-6 text-[#696866]">
           <div>
             <p className="font-bold">Headquarters :</p>
             <p className="font-normal leading-[27px]">
@@ -130,7 +130,7 @@ export function IgniteContactSection() {
           </div>
         </div>
 
-        <p className="mt-6 font-serif text-[21.7px] leading-[44px] text-black">
+        <p className="contact-page-phone mt-6 text-black">
           <a href="tel:+351210188406" className="hover:opacity-70">
             (+351) 210 188 406
           </a>
@@ -167,7 +167,7 @@ export function IgniteContactSection() {
         </div>
 
         <div className="mt-5 min-[1400px]:mt-8">
-          <label htmlFor="message" className="flex items-center gap-2 text-[15px] leading-none text-black">
+          <label htmlFor="message" className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
             <span className="min-[1400px]:hidden">
               <FieldIcon icon="message" />
             </span>
@@ -184,7 +184,7 @@ export function IgniteContactSection() {
         <div className="mt-6 flex flex-col items-center gap-6 min-[1400px]:mt-10 min-[1400px]:flex-row min-[1400px]:items-center">
           <button
             type="submit"
-            className="inline-flex h-[55px] w-[188px] shrink-0 items-center justify-center bg-[#383e28] font-serif text-[19px] leading-[39px] text-white transition hover:bg-[#383e28]/90"
+            className="footer-label inline-flex h-[55px] w-[188px] shrink-0 items-center justify-center bg-[#383e28] text-white transition hover:bg-[#383e28]/90"
           >
             Get in Touch
           </button>
