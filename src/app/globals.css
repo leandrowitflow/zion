@@ -41,6 +41,7 @@
   --site-gutter: clamp(1.25rem, 15.729vw, 302px);
   --header-gutter-left: 21px;
   --header-gutter-right: 71px;
+  --header-nav-breakpoint: 1000px;
   --site-section-gap: clamp(3.5rem, 6.2vw, 119px);
   --site-section-gap-mobile: clamp(2.5rem, 8vw, 80px);
   --site-column-gap: clamp(2rem, 7.604vw, 146px);
@@ -98,6 +99,29 @@ body {
 @media (min-width: 1400px) {
   .site-section-compact {
     padding-block: calc(var(--site-section-gap) * 0.55);
+  }
+}
+
+/* Header nav toggle — full bar from 1000px up; keep in sync with --header-nav-breakpoint */
+.header-nav-mobile {
+  display: block;
+}
+
+.header-nav-desktop {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .header-nav-mobile {
+    display: none;
+  }
+
+  .header-nav-desktop {
+    display: block;
+  }
+
+  .header-menu-overlay {
+    display: none !important;
   }
 }
 
