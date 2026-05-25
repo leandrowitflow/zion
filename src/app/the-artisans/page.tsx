@@ -156,12 +156,12 @@ export default function TheArtisansPage() {
                       href={member.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-card-title text-[24.425px] leading-none text-[#292725] hover:text-[#ba7d7d]"
+                      className="font-card-title text-[24.425px] text-[#292725] hover:text-[#ba7d7d]"
                     >
                       {member.name}
                     </Link>
                   ) : (
-                    <p className="font-card-title text-[24.425px] leading-none text-[#292725]">{member.name}</p>
+                    <p className="font-card-title text-[24.425px] text-[#292725]">{member.name}</p>
                   )}
                   <p className="text-[16px] leading-[28px] text-[#787774]">{member.role}</p>
                 </div>

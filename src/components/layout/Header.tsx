@@ -105,7 +105,7 @@ export function Header() {
                 href={item.href}
                 label={item.label}
                 isActive={pathname === item.href}
-                className="font-nav shrink-0 whitespace-nowrap text-[17px] font-light leading-[39px] text-[#262826] transition-opacity hover:opacity-70"
+                className="font-nav shrink-0 whitespace-nowrap text-[14px] leading-[19px] text-[#262826] transition-opacity hover:opacity-70"
               />
             ))}
           </nav>

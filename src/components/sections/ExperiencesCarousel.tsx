@@ -66,30 +66,32 @@ export function ExperiencesCarousel() {
         </div>
       </div>
 
-      <div
-        ref={trackRef}
-        className="mt-[clamp(1.5rem,5.8vw,55px)] flex gap-[18px] overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {slides.map((item, index) => (
-          <article
-            key={`${item.id}-${index}`}
-            aria-hidden={isInfiniteSlideClone(index, experienceCategories.length) || undefined}
-            className="w-[min(92vw,309px)] shrink-0 min-[1400px]:w-[309px]"
-          >
-            <div className="relative aspect-[309/369] w-full overflow-hidden min-[1400px]:h-[369px] min-[1400px]:w-[309px]">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className={`object-cover ${item.objectPosition}`}
-                sizes="(max-width: 1399px) 85vw, 309px"
-              />
-            </div>
-            <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
-              {item.title}
-            </p>
-          </article>
-        ))}
+      <div className="mt-[clamp(1.5rem,5.8vw,55px)] w-full overflow-hidden">
+        <div
+          ref={trackRef}
+          className="flex gap-[18px] overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {slides.map((item, index) => (
+            <article
+              key={`${item.id}-${index}`}
+              aria-hidden={isInfiniteSlideClone(index, experienceCategories.length) || undefined}
+              className="w-[min(85vw,309px)] shrink-0 min-[1400px]:w-[calc((100%-54px)/4)] min-[1400px]:flex-[0_0_calc((100%-54px)/4)]"
+            >
+              <div className="relative aspect-[309/369] w-full overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className={`object-cover ${item.objectPosition}`}
+                  sizes="(max-width: 1399px) 85vw, 309px"
+                />
+              </div>
+              <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] min-[1400px]:text-[24.425px]">
+                {item.title}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function OutlineButton({ href, children }: { href: string; children: React.React
   return (
     <Link
       href={href}
-      className="inline-flex h-[57px] w-[189px] items-center justify-center border-2 border-white font-serif text-[17px] font-semibold leading-[16.247px] text-white transition hover:bg-white/10"
+      className="inline-flex h-[57px] w-[189px] items-center justify-center border-2 border-white font-button text-white transition hover:bg-white/10"
     >
       {children}
     </Link>
@@ -30,7 +30,7 @@ function FilledButton({
   return (
     <Link
       href={href}
-      className="inline-flex h-[57px] items-center justify-center bg-[#383e2a] font-serif text-[17px] font-semibold leading-[16.247px] text-white transition hover:bg-[#383e2a]/90"
+      className="inline-flex h-[57px] items-center justify-center bg-[#383e2a] font-button text-white transition hover:bg-[#383e2a]/90"
       style={{ width }}
     >
       {children}

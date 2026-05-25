@@ -57,7 +57,7 @@ export default function LegacyPage() {
                     sizes="(max-width: 1399px) 33vw, 417px"
                   />
                 </div>
-                <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] leading-none text-[#292725] min-[1400px]:text-[24.425px]">
+                <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] min-[1400px]:text-[24.425px]">
                   {item.title}
                 </p>
               </article>

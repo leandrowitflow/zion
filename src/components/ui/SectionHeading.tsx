@@ -35,7 +35,7 @@ export function OutlineButton({ href, children, className = "" }: OutlineButtonP
   return (
     <Link
       href={href}
-      className={`inline-flex h-[57px] min-w-[189px] items-center justify-center border-2 border-white px-8 font-serif text-[17px] font-semibold text-white transition hover:bg-white/10 ${className}`}
+      className={`inline-flex h-[57px] min-w-[189px] items-center justify-center border-2 border-white px-8 font-button text-white transition hover:bg-white/10 ${className}`}
     >
       {children}
     </Link>
@@ -52,7 +52,7 @@ export function FilledButton({ href, children, className = "" }: FilledButtonPro
   return (
     <Link
       href={href}
-      className={`inline-flex h-[57px] min-w-[173px] items-center justify-center bg-button px-8 font-serif text-[17px] font-semibold text-white transition hover:bg-button/90 ${className}`}
+      className={`inline-flex h-[57px] min-w-[173px] items-center justify-center bg-button px-8 font-button text-white transition hover:bg-button/90 ${className}`}
     >
       {children}
     </Link>

@@ -17,7 +17,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-12 text-center min-[1320px]:grid min-[1320px]:grid-cols-[401px_267px_267px] min-[1320px]:items-start min-[1320px]:justify-between min-[1320px]:gap-y-0 min-[1320px]:text-left">
           {/* Column 1 — tagline + certification logos (2326:50, 2326:53) */}
           <div className="w-full min-[1320px]:w-[401px]">
-            <p className="mx-auto max-w-[401px] font-serif text-[35px] leading-[39px] text-white min-[1320px]:mx-0">
+            <p className="footer-tagline mx-auto max-w-[401px] text-white min-[1320px]:mx-0">
               Redefining luxury through Unique Journeys
             </p>
             <div className="relative mx-auto mt-10 h-[57px] w-[373px] max-w-full overflow-hidden min-[1320px]:mx-0">
@@ -33,7 +33,7 @@ export function Footer() {
 
           {/* Column 2 — headquarters + social (2326:48, 2326:64) */}
           <div className="w-full min-[1320px]:w-[267px]">
-            <p className="text-[16px] font-bold leading-[28px]">
+            <p className="footer-body font-bold">
               Headquarters :
               <br />
               <span className="font-normal leading-[27px]">
@@ -74,8 +74,8 @@ export function Footer() {
 
           {/* Column 3 — contact (2326:51, 2326:49, 2326:52) */}
           <div className="w-full min-[1320px]:w-[267px]">
-            <p className="font-serif text-[19px] leading-[39px] text-white">Say Hello</p>
-            <div className="mt-2 text-[16px] font-bold leading-[26px]">
+            <p className="footer-label text-white">Say Hello</p>
+            <div className="footer-body-tight mt-2 font-bold">
               <a
                 href="mailto:ignite@zion-creativeartisans.com"
                 className="block font-normal underline decoration-solid underline-offset-2 hover:text-white"
@@ -105,7 +105,7 @@ export function Footer() {
             </div>
             <Link
               href="/ignite-us"
-              className="mt-3 inline-block font-serif text-[19px] leading-[39px] text-white hover:underline"
+              className="footer-label mt-3 inline-block text-white hover:underline"
             >
               Careers
             </Link>
@@ -122,7 +122,7 @@ export function Footer() {
                   href={item.href}
                   label={item.label}
                   isActive={pathname === item.href}
-                  className="font-serif text-[17px] text-white transition-opacity hover:opacity-80"
+                  className="footer-nav-link text-white transition-opacity hover:opacity-80"
                   underlineClassName="bg-white"
                 />
               ))}
