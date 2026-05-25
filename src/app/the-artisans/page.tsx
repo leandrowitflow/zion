@@ -3,8 +3,8 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { ArtisansCollage } from "@/components/sections/ArtisansCollage";
-import { CtaBanner, VideoBanner } from "@/components/sections/HeroSection";
-import { homeAssets } from "@/lib/assets/home";
+import { CtaBanner } from "@/components/sections/HeroSection";
+import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { artisansAssets } from "@/lib/assets/artisans";
 
 const teamMembers = [
@@ -30,15 +30,11 @@ const teamMembers = [
 export default function TheArtisansPage() {
   return (
     <PageShell>
-      {/* Hero — video placeholder; same image + size as home hero (Figma 2324:283) */}
+      {/* Hero — full bleed video (Figma 2324:283) */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
-        <Image
-          src={homeAssets.heroVideo}
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
+        <HeroVideoBackground
+          src={artisansAssets.heroVideoSrc}
+          poster={artisansAssets.heroVideo}
         />
       </section>
 
@@ -136,7 +132,14 @@ export default function TheArtisansPage() {
         </SiteContainer>
       </SiteSection>
 
-      <VideoBanner image={artisansAssets.video} />
+      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
+        <HeroVideoBackground
+          src={artisansAssets.videoSrc}
+          poster={artisansAssets.video}
+          objectPosition="object-bottom"
+        />
+        <div className="absolute inset-0 z-10 bg-black/10" />
+      </section>
 
       {/* Our Artisans (Figma 2326:39) */}
       <SiteSection>
