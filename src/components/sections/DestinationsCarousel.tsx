@@ -52,12 +52,12 @@ export function DestinationsCarousel() {
 
   return (
     <div>
-      <div className="relative grid grid-cols-[108px_1fr_108px] items-start min-[1400px]:block">
-        <div className="min-[1400px]:hidden" aria-hidden="true" />
+      <div className="relative grid grid-cols-[108px_1fr_108px] items-start lg:block">
+        <div className="lg:hidden" aria-hidden="true" />
         <h2 className="heading-section text-center text-[#2b2e2b]">
           Tailored <span className="text-[#ba7d7d]">Destinations</span>
         </h2>
-        <div className="flex justify-end gap-2 min-[1400px]:absolute min-[1400px]:right-0 min-[1400px]:top-0">
+        <div className="flex justify-end gap-2 lg:absolute lg:right-0 lg:top-0">
           <CarouselArrow direction="prev" onClick={scrollPrev} />
           <CarouselArrow direction="next" onClick={scrollNext} />
         </div>
@@ -72,7 +72,7 @@ export function DestinationsCarousel() {
             <article
               key={`${item.id}-${index}`}
               aria-hidden={isInfiniteSlideClone(index, destinationCards.length) || undefined}
-              className="w-[min(92vw,417px)] shrink-0 min-[1400px]:w-[calc((100%-38px)/3)] min-[1400px]:flex-[0_0_calc((100%-38px)/3)]"
+              className="w-[min(92vw,417px)] shrink-0 lg:w-[calc((100%-38px)/3)] lg:flex-[0_0_calc((100%-38px)/3)]"
             >
               <div className="relative aspect-[417/500] w-full overflow-hidden">
                 <Image
@@ -80,10 +80,10 @@ export function DestinationsCarousel() {
                   alt={item.title}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1399px) 92vw, 33vw"
+                  sizes="(max-width: 1023px) 92vw, 33vw"
                 />
               </div>
-            <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] min-[1400px]:text-[24.425px]">
+            <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] lg:text-[24.425px]">
               {item.title}
             </p>
           </article>

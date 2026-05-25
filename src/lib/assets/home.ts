@@ -1,7 +1,8 @@
 export const homeAssets = {
   logo: "/images/home/logo.png",
   navUnderline: "/images/home/nav-underline.png",
-  heroVideo: "/images/home/hero-video.jpg",
+  heroVideo: "/images/experiences/hero-video.jpg",
+  heroVideoSrc: "/videos/home-hero.mp4",
   window: "/images/home/window.jpg",
   people: "/images/home/people.jpg",
   destinations: "/images/home/destinations.jpg",

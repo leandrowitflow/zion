@@ -20,7 +20,7 @@ export default function LegacyPage() {
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center min-[1400px]:block">
-          <h1 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[32.2%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:px-4 min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px] min-[1400px]:whitespace-nowrap">
+          <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[32.2%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:px-4 min-[1400px]:whitespace-nowrap">
             Curated for Distinction
           </h1>
         </div>
@@ -45,19 +45,19 @@ export default function LegacyPage() {
           <h2 className="heading-section text-center text-[#2b2e2b]">
             Crafting your <span className="text-[#ba7d7d]">Legacy</span>
           </h2>
-          <div className="mt-[clamp(1.5rem,5.8vw,55px)] grid grid-cols-1 gap-8 min-[1400px]:grid-cols-3 min-[1400px]:gap-x-[19px] min-[1400px]:gap-y-8">
+          <div className="mt-[clamp(1.5rem,5.8vw,55px)] grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-x-[19px] lg:gap-y-8">
             {legacyCards.map((item) => (
               <article key={item.title} className="min-w-0">
-                <div className="relative aspect-[417/500] w-full overflow-hidden min-[1400px]:h-[500px] min-[1400px]:w-[417px] min-[1400px]:max-w-none">
+                <div className="relative aspect-[417/500] w-full overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1399px) 33vw, 417px"
+                    sizes="(max-width: 1023px) 33vw, 417px"
                   />
                 </div>
-                <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] min-[1400px]:text-[24.425px]">
+                <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] lg:text-[24.425px]">
                   {item.title}
                 </p>
               </article>

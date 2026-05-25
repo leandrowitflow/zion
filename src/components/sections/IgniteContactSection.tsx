@@ -76,7 +76,7 @@ function FormField({
   return (
     <div>
       <label htmlFor={id} className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
-        <span className="min-[1400px]:hidden">
+        <span className="lg:hidden">
           <FieldIcon icon={icon} />
         </span>
         {label}
@@ -96,9 +96,9 @@ function FormField({
  */
 export function IgniteContactSection() {
   return (
-    <div className="grid grid-cols-1 gap-12 min-[1400px]:grid-cols-[267px_1fr] min-[1400px]:gap-x-[162px] min-[1400px]:gap-y-0">
+    <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(220px,267px)_1fr] lg:gap-x-12 xl:gap-x-[162px] lg:gap-y-0">
       {/* Contact Details — Figma x=316, w=267 */}
-      <div className="text-center min-[1400px]:text-left">
+      <div className="text-center lg:text-left">
         <h1 className="contact-page-title text-black">Contact Details</h1>
 
         <div className="footer-body mt-6 space-y-6 text-[#696866]">
@@ -136,7 +136,7 @@ export function IgniteContactSection() {
           </a>
         </p>
 
-        <div className="mt-8 flex justify-center gap-[7px] min-[1400px]:justify-start">
+        <div className="mt-8 flex justify-center gap-[7px] lg:justify-start">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <Image src={igniteAssets.social.facebook} alt="" width={45} height={45} />
           </a>
@@ -154,21 +154,21 @@ export function IgniteContactSection() {
 
       {/* Contact form — Figma x=745 */}
       <form
-        className="min-[1400px]:pt-[15px]"
+        className="lg:pt-[15px]"
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <div className="grid grid-cols-1 gap-5 min-[1400px]:grid-cols-2 min-[1400px]:gap-x-[30px] min-[1400px]:gap-y-12">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-x-[30px] lg:gap-y-12">
           <FormField id="name" label="Name" icon="user" />
           <FormField id="email" label="Email Address" type="email" icon="email" />
           <FormField id="phone" label="Phone" type="tel" icon="phone" />
           <FormField id="company" label="Company" icon="company" />
         </div>
 
-        <div className="mt-5 min-[1400px]:mt-8">
+        <div className="mt-5 lg:mt-8">
           <label htmlFor="message" className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
-            <span className="min-[1400px]:hidden">
+            <span className="lg:hidden">
               <FieldIcon icon="message" />
             </span>
             How can we help you? feel free to get in touch!
@@ -181,7 +181,7 @@ export function IgniteContactSection() {
           />
         </div>
 
-        <div className="mt-6 flex flex-col items-center gap-6 min-[1400px]:mt-10 min-[1400px]:flex-row min-[1400px]:items-center">
+        <div className="mt-6 flex flex-col items-center gap-6 lg:mt-10 lg:flex-row lg:items-center">
           <button
             type="submit"
             className="footer-label inline-flex h-[55px] w-[188px] shrink-0 items-center justify-center bg-[#383e28] text-white transition hover:bg-[#383e28]/90"

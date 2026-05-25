@@ -58,7 +58,7 @@ function LogoLink({
   );
 }
 
-/** Figma header (2559:48) desktop nav | mobile hamburger + menu (2552:33) below 1400px */
+/** Figma header (2559:48) desktop nav | mobile hamburger + menu (2552:33) below xl */
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -98,7 +98,7 @@ export function Header() {
         <div className="header-nav-desktop relative h-[111px] w-full">
           <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] h-[93px] w-[230px]" />
 
-          <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-8">
+          <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-4 xl:gap-8">
             {headerNavItems.map((item) => (
               <NavLink
                 key={item.href}

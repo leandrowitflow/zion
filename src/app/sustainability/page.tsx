@@ -22,7 +22,7 @@ export default function SustainabilityPage() {
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center min-[1400px]:block">
-          <h1 className="font-serif text-4xl font-light leading-tight text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[28.7%] min-[1400px]:-translate-x-1/2 min-[1400px]:whitespace-nowrap min-[1400px]:text-[61.5px] min-[1400px]:leading-[56.033px]">
+          <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[28.7%] min-[1400px]:-translate-x-1/2 min-[1400px]:whitespace-nowrap">
             Sustainability
           </h1>
         </div>

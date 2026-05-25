@@ -52,7 +52,7 @@ function PartnersCarouselStatic() {
                 width={partner.width}
                 height={partner.height}
                 className="h-[clamp(56px,9vw,180px)] w-auto max-w-[min(28vw,233px)] object-contain object-bottom"
-                sizes="(max-width: 1400px) 28vw, 233px"
+                sizes="(max-width: 1023px) 28vw, 233px"
               />
             ))}
           </div>
@@ -118,7 +118,7 @@ function PartnersCarouselInteractive() {
                     width={partner.width}
                     height={partner.height}
                     className="h-[clamp(56px,9vw,180px)] w-auto max-w-[min(28vw,233px)] object-contain object-bottom"
-                    sizes="(max-width: 1400px) 28vw, 233px"
+                    sizes="(max-width: 1023px) 28vw, 233px"
                   />
                 ))}
               </article>
