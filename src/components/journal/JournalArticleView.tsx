@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 
+import { JournalMarkdown } from "@/components/journal/JournalMarkdown";
 import type { JournalArticle } from "@/lib/blog";
 
 type JournalArticleViewProps = {
@@ -48,8 +47,21 @@ export function JournalArticleView({ article }: JournalArticleViewProps) {
         ) : null}
       </header>
 
+      {article.image ? (
+        <div className="journal-article-cover relative mt-10 w-full max-w-3xl overflow-hidden">
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 672px"
+            priority
+          />
+        </div>
+      ) : null}
+
       <div className="journal-prose mt-10 max-w-3xl">
-        <Markdown rehypePlugins={[rehypeRaw]}>{article.content}</Markdown>
+        <JournalMarkdown content={article.content} />
       </div>
     </article>
   );

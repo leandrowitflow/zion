@@ -14,7 +14,7 @@ export const homeAssets = {
   asta: "/images/home/asta.png",
   savoy: "/images/home/savoy.png",
   vilaVitaParc: "/images/home/vila-vita-parc.png",
-  scroller: "/images/home/scroller.png",
+  scroller: "/images/home/scroller.svg",
 } as const;
 
 /** Header + footer navigation labels */

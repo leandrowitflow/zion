@@ -641,27 +641,14 @@ main.site-main .relative.overflow-hidden img {
   text-underline-offset: 0.15em;
 }
 
-.journal-prose img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 1.5rem 0;
-}
-
-/* CMS cover image — first image in article body */
-.journal-prose > :is(p, figure):first-child img,
-.journal-prose img:first-of-type {
+.journal-article-cover {
   aspect-ratio: 16 / 10;
-  max-height: clamp(200px, 36vw, 400px);
-  object-fit: cover;
-  object-position: center;
-  margin: 0 0 1.75rem;
+  max-height: clamp(220px, 40vw, 440px);
 }
 
-.journal-prose img:not(:first-of-type) {
-  max-height: clamp(160px, 28vw, 320px);
-  object-fit: cover;
-  object-position: center;
+.journal-inline-media {
+  aspect-ratio: 16 / 10;
+  max-height: clamp(180px, 32vw, 360px);
 }
 
 .journal-prose blockquote {
