@@ -37,7 +37,7 @@ const bodyCopy = (
 );
 
 const heading = (
-  <SectionHeading before="The essence of " accent="Legacy" align="left" />
+  <SectionHeading before="The essence of " accent="Legacy" align="left" accentOnNewLine />
 );
 
 /**

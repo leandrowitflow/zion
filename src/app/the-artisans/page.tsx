@@ -1,32 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ArtisansCollage } from "@/components/sections/ArtisansCollage";
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
+import { TeamMemberCard } from "@/components/sections/TeamMemberCard";
 import { artisansAssets } from "@/lib/assets/artisans";
-
-const teamMembers = [
-  { image: artisansAssets.team.carlos, name: "Carlos Brás", role: "The Alchemist" },
-  { image: artisansAssets.team.andre, name: "André Oliveira", role: "Chief Alchemist Officer" },
-  { image: artisansAssets.team.vitor, name: "Vítor Almeida", role: "Chief of Prestige Projects" },
-  {
-    image: artisansAssets.team.jessica,
-    name: "Jéssica Campos",
-    role: "Brand Alchemist",
-    href: "https://zion-creativeartisans.com/?cpt_team=jessica-campos",
-  },
-  { image: artisansAssets.team.anabela, name: "Anabela Santos", role: "Brand Alchemist" },
-  {
-    image: artisansAssets.team.ana,
-    name: "Ana Gomes",
-    role: "Brand Alchemist",
-    href: "https://zion-creativeartisans.com/?cpt_team=ana-gomes",
-  },
-  { image: artisansAssets.team.margarida, name: "Margarida Duarte", role: "Brand Alchemist" },
-] as const;
+import { teamMembers } from "@/lib/team";
 
 export default function TheArtisansPage() {
   return (
@@ -155,28 +136,7 @@ export default function TheArtisansPage() {
           <SectionHeading before="Our " accent="Artisans" className="mb-8 lg:mb-12" />
           <div className="grid grid-cols-1 gap-x-7 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-6">
             {teamMembers.map((member) => (
-              <article key={member.name} className="flex flex-col">
-                <div className="relative aspect-[411/502] overflow-hidden">
-                  <Image src={member.image} alt={member.name} fill className="object-cover" sizes="411px" />
-                </div>
-                <div className="mt-6 flex flex-col gap-1.5 text-left">
-                  {"href" in member && member.href ? (
-                    <Link
-                      href={member.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-card-title text-foreground hover:text-accent"
-                    >
-                      {member.name}
-                    </Link>
-                  ) : (
-                    <p className="font-card-title text-foreground">
-                      {member.name}
-                    </p>
-                  )}
-                  <p className="text-sm leading-[1.5] text-muted">{member.role}</p>
-                </div>
-              </article>
+              <TeamMemberCard key={member.slug} member={member} />
             ))}
           </div>
         </SiteContainer>

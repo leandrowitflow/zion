@@ -282,6 +282,7 @@ body {
 
 /* Open Sans — body copy (live p: 1rem / 1.8em / #696866) */
 .text-body {
+  font-family: var(--font-open-sans), sans-serif;
   font-size: 1rem;
   line-height: 1.8em;
   color: var(--muted);
@@ -464,4 +465,39 @@ main.site-main .relative.overflow-hidden img {
   .mouse-helper {
     display: none;
   }
+}
+
+/* Team member photo crossfade — soft, unhurried swap on hover */
+.team-photo-fade {
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-photo-fade {
+    transition: none;
+  }
+}
+
+/* Team member trait progress bars (live Elementor progress widgets) */
+.team-profile-role {
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--foreground);
+}
+
+.team-trait-bar {
+  height: 6px;
+  width: 100%;
+  background-color: rgb(42 40 38 / 0.12);
+  overflow: hidden;
+}
+
+.team-trait-bar-fill {
+  display: block;
+  height: 100%;
+  background-color: var(--foreground);
+  transition: width 0.8s ease-out;
 }
