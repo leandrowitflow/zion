@@ -5,14 +5,27 @@ import {
   SITE_ENTITY_SUMMARY,
   SITE_GEO,
   SITE_NAME,
-  SITE_OPENING_HOURS,
   SITE_PHONE,
   SITE_SOCIAL,
   SITE_TAGLINE,
   SITE_URL,
 } from "@/lib/seo/site";
+import { OG_LOGO, ogImages } from "@/lib/seo/og";
 
 type JsonLd = Record<string, unknown>;
+
+function absoluteAsset(path: string): string {
+  return path.startsWith("http") ? path : `${SITE_URL}${path}`;
+}
+
+function openingHoursSpecification(): JsonLd {
+  return {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "10:00",
+    closes: "19:00",
+  };
+}
 
 export function organizationSchema(): JsonLd {
   return {
@@ -25,6 +38,8 @@ export function organizationSchema(): JsonLd {
     slogan: SITE_TAGLINE,
     email: SITE_EMAIL,
     telephone: SITE_PHONE,
+    logo: absoluteAsset(OG_LOGO),
+    image: absoluteAsset(ogImages.home),
     areaServed: ["PT", ...SITE_BRANCHES],
     sameAs: Object.values(SITE_SOCIAL),
     address: {
@@ -39,6 +54,7 @@ export function organizationSchema(): JsonLd {
       latitude: SITE_GEO.latitude,
       longitude: SITE_GEO.longitude,
     },
+    openingHoursSpecification: openingHoursSpecification(),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
@@ -46,7 +62,7 @@ export function organizationSchema(): JsonLd {
       telephone: SITE_PHONE,
       areaServed: "PT",
       availableLanguage: ["English", "Portuguese"],
-      hoursAvailable: SITE_OPENING_HOURS.weekdays,
+      hoursAvailable: openingHoursSpecification(),
     },
     knowsAbout: [
       "Luxury travel Portugal",

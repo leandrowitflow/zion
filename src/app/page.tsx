@@ -14,7 +14,7 @@ import { homeAssets } from "@/lib/assets/home";
 import { staticPageMetadata } from "@/lib/seo/pages";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { siteFaqs } from "@/lib/seo/faqs";
+import { homeFaqs } from "@/lib/seo/faqs";
 import { faqSchema } from "@/lib/seo/schemas";
 
 export const metadata = staticPageMetadata.home;
@@ -83,7 +83,7 @@ function SplitPanel({
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={faqSchema(siteFaqs)} />
+      <JsonLd data={faqSchema(homeFaqs)} />
       <Header />
       <main className="site-main bg-white">
         {/* Hero — full bleed */}
@@ -205,11 +205,11 @@ export default function HomePage() {
         </section>
       </main>
 
-      <div className="sr-only">
+      <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>
-          <FaqSection faqs={siteFaqs} visuallyHiddenTitle />
+          <FaqSection faqs={homeFaqs} />
         </SiteContainer>
-      </div>
+      </SiteSection>
 
       <Footer />
     </>

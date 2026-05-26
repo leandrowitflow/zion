@@ -9,9 +9,11 @@ type SectionHeadingProps = {
   inverted?: boolean;
   /** Stack accent word on its own line (e.g. Crafted for the / Extraordinary) */
   accentOnNewLine?: boolean;
+  /** Semantic heading level — default h2 */
+  headingLevel?: "h1" | "h2";
 };
 
-/** Section h2 — ivypresto-display 57/60 via .heading-section + theme color tokens */
+/** Section heading — ivypresto-display 57/60 via .heading-section + theme color tokens */
 export function SectionHeading({
   before,
   accent,
@@ -19,24 +21,26 @@ export function SectionHeading({
   className = "",
   inverted = false,
   accentOnNewLine = false,
+  headingLevel = "h2",
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "text-center" : "text-left";
   const colorClass = inverted ? "text-white" : "text-foreground";
+  const Tag = headingLevel;
 
   if (accentOnNewLine) {
     return (
-      <h2 className={`heading-section ${colorClass} ${alignClass} ${className}`.trim()}>
+      <Tag className={`heading-section ${colorClass} ${alignClass} ${className}`.trim()}>
         <span className="block">{before}</span>
         <span className="block text-accent">{accent}</span>
-      </h2>
+      </Tag>
     );
   }
 
   return (
-    <h2 className={`heading-section ${colorClass} ${alignClass} ${className}`.trim()}>
+    <Tag className={`heading-section ${colorClass} ${alignClass} ${className}`.trim()}>
       {before}
       <span className="text-accent">{accent}</span>
-    </h2>
+    </Tag>
   );
 }
 

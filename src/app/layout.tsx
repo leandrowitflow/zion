@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
+import { TypekitStylesheet } from "@/components/ui/TypekitStylesheet";
 import { MouseHelper } from "@/components/ui/MouseHelper";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/site";
@@ -46,7 +47,8 @@ export default function RootLayout({
     <html lang="en" className={`${openSans.variable} h-full antialiased`}>
       <head>
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
-        <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
+        <TypekitStylesheet />
+        <link rel="author" href="/llms.txt" />
       </head>
       <body className="flex min-h-full flex-col">
         <RootStructuredData />

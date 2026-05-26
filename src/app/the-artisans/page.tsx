@@ -24,7 +24,6 @@ export default function TheArtisansPage() {
           path: `/the-artisans/${member.slug}`,
         }))}
       />
-      <h1 className="sr-only">The Artisans — ZION Creative Artisans</h1>
       {/* Hero — full bleed video (Figma 2324:283) */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
         <HeroVideoBackground
@@ -146,7 +145,7 @@ export default function TheArtisansPage() {
       {/* Our Artisans (Figma 2326:39) */}
       <SiteSection>
         <SiteContainer>
-          <SectionHeading before="Our " accent="Artisans" className="mb-8 lg:mb-12" />
+          <SectionHeading before="Our " accent="Artisans" headingLevel="h1" className="mb-8 lg:mb-12" />
           <div className="grid grid-cols-1 gap-x-7 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-6">
             {teamMembers.map((member) => (
               <TeamMemberCard key={member.slug} member={member} />

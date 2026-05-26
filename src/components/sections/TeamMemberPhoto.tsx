@@ -33,8 +33,7 @@ export function TeamMemberPhoto({
       />
       <Image
         src={secondary}
-        alt=""
-        aria-hidden
+        alt="" aria-hidden
         fill
         className="team-photo-hover object-cover opacity-0 group-hover:opacity-100"
         sizes={sizes}
