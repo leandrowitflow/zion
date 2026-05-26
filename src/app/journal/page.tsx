@@ -8,16 +8,19 @@ import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { FaqSection } from "@/components/seo/FaqSection";
 import { JournalStructuredData } from "@/components/seo/JournalStructuredData";
 import { legacyAssets } from "@/lib/assets/legacy";
-import { blogPosts } from "@/lib/blog";
+import { getJournalPosts } from "@/lib/blog";
 import { journalFaqs } from "@/lib/seo/faqs";
 import { staticPageMetadata } from "@/lib/seo/pages";
 
 export const metadata = staticPageMetadata.journal;
+export const revalidate = 3600;
 
-export default function JournalPage() {
+export default async function JournalPage() {
+  const posts = await getJournalPosts();
+
   return (
     <PageShell>
-      <JournalStructuredData faqs={journalFaqs} posts={blogPosts} />
+      <JournalStructuredData faqs={journalFaqs} posts={posts} />
 
       <JournalHero />
 
@@ -33,7 +36,7 @@ export default function JournalPage() {
             <h2 id="journal-articles-heading" className="sr-only">
               Articles from The Journal of ZION
             </h2>
-            <BlogPostsGrid posts={blogPosts} />
+            <BlogPostsGrid posts={posts} />
           </section>
         </SiteContainer>
       </SiteSection>

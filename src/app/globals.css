@@ -585,6 +585,62 @@ main.site-main .relative.overflow-hidden img {
   margin: 0;
 }
 
+/* Journal article markdown from CMS */
+.journal-prose {
+  color: #2b2e2b;
+}
+
+.journal-prose :is(h2, h3, h4) {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.25;
+  color: #2b2e2b;
+  margin: 2rem 0 1rem;
+}
+
+.journal-prose h2 {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+.journal-prose h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+}
+
+.journal-prose p,
+.journal-prose li {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+}
+
+.journal-prose p {
+  margin: 0 0 1.25rem;
+}
+
+.journal-prose ul,
+.journal-prose ol {
+  margin: 0 0 1.25rem 1.25rem;
+}
+
+.journal-prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.journal-prose img {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+}
+
+.journal-prose blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid rgb(42 40 38 / 0.15);
+  color: rgb(42 40 38 / 0.8);
+}
+
 /* FAQ — editorial accordion (Good to know sections) */
 .faq-section-layout {
   display: grid;

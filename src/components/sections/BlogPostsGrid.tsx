@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { homeAssets } from "@/lib/assets/home";
-import { BLOG_POSTS_PER_PAGE, type BlogPost } from "@/lib/blog";
+import { BLOG_POSTS_PER_PAGE, blogPostPath, type BlogPost } from "@/lib/blog";
 
 type BlogPostsGridProps = {
   posts: BlogPost[];
@@ -13,16 +14,20 @@ type BlogPostsGridProps = {
 function BlogPostCard({ post }: { post: BlogPost }) {
   return (
     <article className="min-w-0">
-      <div className="relative aspect-[417/500] w-full overflow-hidden">
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1023px) 100vw, 417px"
-        />
-      </div>
-      <h3 className="blog-card-title mt-5 text-center">{post.title}</h3>
+      <Link href={blogPostPath(post.slug)} className="group block">
+        <div className="relative aspect-[417/500] w-full overflow-hidden">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover transition duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 1023px) 100vw, 417px"
+          />
+        </div>
+        <h3 className="blog-card-title mt-5 text-center transition group-hover:text-accent">
+          {post.title}
+        </h3>
+      </Link>
     </article>
   );
 }
