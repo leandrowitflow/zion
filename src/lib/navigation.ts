@@ -11,4 +11,5 @@ export const navItems: NavItem[] = [
   { label: "Destination", href: "/destination" },
   { label: "Sustainability", href: "/sustainability" },
   { label: "Ignite Us", href: "/ignite-us" },
+  { label: "Journal", href: "/journal" },
 ];

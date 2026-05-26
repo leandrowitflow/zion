@@ -132,3 +132,23 @@ export const destinationFaqs: FaqItem[] = [faqWhatIs, faqRegions, faqDestination
 export const legacyFaqs: FaqItem[] = [faqWhatIs, faqCorporate, faqLegacy];
 
 export const sustainabilityFaqs: FaqItem[] = [faqWhatIs, faqSustainability, faqSustainableApproach];
+
+const faqJournalWhat: FaqItem = {
+  question: "What is The Journal of ZION?",
+  answer:
+    "The Journal of ZION is ZION Creative Artisans' curated editorial space — stories on destinations, craftsmanship, travel, and Portugal beyond the postcard, written from a luxury Destination Alchemist Lab.",
+};
+
+const faqJournalTopics: FaqItem = {
+  question: "What does The Journal of ZION cover?",
+  answer:
+    "Articles explore quiet luxury, curated escapes, Portuguese culture and landscapes, artisan craftsmanship, and thoughtful travel — aligned with ZION's bespoke journeys and experiences across Portugal.",
+};
+
+const faqJournalContact: FaqItem = {
+  question: "How do I plan a journey inspired by The Journal of ZION?",
+  answer:
+    "Contact ZION Creative Artisans at ignite@zion-creativeartisans.com or (+351) 210 188 406. Share your dates and vision — the team crafts bespoke luxury journeys, experiences, and legacy events across Portugal.",
+};
+
+export const journalFaqs: FaqItem[] = [faqWhatIs, faqJournalWhat, faqJournalTopics, faqJournalContact];

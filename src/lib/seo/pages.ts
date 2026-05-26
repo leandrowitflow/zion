@@ -53,6 +53,13 @@ export const staticPageMetadata = {
     path: "/ignite-us",
     image: ogImages.ignite,
   }),
+  journal: buildPageMetadata({
+    title: "The Journal of ZION",
+    description:
+      "The Journal of ZION by ZION Creative Artisans — curated stories on luxury travel, Portuguese destinations, craftsmanship, and quiet luxury beyond the postcard.",
+    path: "/journal",
+    image: ogImages.journal,
+  }),
 } satisfies Record<string, Metadata>;
 
 export const staticRoutes = Object.entries(staticPageMetadata).map(([key, meta]) => ({
@@ -62,9 +69,11 @@ export const staticRoutes = Object.entries(staticPageMetadata).map(([key, meta])
       ? "/"
       : key === "ignite"
         ? "/ignite-us"
-        : key === "artisans"
-          ? "/the-artisans"
-          : `/${key}`,
+        : key === "journal"
+          ? "/journal"
+          : key === "artisans"
+            ? "/the-artisans"
+            : `/${key}`,
   title: typeof meta.title === "string" ? meta.title : String(meta.title),
   description: meta.description ?? "",
 }));
