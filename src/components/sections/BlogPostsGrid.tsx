@@ -15,15 +15,19 @@ function BlogPostCard({ post }: { post: BlogPost }) {
   return (
     <article className="min-w-0">
       <Link href={blogPostPath(post.slug)} className="group block">
-        <div className="relative aspect-[417/500] w-full overflow-hidden">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover transition duration-500 group-hover:scale-[1.02]"
-            sizes="(max-width: 1023px) 100vw, 417px"
-          />
-        </div>
+        {post.image ? (
+          <div className="journal-card-media relative w-full overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover object-center transition duration-500 group-hover:scale-[1.02]"
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+            />
+          </div>
+        ) : (
+          <div className="journal-card-media bg-[#2a2826]/5" aria-hidden />
+        )}
         <h3 className="blog-card-title mt-5 text-center transition group-hover:text-accent">
           {post.title}
         </h3>

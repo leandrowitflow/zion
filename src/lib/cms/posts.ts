@@ -1,25 +1,18 @@
 import { fetchAllCmsPosts, fetchCmsPostBySlug, fetchCmsSitemap } from "@/lib/cms/client";
 import { getCmsConfig, isCmsConfigured, journalPostPath } from "@/lib/cms/config";
+import { sanitizeJournalContent } from "@/lib/cms/sanitize-content";
 import type { CmsPost, CmsPostListItem } from "@/lib/cms/types";
-
-export type BlogAuthor = {
-  name: string;
-  jobTitle?: string | null;
-  bio?: string | null;
-  avatarUrl?: string | null;
-};
 
 export type BlogPost = {
   slug: string;
   title: string;
-  image: string;
+  image?: string;
   description?: string;
   datePublished?: string;
 };
 
 export type JournalArticle = BlogPost & {
   content: string;
-  author?: BlogAuthor;
   seoTitle?: string | null;
   seoDescription?: string | null;
   structuredData?: unknown;
@@ -52,34 +45,20 @@ function pickLocalizedFields(
 
 function mapListItem(post: CmsPostListItem, locale: string): BlogPost {
   const localized = pickLocalizedFields(post, locale);
-  const image = post.coverImageUrl ?? "/og/journal.jpg";
 
   return {
     slug: post.slug,
     title: localized.title,
-    image,
+    image: post.coverImageUrl ?? undefined,
     description: localized.description,
     datePublished: post.publishedAt ?? undefined,
-  };
-}
-
-function mapAuthor(post: CmsPost): BlogAuthor | undefined {
-  if (!post.author?.name) {
-    return undefined;
-  }
-
-  return {
-    name: post.author.name,
-    jobTitle: post.author.jobTitle,
-    bio: post.author.bio,
-    avatarUrl: post.author.avatarUrl,
   };
 }
 
 function mapArticle(post: CmsPost, locale: string): JournalArticle {
   const localized = pickLocalizedFields(post, locale);
   const translation = post.translations[locale];
-  const content = translation?.content || post.content;
+  const rawContent = translation?.content || post.content;
   const seoTitle = translation?.seoTitle ?? post.seoTitle;
   const seoDescription = translation?.seoDescription ?? post.seoDescription;
 
@@ -87,8 +66,7 @@ function mapArticle(post: CmsPost, locale: string): JournalArticle {
     ...mapListItem(post, locale),
     title: localized.title,
     description: localized.description ?? seoDescription ?? undefined,
-    content,
-    author: mapAuthor(post),
+    content: sanitizeJournalContent(rawContent, localized.title),
     seoTitle,
     seoDescription,
     structuredData: post.structuredData,
