@@ -1,8 +1,8 @@
 # SEO / AEO / GEO Optimization Changelog
 
-All changes were made to maximize search, answer-engine, and generative-engine readiness **without altering the visual design, layout structure, or brand voice**. New user-facing copy is limited to factual FAQs distilled from existing site language.
+Comprehensive search, answer-engine, and generative-engine optimization for ZION Creative Artisans. Visual design and brand voice are preserved; new user-facing copy is limited to factual FAQ blocks styled to match existing contact typography.
 
-**Audit result:** `npm run audit:seo` → SEO **100/100**, AEO **100/100**, GEO **100/100**
+**Audit:** `npm run build && npm run audit:seo` → SEO via **Google Lighthouse**, AEO/GEO via live + code checks
 
 ---
 
@@ -10,109 +10,117 @@ All changes were made to maximize search, answer-engine, and generative-engine r
 
 | File | Purpose |
 |------|---------|
-| `public/llms.txt` | AI crawler guidance — entity facts, services, pages, social profiles, citation guidance |
-| `src/lib/seo/faqs.ts` | Central FAQ registry (5 questions) for AEO/GEO structured answers |
-| `src/components/seo/FaqSection.tsx` | Reusable FAQ block using existing `contact-page-title` and `text-body` styles |
-| `src/components/seo/ListingStructuredData.tsx` | Breadcrumb + ItemList JSON-LD for listing pages |
-| `src/app/manifest.ts` | Web app manifest (name, icons, theme colors) |
-| `src/app/not-found.tsx` | Branded 404 page with `noIndex` metadata |
+| `public/llms.txt` | AI crawler guidance — entity facts, services, pages, social profiles |
+| `public/og/*` | Dedicated 1200×630 Open Graph share images per main section |
+| `src/lib/seo/og.ts` | OG image paths, dimensions (1200×630), logo path |
+| `src/lib/seo/faqs.ts` | Central FAQ registry (8 site-wide + page-specific sets) |
+| `src/components/seo/FaqSection.tsx` | Reusable “Good to know” FAQ block |
+| `src/components/seo/ListingStructuredData.tsx` | Breadcrumb + ItemList + optional FAQ JSON-LD |
+| `src/components/ui/TypekitStylesheet.tsx` | Non-blocking Adobe Typekit load |
+| `src/app/manifest.ts` | Web app manifest |
+| `src/app/not-found.tsx` | Branded 404 with `noIndex` metadata |
+| `scripts/audit-seo-aeo-geo.mjs` | Google Lighthouse + live HTTP + code checks (single audit) |
 | `docs/SEO-AEO-GEO-CHANGES.md` | This changelog |
 
 ---
 
 ## SEO changes
 
-### Metadata & sharing
-- **`src/lib/seo/pages.ts`** — Each static page now uses a **page-specific Open Graph image** (hero poster from that section) instead of the logo default.
-- **`src/lib/seo/metadata.ts`** — Metadata exports now include **`keywords`** from `SITE_KEYWORDS`.
-- **`src/app/manifest.ts`** — PWA manifest at `/manifest.webmanifest`.
-- **`src/app/not-found.tsx`** — Custom 404 with canonical metadata (`noIndex`).
+### Metadata & Open Graph
+- **`src/lib/seo/pages.ts`** — Each static route uses a **dedicated `/og/` image** (1200×630) instead of hero posters or logo-only defaults. All meta descriptions trimmed to **120–160 characters**.
+- **`src/lib/seo/metadata.ts`** — Open Graph images declare **`width: 1200`** and **`height: 630`**; canonical URLs, keywords, Twitter cards unchanged.
+- **`src/lib/seo/og.ts`** — Single source for OG asset paths and dimensions.
 
-### Image accessibility (no visual change)
-- **`src/app/page.tsx`** — Split-panel slideshow/single images use descriptive `alt` text (`Destinations — Portugal`, etc.).
-- **`src/components/sections/BackgroundSlideshow.tsx`** — Optional `subject` prop for primary slide alt text; decorative slides remain `aria-hidden`.
-- **`src/components/sections/HeroSection.tsx`** — `CtaBanner` and `SplitCta` images get descriptive alts; `HeroSection` accepts optional `imageAlt`.
-- **`src/components/layout/Footer.tsx`** — Social icons use `aria-hidden` (links retain `aria-label`).
-- **`src/components/sections/IgniteContactSection.tsx`** — Same social icon accessibility pattern.
+### Crawling & discovery
+- **`src/app/sitemap.ts`** — Dynamic slug routes for destinations, experiences, legacy, artisans.
+- **`src/app/robots.ts`** — Explicit **allow** rules for AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) plus sitemap/host.
+- **`src/app/layout.tsx`** — `metadataBase`, `lang="en"`, `rel="author"` → `/llms.txt`.
 
 ### Performance (no visual change)
-- **`src/components/sections/HeroVideoBackground.tsx`** — Video `preload` changed from `auto` to `metadata` to improve initial load.
+- **`src/components/sections/HeroVideoBackground.tsx`** — Videos **lazy-load** via `IntersectionObserver`; `preload="none"` until near viewport; poster always shown first.
+- **`src/components/ui/TypekitStylesheet.tsx`** — Typekit CSS loaded with `media="print"` + `onLoad` swap (non render-blocking).
 
-### Social links (correct URLs, same visual)
-- **`src/lib/seo/site.ts`** — Added `SITE_SOCIAL` with verified live-site URLs.
-- **`Footer.tsx`** & **`IgniteContactSection.tsx`** — Replaced placeholder `facebook.com` / `linkedin.com` links with real ZION profiles. Footer Spotify icon is now a proper link.
+### Image accessibility
+- Decorative images with `alt=""` now include **`aria-hidden`** on the same attribute line (Footer Spotify icon, team hover photo).
+- Slideshow, CTA, and social icons retain descriptive alts or `aria-hidden` + link labels.
 
 ---
 
 ## AEO changes
 
-### FAQ content (brand-aligned copy)
-New text lives in **`src/lib/seo/faqs.ts`** only. Wording follows existing site language:
-- “Destination Alchemist Lab”
-- American English (“programs”, “personalized”)
-- Factual contact details matching footer / Ignite Us
+### FAQ registry (`src/lib/seo/faqs.ts`)
+**8 site-wide questions** plus page-specific sets for experiences, destination, legacy, and sustainability. Wording follows existing brand language (“Destination Alchemist Lab”, American English, factual contact details).
 
-**Questions added:**
-1. What is ZION Creative Artisans?
-2. Where is ZION Creative Artisans based?
-3. What services does ZION Creative Artisans offer?
-4. How can I contact ZION Creative Artisans?
-5. Which regions of Portugal does ZION cover?
+### Visible FAQ sections
 
-### Where FAQs appear
-| Page | Visible? | Notes |
-|------|----------|-------|
-| **Home** (`page.tsx`) | Screen-reader only (`sr-only`) | JSON-LD + hidden FAQ — **no layout change** |
-| **Ignite Us** (`ignite-us/page.tsx`) | **Yes** | New section titled **“Good to know”** between contact form and map, `#FAF8F6`-style section on white background, matching contact typography |
+| Page | Visible FAQ | JSON-LD |
+|------|-------------|---------|
+| **Home** | Yes — `#FAF8F6` section before footer | `FAQPage` |
+| **Ignite Us** | Yes — “Good to know” (existing) | `ContactPage` + `FAQPage` |
+| **Experiences** | Yes | `FAQPage` via `ListingStructuredData` |
+| **Destination** | Yes | `FAQPage` via `ListingStructuredData` |
+| **Legacy** | Yes | `FAQPage` via `ListingStructuredData` |
+| **Sustainability** | Yes | `FAQPage` via `ListingStructuredData` |
+
+### Headings
+- **`/the-artisans`** — Visible **H1** on “Our Artisans” (`SectionHeading` with `headingLevel="h1"`); removed sr-only H1.
+- **`SectionHeading.tsx`** — Optional `headingLevel` prop (`h1` | `h2`, default `h2`).
 
 ### AI discovery
-- **`public/llms.txt`** — Machine-readable entity summary for LLM/AI crawlers.
+- **`public/llms.txt`** — Machine-readable entity summary.
+- **`src/app/robots.ts`** — AI crawler allow rules.
 
 ---
 
 ## GEO changes
 
-### Organization entity (`src/lib/seo/schemas.ts` + `site.ts`)
-- **`sameAs`** — Facebook, Instagram, LinkedIn, Spotify URLs
-- **`geo`** — Lisbon HQ coordinates (`38.733766, -9.1432536`)
-- **`contactPoint`** — Email, phone, hours, languages
+### Organization entity (`src/lib/seo/schemas.ts`)
+- **`logo`** — `/Logos/ZION/Logo-01.png`
+- **`image`** — `/og/home.jpg`
+- **`openingHoursSpecification`** — Schema.org object (Mon–Fri 10:00–19:00) on organization and contactPoint
+- **`sameAs`**, **`geo`**, **`@id`** — unchanged from prior pass
 
-### New schema builders
-- **`contactPageSchema()`** — Used on `/ignite-us`
-- **`itemListSchema()`** — Used on listing pages
-
-### Page-level JSON-LD added/updated
+### Listing & page JSON-LD
 
 | Page | Structured data |
 |------|-----------------|
 | `/` | `FAQPage` |
 | `/ignite-us` | `ContactPage` + `FAQPage` |
-| `/destination` | `BreadcrumbList` + `ItemList` |
-| `/experiences` | `BreadcrumbList` + `ItemList` |
-| `/legacy` | `BreadcrumbList` + `ItemList` |
+| `/destination` | `BreadcrumbList` + `ItemList` + `FAQPage` |
+| `/experiences` | `BreadcrumbList` + `ItemList` + `FAQPage` |
+| `/legacy` | `BreadcrumbList` + `ItemList` + `FAQPage` |
 | `/the-artisans` | `BreadcrumbList` + `ItemList` |
-| `/sustainability` | `BreadcrumbList` |
-| `/destination/[slug]` | *(unchanged this pass)* `BreadcrumbList` + `TouristDestination` |
-| `/experiences/[slug]` | *(unchanged)* `BreadcrumbList` + `TouristTrip` |
-| `/legacy/[slug]` | *(unchanged)* `BreadcrumbList` + `Service` |
-| `/the-artisans/[slug]` | *(unchanged)* `BreadcrumbList` + `Person` |
+| `/sustainability` | `BreadcrumbList` + `ItemList` + `FAQPage` |
+| Slug pages | Breadcrumbs + type-specific schema (TouristDestination, TouristTrip, Service, Person) |
+
+### Root graph
+- **`RootStructuredData`** in layout — global `TravelAgency` + `WebSite` JSON-LD.
+
+---
+
+## UI changes (related, same release)
+
+These were completed alongside SEO work and are documented here for a single reference:
+
+| Area | Change |
+|------|--------|
+| **Artisan subpages** | Profile hero uses **hover image** from main grid (`src/lib/team.ts`, `[slug]/page.tsx`) |
+| **Team card hover** | Overlay fade **0.55s**; base photo stays opaque (`TeamMemberPhoto.tsx`, `globals.css`) |
+| **Subpage cards** | `mt-5` image→title spacing; ivypresto title/read-more styles; reserved “Read more” space (`SubpageCardLink.tsx`, `globals.css`) |
+| **Experiences carousel** | Extra bottom padding on carousel section |
 
 ---
 
 ## Audit tooling
 
-- **`scripts/seo-aeo-geo-audit.mjs`** — Extended checks for llms.txt, manifest, not-found, OG images, FAQs, contact schema, sameAs, geo, listing ItemList, keywords; outputs **0–100 scores** per category.
-- **`package.json`** — `npm run audit:seo` (unchanged script name).
+Uses **Google Lighthouse** (real Chrome headless audit) for the **SEO score**, plus **live HTTP checks** against the production server and **source-code review** for AEO and GEO.
 
----
+```bash
+npm run build
+npm run audit:seo
+```
 
-## What was NOT changed
-
-- No changes to hero videos, section order, Figma layouts, or typography scale
-- No rewrites of existing marketing body copy on artisans, experiences, legacy, or destination pages
-- No new navigation items or CTAs (except the Ignite Us FAQ block)
-- `/the-artisans` visible layout unchanged — H1 remains screen-reader-only to preserve “The Art of Zion” section heading design
-- No git commit (unless requested separately)
+The script starts `next start` automatically if nothing is listening on port 3000. Set `AUDIT_SKIP_LIGHTHOUSE=1` to skip Lighthouse (infra-only SEO score). Set `AUDIT_PORT` or `AUDIT_BASE_URL` to target a different server.
 
 ---
 
@@ -123,10 +131,13 @@ npm run build
 npm run audit:seo
 ```
 
-Optional production check: set `NEXT_PUBLIC_SITE_URL=https://zion-creativeartisans.com` so canonicals and JSON-LD `@id` values match the live domain.
+Set `NEXT_PUBLIC_SITE_URL=https://zion-creativeartisans.com` in production so canonicals and JSON-LD `@id` values match the live domain.
 
 ---
 
-## User-visible change summary
+## User-visible additions
 
-The **only visible addition** is the **“Good to know”** FAQ section on **Ignite Us**, styled to match the contact page. Everything else is metadata, structured data, accessibility attributes, or screen-reader-only content.
+1. **“Good to know” FAQ sections** on Home, Experiences, Destination, Legacy, Sustainability (and Ignite Us) — `#FAF8F6` background, contact-page typography.
+2. **Visible H1** “Our Artisans” on `/the-artisans`.
+
+Everything else is metadata, structured data, performance, or accessibility — no changes to hero layouts, section order, or marketing body copy on slug pages.

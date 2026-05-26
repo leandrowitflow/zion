@@ -6,6 +6,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo/site";
+import { OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH } from "@/lib/seo/og";
 
 type PageMetadataInput = {
   title: string;
@@ -22,6 +23,15 @@ function absoluteUrl(path: string): string {
   return `${SITE_URL.replace(/\/$/, "")}${normalized}`;
 }
 
+function ogImageEntry(url: string, alt: string) {
+  return {
+    url,
+    width: OG_IMAGE_WIDTH,
+    height: OG_IMAGE_HEIGHT,
+    alt,
+  };
+}
+
 export function buildPageMetadata({
   title,
   description = DEFAULT_DESCRIPTION,
@@ -33,6 +43,7 @@ export function buildPageMetadata({
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
   const imageUrl = image.startsWith("http") ? image : absoluteUrl(image);
+  const ogImage = ogImageEntry(imageUrl, title);
 
   return {
     title,
@@ -49,7 +60,7 @@ export function buildPageMetadata({
       siteName: SITE_NAME,
       title,
       description,
-      images: [{ url: imageUrl, alt: title }],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",

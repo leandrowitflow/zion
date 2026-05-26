@@ -4,7 +4,7 @@ import { FaqSection } from "@/components/seo/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { IgniteContactSection } from "@/components/sections/IgniteContactSection";
 import { igniteAssets } from "@/lib/assets/ignite";
-import { siteFaqs } from "@/lib/seo/faqs";
+import { igniteFaqs } from "@/lib/seo/faqs";
 import { staticPageMetadata } from "@/lib/seo/pages";
 import { contactPageSchema, faqSchema } from "@/lib/seo/schemas";
 
@@ -13,7 +13,7 @@ export const metadata = staticPageMetadata.ignite;
 export default function IgniteUsPage() {
   return (
     <PageShell>
-      <JsonLd data={[contactPageSchema(), faqSchema(siteFaqs)]} />
+      <JsonLd data={[contactPageSchema(), faqSchema(igniteFaqs)]} />
       {/* Contact Details + form — Figma 2559:47 (y=209) */}
       <SiteSection>
         <SiteContainer>
@@ -23,7 +23,7 @@ export default function IgniteUsPage() {
 
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>
-          <FaqSection faqs={siteFaqs} />
+          <FaqSection faqs={igniteFaqs} />
         </SiteContainer>
       </SiteSection>
 

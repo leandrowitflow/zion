@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type HeroVideoBackgroundProps = {
   src: string;
@@ -8,15 +8,41 @@ type HeroVideoBackgroundProps = {
   objectPosition?: string;
 };
 
-/** Self-hosted background video — native poster, no overlay race conditions */
+/** Self-hosted background video — lazy-loaded when near viewport; poster always visible first. */
 export function HeroVideoBackground({
   src,
   poster,
   objectPosition = "object-center",
 }: HeroVideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad) {
+      return;
+    }
+
     const video = videoRef.current;
     if (!video) {
       return;
@@ -37,20 +63,20 @@ export function HeroVideoBackground({
     return () => {
       video.removeEventListener("canplay", tryPlay);
     };
-  }, [src]);
+  }, [shouldLoad, src]);
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden bg-black">
       <video
         ref={videoRef}
         className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
-        src={src}
+        src={shouldLoad ? src : undefined}
         poster={poster}
-        autoPlay
+        autoPlay={shouldLoad}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         aria-hidden="true"
       />
     </div>

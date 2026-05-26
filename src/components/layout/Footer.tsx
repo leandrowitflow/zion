@@ -70,11 +70,10 @@ export function Footer() {
                 <Image src={sharedAssets.spotifyBg} alt="" fill className="object-cover" aria-hidden />
                 <Image
                   src={sharedAssets.spotifyIcon}
-                  alt=""
+                  alt="" aria-hidden
                   width={17}
                   height={15}
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                  aria-hidden
                 />
               </a>
             </div>

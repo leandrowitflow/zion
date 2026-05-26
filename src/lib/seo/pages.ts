@@ -1,60 +1,57 @@
 import type { Metadata } from "next";
-import { artisansAssets } from "@/lib/assets/artisans";
-import { destinationAssets } from "@/lib/assets/destination";
-import { experiencesAssets } from "@/lib/assets/experiences";
-import { homeAssets } from "@/lib/assets/home";
-import { legacyAssets } from "@/lib/assets/legacy";
-import { sustainabilityAssets } from "@/lib/assets/sustainability";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { ogImages } from "@/lib/seo/og";
+
+/** Static route metadata registry — single source for pages and SEO audits. */
 export const staticPageMetadata = {
   home: buildPageMetadata({
     title: "ZION Creative Artisans | Luxury Travel & Experiences in Portugal",
     description:
-      "Discover bespoke luxury journeys across Portugal with ZION Creative Artisans — tailored destinations, immersive experiences, and artisan-led travel in Lisbon, Porto, Algarve, Madeira, and the Azores.",
+      "Bespoke luxury journeys across Portugal with ZION Creative Artisans — tailored destinations, experiences, and artisan travel in Lisbon, Porto, and the Algarve.",
     path: "/",
-    image: homeAssets.heroVideo,
+    image: ogImages.home,
   }),
   artisans: buildPageMetadata({
     title: "The Artisans",
     description:
-      "Meet the destination alchemists of ZION Creative Artisans — storytellers and experience curators crafting immersive, personalized luxury journeys across Portugal.",
+      "Meet the destination alchemists of ZION Creative Artisans — experience curators crafting immersive, personalized luxury journeys across Portugal.",
     path: "/the-artisans",
-    image: artisansAssets.heroVideo,
+    image: ogImages.artisans,
   }),
   experiences: buildPageMetadata({
     title: "Experiences",
     description:
       "Tailored luxury experiences in Portugal — from wild coastal adventures and timeless traditions to soulful serenity and the essence of Portuguese taste.",
     path: "/experiences",
-    image: experiencesAssets.heroVideo,
+    image: ogImages.experiences,
   }),
   legacy: buildPageMetadata({
     title: "Legacy",
     description:
       "Curated for distinction — ZION Creative Artisans designs transformative corporate incentives, executive retreats, and grand affairs across Portugal.",
     path: "/legacy",
-    image: legacyAssets.heroVideo,
+    image: ogImages.legacy,
   }),
   destination: buildPageMetadata({
     title: "Destination",
     description:
-      "Explore Portugal with ZION Creative Artisans — Lisbon & Coast, Alentejo, Algarve, the islands, the center, and Porto & North tailored for luxury travelers.",
+      "Explore Portugal with ZION Creative Artisans — Lisbon & Coast, Alentejo, Algarve, the islands, the center, and Porto & North for luxury travelers.",
     path: "/destination",
-    image: destinationAssets.heroVideo,
+    image: ogImages.destination,
   }),
   sustainability: buildPageMetadata({
     title: "Sustainability",
     description:
       "ZION Creative Artisans is committed to sustainable travel in Portugal — responsible partnerships, local communities, and journeys that respect people and place.",
     path: "/sustainability",
-    image: sustainabilityAssets.heroVideo,
+    image: ogImages.sustainability,
   }),
   ignite: buildPageMetadata({
     title: "Ignite Us",
     description:
       "Contact ZION Creative Artisans in Lisbon to craft your bespoke luxury journey, experience, or legacy event in Portugal. Weekdays 10:00–19:00 UTC Lisbon.",
     path: "/ignite-us",
-    image: destinationAssets.penaPalace,
+    image: ogImages.ignite,
   }),
 } satisfies Record<string, Metadata>;
 

@@ -5,9 +5,11 @@ import { ExperiencesCarousel } from "@/components/sections/ExperiencesCarousel";
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
+import { FaqSection } from "@/components/seo/FaqSection";
 import { ListingStructuredData } from "@/components/seo/ListingStructuredData";
 import { experiencesAssets } from "@/lib/assets/experiences";
 import { experiences } from "@/lib/experiences";
+import { experiencesFaqs } from "@/lib/seo/faqs";
 import { staticPageMetadata } from "@/lib/seo/pages";
 
 export const metadata = staticPageMetadata.experiences;
@@ -22,6 +24,7 @@ export default function ExperiencesPage() {
           name: item.title,
           path: `/experiences/${item.slug}`,
         }))}
+        faqs={experiencesFaqs}
       />
       {/* Hero — Figma 2335:88, 1070px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
@@ -69,6 +72,12 @@ export default function ExperiencesPage() {
       />
 
       <PartnersCarousel />
+
+      <SiteSection className="bg-[#FAF8F6]">
+        <SiteContainer>
+          <FaqSection faqs={experiencesFaqs} />
+        </SiteContainer>
+      </SiteSection>
     </PageShell>
   );
 }
