@@ -1,8 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { LegacyEssenceSection } from "@/components/sections/LegacyEssenceSection";
+import { LegacyCardsGrid } from "@/components/sections/LegacyCardsGrid";
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
@@ -47,26 +46,7 @@ export default function LegacyPage() {
       <SiteSection>
         <SiteContainer>
           <SectionHeading before="Crafting your " accent="Legacy" />
-          <div className="mt-[clamp(1.5rem,5.8vw,55px)] grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-x-[19px] lg:gap-y-8">
-            {legacyItems.map((item) => (
-              <article key={item.slug} className="min-w-0">
-                <Link href={`/legacy/${item.slug}`} className="group block">
-                  <div className="relative aspect-[417/500] w-full overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition duration-500 group-hover:scale-105"
-                      sizes="(max-width: 1023px) 33vw, 417px"
-                    />
-                  </div>
-                  <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] transition-colors group-hover:text-accent lg:text-[24.425px]">
-                    {item.title}
-                  </p>
-                </Link>
-              </article>
-            ))}
-          </div>
+          <LegacyCardsGrid items={[...legacyItems]} />
         </SiteContainer>
       </SiteSection>
 
