@@ -8,13 +8,4 @@ export const artisansAssets = {
   video: "/images/artisans/video-poster.jpg",
   videoSrc: "/videos/artisans-video-band.mp4?v=1080b",
   cta: "/images/artisans/cta.png",
-  team: {
-    carlos: "/images/artisans/team-1.jpg",
-    andre: "/images/artisans/team-2.jpg",
-    vitor: "/images/artisans/team-3.jpg",
-    jessica: "/images/artisans/team-4.jpg",
-    anabela: "/images/artisans/team-5.jpg",
-    ana: "/images/artisans/team-6.jpg",
-    margarida: "/images/artisans/team-7.jpg",
-  },
 } as const;
