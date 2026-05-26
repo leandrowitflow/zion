@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 import type { JournalArticle } from "@/lib/blog";
 
@@ -21,31 +22,6 @@ function formatDate(iso?: string): string | null {
     month: "long",
     year: "numeric",
   }).format(date);
-}
-
-function JournalAuthor({ author }: { author: NonNullable<JournalArticle["author"]> }) {
-  return (
-    <div className="mt-10 flex items-start gap-4 border-t border-[#2a2826]/10 pt-8">
-      {author.avatarUrl ? (
-        <div className="relative size-16 shrink-0 overflow-hidden rounded-full">
-          <Image
-            src={author.avatarUrl}
-            alt={author.name}
-            fill
-            className="object-cover"
-            sizes="64px"
-          />
-        </div>
-      ) : null}
-      <div>
-        <p className="font-display text-lg text-[#2a2826]">{author.name}</p>
-        {author.jobTitle ? (
-          <p className="mt-1 text-sm text-[#2a2826]/70">{author.jobTitle}</p>
-        ) : null}
-        {author.bio ? <p className="mt-3 text-body">{author.bio}</p> : null}
-      </div>
-    </div>
-  );
 }
 
 export function JournalArticleView({ article }: JournalArticleViewProps) {
@@ -72,24 +48,9 @@ export function JournalArticleView({ article }: JournalArticleViewProps) {
         ) : null}
       </header>
 
-      {article.image ? (
-        <div className="relative mt-10 aspect-[16/10] w-full max-w-4xl overflow-hidden">
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1023px) 100vw, 896px"
-            priority
-          />
-        </div>
-      ) : null}
-
       <div className="journal-prose mt-10 max-w-3xl">
-        <Markdown>{article.content}</Markdown>
+        <Markdown rehypePlugins={[rehypeRaw]}>{article.content}</Markdown>
       </div>
-
-      {article.author ? <JournalAuthor author={article.author} /> : null}
     </article>
   );
 }
