@@ -11,6 +11,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { homeDestinationsSlideshow } from "@/lib/assets/destinations-slideshow";
 import { homeExperiencesSlideshow } from "@/lib/assets/experiences-slideshow";
 import { homeAssets } from "@/lib/assets/home";
+import { staticPageMetadata } from "@/lib/seo/pages";
+import { FaqSection } from "@/components/seo/FaqSection";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { siteFaqs } from "@/lib/seo/faqs";
+import { faqSchema } from "@/lib/seo/schemas";
+
+export const metadata = staticPageMetadata.home;
 
 function OutlineButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -52,9 +59,15 @@ function SplitPanel({
   return (
     <div className="relative min-h-[500px] flex-1 overflow-hidden lg:min-h-[min(859px,45vw)]">
       {slides.length > 1 ? (
-        <BackgroundSlideshow images={slides} />
+        <BackgroundSlideshow images={slides} subject={title} />
       ) : slides.length === 1 ? (
-        <Image src={slides[0]} alt="" fill className="object-cover" sizes="(max-width: 1920px) 50vw, 960px" />
+        <Image
+          src={slides[0]}
+          alt={`${title} — Portugal`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1920px) 50vw, 960px"
+        />
       ) : null}
       <div className="absolute inset-0 z-10 bg-black/20" />
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center">
@@ -70,6 +83,7 @@ function SplitPanel({
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqSchema(siteFaqs)} />
       <Header />
       <main className="site-main bg-white">
         {/* Hero — full bleed */}
@@ -190,6 +204,13 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
+      <div className="sr-only">
+        <SiteContainer>
+          <FaqSection faqs={siteFaqs} visuallyHiddenTitle />
+        </SiteContainer>
+      </div>
+
       <Footer />
     </>
   );

@@ -4,8 +4,11 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { CtaBanner } from "@/components/sections/HeroSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { legacyAssets } from "@/lib/assets/legacy";
 import { getLegacyItem, getLegacySlugs } from "@/lib/legacy";
+import { buildSlugMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schemas";
 
 type LegacyPageProps = {
   params: Promise<{ slug: string }>;
@@ -23,10 +26,7 @@ export async function generateMetadata({ params }: LegacyPageProps): Promise<Met
     return { title: "Legacy — Zion" };
   }
 
-  return {
-    title: `${item.title} — Zion`,
-    description: item.body[0],
-  };
+  return buildSlugMetadata(item.title, item.body[0], `/legacy/${slug}`, item.image);
 }
 
 export default async function LegacyItemPage({ params }: LegacyPageProps) {
@@ -37,8 +37,25 @@ export default async function LegacyItemPage({ params }: LegacyPageProps) {
     notFound();
   }
 
+  const path = `/legacy/${slug}`;
+
   return (
     <PageShell>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Legacy", path: "/legacy" },
+            { name: item.title, path },
+          ]),
+          serviceSchema({
+            name: item.title,
+            description: item.body[0],
+            path,
+            image: item.image,
+          }),
+        ]}
+      />
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-x-16 xl:gap-x-20">

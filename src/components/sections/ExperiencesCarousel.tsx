@@ -54,17 +54,17 @@ export function ExperiencesCarousel() {
   const slides = buildInfiniteSlides(experienceCategories);
 
   return (
-    <div>
+    <div className="flex flex-col gap-[clamp(1.5rem,5.8vw,55px)] pb-[clamp(1.25rem,2.5vw,2rem)]">
       <div className="relative grid grid-cols-[108px_1fr_108px] items-start lg:block">
         <div className="lg:hidden" aria-hidden="true" />
-        <SectionHeading before="Tailored " accent="Experiences" />
+        <SectionHeading before="Tailored " accent="Experiences" className="!mb-0" />
         <div className="flex justify-end gap-2 lg:absolute lg:right-0 lg:top-0">
           <CarouselArrow direction="prev" onClick={scrollPrev} />
           <CarouselArrow direction="next" onClick={scrollNext} />
         </div>
       </div>
 
-      <div className="mt-[clamp(1.5rem,5.8vw,55px)] w-full overflow-hidden">
+      <div className="w-full overflow-hidden">
         <div
           ref={trackRef}
           className="flex gap-[18px] overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"

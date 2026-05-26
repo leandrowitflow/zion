@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { TeamTraitBars } from "@/components/sections/TeamTraitBars";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildSlugMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, personSchema } from "@/lib/seo/schemas";
 import { getTeamMember, getTeamMemberSlugs } from "@/lib/team";
 
 type TeamMemberPageProps = {
@@ -22,10 +25,12 @@ export async function generateMetadata({ params }: TeamMemberPageProps): Promise
     return { title: "Artisan — Zion" };
   }
 
-  return {
-    title: `${member.name} — Zion`,
-    description: member.bio[0],
-  };
+  return buildSlugMetadata(
+    member.name,
+    member.bio[0],
+    `/the-artisans/${slug}`,
+    member.hoverImage,
+  );
 }
 
 export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
@@ -39,8 +44,26 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
   const midpoint = Math.ceil(member.bio.length / 2);
   const bioColumns = [member.bio.slice(0, midpoint), member.bio.slice(midpoint)];
 
+  const path = `/the-artisans/${slug}`;
+
   return (
     <PageShell>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "The Artisans", path: "/the-artisans" },
+            { name: member.name, path },
+          ]),
+          personSchema({
+            name: member.name,
+            role: member.role,
+            description: member.bio[0],
+            path,
+            image: member.hoverImage,
+          }),
+        ]}
+      />
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>
           <div className="mb-8 lg:mb-12">
@@ -53,7 +76,7 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(360px,640px)_minmax(0,1fr)] lg:items-stretch lg:gap-x-16 xl:gap-x-20">
             <div className="relative mx-auto aspect-[840/1260] w-full max-w-[560px] lg:mx-0 lg:max-w-none">
               <Image
-                src={member.image}
+                src={member.hoverImage}
                 alt={member.name}
                 fill
                 className="object-cover"

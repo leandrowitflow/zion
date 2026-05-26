@@ -3,6 +3,7 @@ import { OutlineButton } from "@/components/ui/SectionHeading";
 
 type HeroSectionProps = {
   image: string;
+  imageAlt?: string;
   title?: string;
   subtitle?: string;
   button?: { label: string; href: string };
@@ -12,6 +13,7 @@ type HeroSectionProps = {
 
 export function HeroSection({
   image,
+  imageAlt,
   title,
   subtitle,
   button,
@@ -20,7 +22,15 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className={`site-full-bleed relative w-full overflow-hidden ${height}`}>
-      <Image src={image} alt="" fill className={`object-cover ${objectPosition}`} sizes="100vw" priority />
+      <Image
+        src={image}
+        alt={imageAlt ?? (title ? `${title} — hero` : "")}
+        fill
+        className={`object-cover ${objectPosition}`}
+        sizes="100vw"
+        priority
+        aria-hidden={!imageAlt && !title}
+      />
       <div className="absolute inset-0 bg-black/20" />
       {(title || button) && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center text-white">
@@ -56,7 +66,7 @@ export function VideoBanner({ image, className = "" }: VideoBannerProps) {
     <section
       className={`site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)] ${className}`}
     >
-      <Image src={image} alt="" fill className="object-cover object-bottom" sizes="100vw" />
+      <Image src={image} alt="" fill className="object-cover object-bottom" sizes="100vw" aria-hidden />
       <div className="absolute inset-0 bg-black/10" />
     </section>
   );
@@ -79,15 +89,15 @@ export function CtaBanner({
     <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,33.39vw,641px)]">
       <div className="absolute inset-0 z-0">
         <div className="relative h-full w-full">
-          <Image
-            src={image}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-            unoptimized
-          />
+      <Image
+        src={image}
+        alt={`${title} — background`}
+        fill
+        className="object-cover"
+        sizes="100vw"
+        priority
+        unoptimized
+      />
         </div>
       </div>
       {/* Figma 2339:368 — 641px band; title y=38.22%, button y=53.04% at 1920 */}
@@ -117,7 +127,7 @@ export function SplitCta({ image, title, buttonLabel = "Contact Us" }: SplitCtaP
     <div className="group relative min-h-[500px] w-full overflow-hidden lg:min-h-[min(859px,45vw)]">
       <Image
         src={image}
-        alt=""
+        alt={`${title} — Portugal`}
         fill
         className="object-cover transition duration-700 group-hover:scale-105"
         sizes="(max-width: 1920px) 50vw, 960px"

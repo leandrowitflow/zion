@@ -4,8 +4,11 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { CtaBanner } from "@/components/sections/HeroSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { experiencesAssets } from "@/lib/assets/experiences";
 import { getExperience, getExperienceSlugs } from "@/lib/experiences";
+import { buildSlugMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, touristTripSchema } from "@/lib/seo/schemas";
 
 type ExperiencePageProps = {
   params: Promise<{ slug: string }>;
@@ -23,10 +26,12 @@ export async function generateMetadata({ params }: ExperiencePageProps): Promise
     return { title: "Experience — Zion" };
   }
 
-  return {
-    title: `${experience.title} — Zion`,
-    description: experience.body[0],
-  };
+  return buildSlugMetadata(
+    experience.title,
+    experience.body[0],
+    `/experiences/${slug}`,
+    experience.hero,
+  );
 }
 
 export default async function ExperiencePage({ params }: ExperiencePageProps) {
@@ -37,8 +42,25 @@ export default async function ExperiencePage({ params }: ExperiencePageProps) {
     notFound();
   }
 
+  const path = `/experiences/${slug}`;
+
   return (
     <PageShell>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Experiences", path: "/experiences" },
+            { name: experience.title, path },
+          ]),
+          touristTripSchema({
+            name: experience.title,
+            description: experience.body[0],
+            path,
+            image: experience.hero,
+          }),
+        ]}
+      />
       {/* Image + text side by side */}
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>

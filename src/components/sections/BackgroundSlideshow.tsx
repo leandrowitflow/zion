@@ -9,12 +9,15 @@ const FADE_DURATION_MS = 500;
 type BackgroundSlideshowProps = {
   images: readonly string[];
   sizes?: string;
+  /** Describes the slideshow subject for the primary slide alt text. */
+  subject?: string;
 };
 
 /** Fade slideshow with Ken Burns zoom — matches Elementor background_slideshow on live site */
 export function BackgroundSlideshow({
   images,
   sizes = "(max-width: 1920px) 50vw, 960px",
+  subject,
 }: BackgroundSlideshowProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -39,23 +42,26 @@ export function BackgroundSlideshow({
     return null;
   }
 
+  const slideAlt = subject ? `${subject} — Portugal` : "";
+
   if (reduceMotion || images.length === 1) {
     return (
       <div className="absolute inset-0 z-0">
         <Image
           src={images[0]}
-          alt=""
+          alt={slideAlt}
           fill
           className="object-cover"
           sizes={sizes}
           priority
+          aria-hidden={!slideAlt}
         />
       </div>
     );
   }
 
   return (
-    <div className="absolute inset-0 z-0" aria-hidden="true">
+    <div className="absolute inset-0 z-0" aria-hidden={!!subject}>
       {images.map((src, index) => {
         const isActive = index === activeIndex;
 
@@ -75,11 +81,12 @@ export function BackgroundSlideshow({
             >
               <Image
                 src={src}
-                alt=""
+                alt={index === 0 && slideAlt ? slideAlt : ""}
                 fill
                 className="object-cover"
                 sizes={sizes}
                 priority={index === 0}
+                aria-hidden={index !== 0 || !slideAlt}
               />
             </div>
           </div>

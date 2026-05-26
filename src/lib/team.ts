@@ -8,6 +8,7 @@ export type TeamMember = {
   name: string;
   role: string;
   image: string;
+  /** Shown on grid hover and on the artisan subpage portrait. */
   hoverImage: string;
   traits: TeamTrait[];
   bio: string[];

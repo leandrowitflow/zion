@@ -5,11 +5,24 @@ import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { WhyPortugalSection } from "@/components/sections/WhyPortugalSection";
+import { ListingStructuredData } from "@/components/seo/ListingStructuredData";
 import { destinationAssets } from "@/lib/assets/destination";
+import { destinations } from "@/lib/destinations";
+import { staticPageMetadata } from "@/lib/seo/pages";
+
+export const metadata = staticPageMetadata.destination;
 
 export default function DestinationPage() {
   return (
     <PageShell>
+      <ListingStructuredData
+        pageTitle="Destination"
+        path="/destination"
+        items={destinations.map((item) => ({
+          name: item.title,
+          path: `/destination/${item.slug}`,
+        }))}
+      />
       {/* Hero — Figma 2337:133, 1080px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1080px)]">
         <HeroVideoBackground

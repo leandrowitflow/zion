@@ -188,12 +188,12 @@ body {
   }
 }
 
-/* ivypresto-display — carousel / card labels (live h5 ≈ 1.5rem) */
+/* ivypresto-display — carousel / card labels (24px / 31px / 300) */
 .font-card-title {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: 1.5rem;
-  line-height: 1.208em;
+  font-size: 24px;
+  line-height: 31px;
 }
 
 /* ivypresto-display — CTA buttons (live: 17px / 21px / 400) */
@@ -467,13 +467,18 @@ main.site-main .relative.overflow-hidden img {
   }
 }
 
-/* Team member photo crossfade — soft, unhurried swap on hover */
-.team-photo-fade {
-  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+/* Team member photo hover — hover image fades in over a steady base (no white flash) */
+.team-photo-base {
+  z-index: 0;
+}
+
+.team-photo-hover {
+  z-index: 1;
+  transition: opacity 0.55s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .team-photo-fade {
+  .team-photo-hover {
     transition: none;
   }
 }
@@ -510,38 +515,51 @@ main.site-main .relative.overflow-hidden img {
 }
 
 .subpage-card-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 31px;
+  color: #2a2826;
   transition: color 0.35s ease, transform 0.35s ease;
 }
 
 .subpage-card-readmore {
-  display: block;
-  font-family: var(--font-open-sans), sans-serif;
-  font-size: 16px;
+  display: inline-block;
+  min-height: calc(20px + 6px + 2.5px);
+  margin-top: 0.125rem;
+  font-family: var(--font-display);
+  font-size: 17px;
   font-weight: 400;
-  line-height: 1.5;
-  color: var(--foreground);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-style: normal;
+  line-height: 20px;
+  color: #2a2826;
+  text-decoration: none;
   opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transform: translateY(-6px);
+  transform: translateY(4px);
   transition:
     opacity 0.35s ease,
-    max-height 0.35s ease,
     transform 0.35s ease;
+}
+
+.subpage-card-readmore::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  margin-top: 6px;
+  background-color: currentColor;
 }
 
 .subpage-card:hover .subpage-card-title,
 .subpage-card:focus-visible .subpage-card-title {
-  color: var(--muted);
+  color: #696866;
   transform: translateY(-2px);
 }
 
 .subpage-card:hover .subpage-card-readmore,
 .subpage-card:focus-visible .subpage-card-readmore {
   opacity: 1;
-  max-height: 1.75rem;
   transform: translateY(0);
 }
 
@@ -553,7 +571,6 @@ main.site-main .relative.overflow-hidden img {
 
   .subpage-card-readmore {
     opacity: 1;
-    max-height: none;
     transform: none;
   }
 }
