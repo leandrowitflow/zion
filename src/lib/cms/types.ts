@@ -7,6 +7,12 @@ export type CmsAuthor = {
   avatarUrl: string | null;
 };
 
+export type CmsPostListTranslation = {
+  title: string;
+  excerpt: string;
+  seoTitle: string | null;
+};
+
 export type CmsPostListItem = {
   id: string;
   title: string;
@@ -19,6 +25,8 @@ export type CmsPostListItem = {
   author: CmsAuthor | null;
   categories: unknown[];
   seoTitle: string | null;
+  locale: string;
+  translations: Record<string, CmsPostListTranslation>;
 };
 
 export type CmsPost = CmsPostListItem & {
