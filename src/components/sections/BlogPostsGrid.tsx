@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-import { homeAssets } from "@/lib/assets/home";
 import { BLOG_POSTS_PER_PAGE, blogPostPath, type BlogPost } from "@/lib/blog";
 
 type BlogPostsGridProps = {
@@ -28,11 +27,36 @@ function BlogPostCard({ post }: { post: BlogPost }) {
         ) : (
           <div className="journal-card-media bg-[#2a2826]/5" aria-hidden />
         )}
-        <h3 className="blog-card-title mt-5 text-center transition group-hover:text-accent">
+        <h3 className="blog-card-title mt-8 text-center transition group-hover:text-accent">
           {post.title}
         </h3>
       </Link>
     </article>
+  );
+}
+
+function PaginationDots({ page, totalPages }: { page: number; totalPages: number }) {
+  return (
+    <div
+      className="flex h-[7px] items-center gap-[11px]"
+      role="tablist"
+      aria-label="Journal pages"
+    >
+      {Array.from({ length: totalPages }, (_, index) => {
+        const pageNumber = index + 1;
+        const isActive = pageNumber === page;
+
+        return (
+          <span
+            key={pageNumber}
+            role="tab"
+            aria-selected={isActive}
+            aria-label={`Page ${pageNumber}`}
+            className={`size-[7px] shrink-0 rounded-full ${isActive ? "bg-[#787774]" : "bg-[#D9D9D9]"}`}
+          />
+        );
+      })}
+    </div>
   );
 }
 
@@ -76,8 +100,6 @@ export function BlogPostsGrid({ posts }: BlogPostsGridProps) {
     return posts.slice(start, start + BLOG_POSTS_PER_PAGE);
   }, [page, posts]);
 
-  const pageLabel = `${String(page).padStart(2, "0")} / ${String(totalPages).padStart(2, "0")}`;
-
   if (posts.length === 0) {
     return (
       <div
@@ -96,9 +118,7 @@ export function BlogPostsGrid({ posts }: BlogPostsGridProps) {
       </div>
 
       <div className="mt-[clamp(3rem,5vw,80px)] flex flex-col items-center gap-6 lg:flex-row lg:justify-between">
-        <div className="relative h-[7px] w-[277px] max-w-full shrink-0">
-          <Image src={homeAssets.scroller} alt="" fill className="object-contain" aria-hidden />
-        </div>
+        <PaginationDots page={page} totalPages={totalPages} />
 
         <div className="flex items-center gap-4">
           <PaginationArrow
@@ -111,9 +131,6 @@ export function BlogPostsGrid({ posts }: BlogPostsGridProps) {
             disabled={page >= totalPages}
             onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
           />
-          <p className="min-w-[5.5rem] text-center font-display text-[15px] font-light text-[#2a2826]">
-            {pageLabel}
-          </p>
         </div>
       </div>
     </div>
