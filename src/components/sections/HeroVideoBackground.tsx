@@ -50,7 +50,7 @@ export function HeroVideoBackground({
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       />
     </div>

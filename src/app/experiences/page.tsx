@@ -5,11 +5,24 @@ import { ExperiencesCarousel } from "@/components/sections/ExperiencesCarousel";
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
+import { ListingStructuredData } from "@/components/seo/ListingStructuredData";
 import { experiencesAssets } from "@/lib/assets/experiences";
+import { experiences } from "@/lib/experiences";
+import { staticPageMetadata } from "@/lib/seo/pages";
+
+export const metadata = staticPageMetadata.experiences;
 
 export default function ExperiencesPage() {
   return (
     <PageShell>
+      <ListingStructuredData
+        pageTitle="Experiences"
+        path="/experiences"
+        items={experiences.map((item) => ({
+          name: item.title,
+          path: `/experiences/${item.slug}`,
+        }))}
+      />
       {/* Hero — Figma 2335:88, 1070px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
         <HeroVideoBackground

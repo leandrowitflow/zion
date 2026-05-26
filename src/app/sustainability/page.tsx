@@ -5,11 +5,22 @@ import { OurCommitmentSection } from "@/components/sections/OurCommitmentSection
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { SustainablePartnersSection } from "@/components/sections/SustainablePartnersSection";
 import { SustainableTravelSection } from "@/components/sections/SustainableTravelSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { sustainabilityAssets } from "@/lib/assets/sustainability";
+import { staticPageMetadata } from "@/lib/seo/pages";
+import { breadcrumbSchema } from "@/lib/seo/schemas";
+
+export const metadata = staticPageMetadata.sustainability;
 
 export default function SustainabilityPage() {
   return (
     <PageShell>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Sustainability", path: "/sustainability" },
+        ])}
+      />
       {/* Hero — Figma 2339:462, 1070px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
         <HeroVideoBackground

@@ -4,8 +4,11 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout/PageShell";
 import { SiteContainer, SiteSection } from "@/components/layout/SiteContainer";
 import { CtaBanner } from "@/components/sections/HeroSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { destinationAssets } from "@/lib/assets/destination";
 import { getDestination, getDestinationSlugs } from "@/lib/destinations";
+import { buildSlugMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, touristDestinationSchema } from "@/lib/seo/schemas";
 
 type DestinationPageProps = {
   params: Promise<{ slug: string }>;
@@ -23,10 +26,12 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
     return { title: "Destination — Zion" };
   }
 
-  return {
-    title: `${destination.title} — Zion`,
-    description: destination.body[0],
-  };
+  return buildSlugMetadata(
+    destination.title,
+    destination.body[0],
+    `/destination/${slug}`,
+    destination.image,
+  );
 }
 
 export default async function DestinationItemPage({ params }: DestinationPageProps) {
@@ -37,8 +42,25 @@ export default async function DestinationItemPage({ params }: DestinationPagePro
     notFound();
   }
 
+  const path = `/destination/${slug}`;
+
   return (
     <PageShell>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Destination", path: "/destination" },
+            { name: destination.title, path },
+          ]),
+          touristDestinationSchema({
+            name: destination.title,
+            description: destination.body[0],
+            path,
+            image: destination.image,
+          }),
+        ]}
+      />
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-x-16 xl:gap-x-20">

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { NavLink } from "@/components/layout/NavLink";
 import { navItems } from "@/lib/navigation";
 import { sharedAssets } from "@/lib/assets/shared";
+import { SITE_SOCIAL } from "@/lib/seo/site";
 
 export function Footer() {
   const pathname = usePathname();
@@ -50,25 +51,32 @@ export function Footer() {
             </p>
 
             <div className="mt-[22px] flex justify-center gap-2 xl:justify-start">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <Image src={sharedAssets.facebook} alt="" width={47} height={47} />
+              <a href={SITE_SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <Image src={sharedAssets.facebook} alt="" width={47} height={47} aria-hidden />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Image src={sharedAssets.linkedin} alt="" width={47} height={47} />
+              <a href={SITE_SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <Image src={sharedAssets.linkedin} alt="" width={47} height={47} aria-hidden />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Image src={sharedAssets.instagram} alt="" width={47} height={47} />
+              <a href={SITE_SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <Image src={sharedAssets.instagram} alt="" width={47} height={47} aria-hidden />
               </a>
-              <div className="relative h-[47px] w-[47px]">
-                <Image src={sharedAssets.spotifyBg} alt="" fill className="object-cover" />
+              <a
+                href={SITE_SOCIAL.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Spotify"
+                className="relative block h-[47px] w-[47px]"
+              >
+                <Image src={sharedAssets.spotifyBg} alt="" fill className="object-cover" aria-hidden />
                 <Image
                   src={sharedAssets.spotifyIcon}
-                  alt="Spotify"
+                  alt=""
                   width={17}
                   height={15}
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  aria-hidden
                 />
-              </div>
+              </a>
             </div>
           </div>
 

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:seo": "node scripts/seo-aeo-geo-audit.mjs",
+    "audit:seo:strict": "node scripts/seo-aeo-geo-audit-strict.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -6,12 +6,25 @@ import { ArtisansCollage } from "@/components/sections/ArtisansCollage";
 import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { TeamMemberCard } from "@/components/sections/TeamMemberCard";
+import { ListingStructuredData } from "@/components/seo/ListingStructuredData";
 import { artisansAssets } from "@/lib/assets/artisans";
+import { staticPageMetadata } from "@/lib/seo/pages";
 import { teamMembers } from "@/lib/team";
+
+export const metadata = staticPageMetadata.artisans;
 
 export default function TheArtisansPage() {
   return (
     <PageShell>
+      <ListingStructuredData
+        pageTitle="The Artisans"
+        path="/the-artisans"
+        items={teamMembers.map((member) => ({
+          name: member.name,
+          path: `/the-artisans/${member.slug}`,
+        }))}
+      />
+      <h1 className="sr-only">The Artisans — ZION Creative Artisans</h1>
       {/* Hero — full bleed video (Figma 2324:283) */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
         <HeroVideoBackground

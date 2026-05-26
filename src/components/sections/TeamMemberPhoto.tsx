@@ -20,12 +20,14 @@ export function TeamMemberPhoto({
   priority = false,
 }: TeamMemberPhotoProps) {
   return (
-    <div className={`group relative overflow-hidden ${aspectClassName} ${className}`.trim()}>
+    <div
+      className={`group relative overflow-hidden bg-[#2b2e2b] ${aspectClassName} ${className}`.trim()}
+    >
       <Image
         src={primary}
         alt={alt}
         fill
-        className="team-photo-fade object-cover group-hover:opacity-0"
+        className="team-photo-base object-cover"
         sizes={sizes}
         priority={priority}
       />
@@ -34,8 +36,9 @@ export function TeamMemberPhoto({
         alt=""
         aria-hidden
         fill
-        className="team-photo-fade object-cover opacity-0 group-hover:opacity-100"
+        className="team-photo-hover object-cover opacity-0 group-hover:opacity-100"
         sizes={sizes}
+        loading="eager"
       />
     </div>
   );

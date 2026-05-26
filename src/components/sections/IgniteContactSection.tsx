@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import { igniteAssets } from "@/lib/assets/ignite";
+import { SITE_SOCIAL } from "@/lib/seo/site";
 
 type FormFieldIcon = "user" | "email" | "phone" | "company" | "message";
 
@@ -137,17 +138,17 @@ export function IgniteContactSection() {
         </p>
 
         <div className="mt-8 flex justify-center gap-[7px] lg:justify-start">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <Image src={igniteAssets.social.facebook} alt="" width={45} height={45} />
+          <a href={SITE_SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <Image src={igniteAssets.social.facebook} alt="" width={45} height={45} aria-hidden />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Image src={igniteAssets.social.linkedin} alt="" width={45} height={45} />
+          <a href={SITE_SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <Image src={igniteAssets.social.linkedin} alt="" width={45} height={45} aria-hidden />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <Image src={igniteAssets.social.instagram} alt="" width={45} height={45} />
+          <a href={SITE_SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <Image src={igniteAssets.social.instagram} alt="" width={45} height={45} aria-hidden />
           </a>
-          <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-            <Image src={igniteAssets.social.spotify} alt="" width={45} height={45} />
+          <a href={SITE_SOCIAL.spotify} target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+            <Image src={igniteAssets.social.spotify} alt="" width={45} height={45} aria-hidden />
           </a>
         </div>
       </div>

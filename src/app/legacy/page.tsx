@@ -6,12 +6,24 @@ import { CtaBanner } from "@/components/sections/HeroSection";
 import { HeroVideoBackground } from "@/components/sections/HeroVideoBackground";
 import { PartnersCarousel } from "@/components/sections/PartnersCarousel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ListingStructuredData } from "@/components/seo/ListingStructuredData";
 import { legacyAssets } from "@/lib/assets/legacy";
 import { legacyItems } from "@/lib/legacy";
+import { staticPageMetadata } from "@/lib/seo/pages";
+
+export const metadata = staticPageMetadata.legacy;
 
 export default function LegacyPage() {
   return (
     <PageShell>
+      <ListingStructuredData
+        pageTitle="Legacy"
+        path="/legacy"
+        items={legacyItems.map((item) => ({
+          name: item.title,
+          path: `/legacy/${item.slug}`,
+        }))}
+      />
       {/* Hero — Figma 2337:285, 1070px at 1920 */}
       <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,55.73vw,1070px)]">
         <HeroVideoBackground

@@ -31,10 +31,8 @@ export function SubpageCardLink({
           sizes={sizes}
         />
       </div>
-      <div className="subpage-card-meta mt-3 text-center">
-        <p className="subpage-card-title font-card-title text-[clamp(11px,2.4vw,24.425px)] text-[#292725] lg:text-[24.425px]">
-          {title}
-        </p>
+      <div className="subpage-card-meta mt-5 text-center">
+        <p className="subpage-card-title">{title}</p>
         <span className="subpage-card-readmore">Read more</span>
       </div>
     </Link>
