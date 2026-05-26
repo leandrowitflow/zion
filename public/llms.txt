@@ -19,6 +19,7 @@
 - Bespoke experiences (The Art of Escape, Wild & Free, Timeless Traditions, Soul Serenity, The Essence of Taste)
 - Legacy programs: corporate incentives, executive retreats, grand affairs
 - Artisan-led journeys and sustainable travel
+- The Journal of ZION: curated editorial on luxury travel and Portugal
 
 ## Key pages
 
@@ -29,6 +30,7 @@
 - Destination: /destination
 - Sustainability: /sustainability
 - Contact (Ignite Us): /ignite-us
+- The Journal of ZION: /journal
 
 ## Social
 

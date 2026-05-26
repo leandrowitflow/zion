@@ -10,6 +10,7 @@ export const ogImages = {
   destination: "/og/destination.jpg",
   sustainability: "/og/sustainability.jpg",
   ignite: "/og/ignite.jpg",
+  journal: "/og/journal.jpg",
   default: "/og/default.png",
 } as const;
 

@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [{ source: "/blog", destination: "/journal", permanent: true }];
+  },
 };
 
 export default nextConfig;

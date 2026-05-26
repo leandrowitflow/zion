@@ -70,6 +70,7 @@ export function organizationSchema(): JsonLd {
       "Bespoke experiences",
       "Corporate incentives",
       "Sustainable tourism",
+      "Luxury travel journal",
     ],
   };
 }
@@ -216,5 +217,62 @@ export function itemListSchema(input: {
       name: item.name,
       url: `${SITE_URL}${item.path}`,
     })),
+  };
+}
+
+export function blogSchema(input: {
+  name: string;
+  description: string;
+  path: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE_URL}${input.path}#blog`,
+    name: input.name,
+    description: input.description,
+    url: `${SITE_URL}${input.path}`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en",
+  };
+}
+
+export function collectionPageSchema(input: {
+  name: string;
+  description: string;
+  path: string;
+  image?: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: input.name,
+    description: input.description,
+    url: `${SITE_URL}${input.path}`,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/journal#blog` },
+    mainEntity: { "@id": `${SITE_URL}${input.path}#blog` },
+    ...(input.image ? { image: absoluteAsset(input.image) } : {}),
+  };
+}
+
+export function blogPostingSchema(input: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  datePublished?: string;
+}): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: input.title,
+    description: input.description,
+    url: `${SITE_URL}${input.path}`,
+    ...(input.image ? { image: absoluteAsset(input.image) } : {}),
+    ...(input.datePublished ? { datePublished: input.datePublished } : {}),
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": `${SITE_URL}/journal#blog` },
   };
 }

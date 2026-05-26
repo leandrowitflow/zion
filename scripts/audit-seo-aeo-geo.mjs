@@ -20,7 +20,7 @@ const PORT = Number(process.env.AUDIT_PORT ?? 3000);
 let baseUrl = process.env.AUDIT_BASE_URL ?? `http://127.0.0.1:${PORT}`;
 const SKIP_LIGHTHOUSE = process.env.AUDIT_SKIP_LIGHTHOUSE === "1";
 
-const LIGHTHOUSE_PATHS = ["/", "/ignite-us", "/experiences", "/destination", "/the-artisans"];
+const LIGHTHOUSE_PATHS = ["/", "/ignite-us", "/experiences", "/destination", "/the-artisans", "/journal"];
 
 /** @typedef {{ category: 'SEO'|'AEO'|'GEO', severity: 'pass'|'warn'|'fail'|'info', message: string, points?: number }} Finding */
 
@@ -257,9 +257,33 @@ async function runLiveChecks() {
   }
 
   try {
+    const journalHtml = await fetchText("/journal");
+    const journalTypes = jsonLdTypes(extractJsonLd(journalHtml));
+    if (journalTypes.includes("FAQPage") && journalTypes.includes("Blog")) {
+      add("GEO", "pass", "Live /journal serves Blog + FAQPage JSON-LD", 1);
+    } else {
+      add("GEO", "fail", "Live /journal missing Blog or FAQPage JSON-LD", 0);
+    }
+    if (journalHtml.includes('id="faq-heading"') || journalHtml.includes("Good to")) {
+      add("AEO", "pass", "Live /journal renders FAQ section", 1);
+    } else {
+      add("AEO", "fail", "Live /journal missing FAQ section", 0);
+    }
+    if (journalHtml.includes("<h1") && journalHtml.includes("The Journal of ZION")) {
+      add("SEO", "pass", "Live /journal has visible H1", 1);
+    } else {
+      add("SEO", "fail", "Live /journal missing H1", 0);
+    }
+  } catch (err) {
+    add("GEO", "fail", `Live /journal JSON-LD not verified (${err.message})`, 0);
+    add("AEO", "fail", `Live /journal unreachable (${err.message})`, 0);
+    add("SEO", "fail", `Live /journal not verified (${err.message})`, 0);
+  }
+
+  try {
     const sitemap = await fetchText("/sitemap.xml");
-    if (sitemap.includes("<loc>") && sitemap.includes("/experiences/")) {
-      add("SEO", "info", "Live /sitemap.xml includes dynamic routes", 1);
+    if (sitemap.includes("<loc>") && sitemap.includes("/experiences/") && sitemap.includes("/journal")) {
+      add("SEO", "info", "Live /sitemap.xml includes dynamic routes and /journal", 1);
     } else {
       add("SEO", "info", "Live /sitemap.xml may be incomplete", 0);
     }
@@ -324,7 +348,7 @@ function runCodeChecks() {
 
   const descriptions = extractDescriptionsFromPages();
   const descIssues = descriptions.filter((d) => d.length < 120 || d.length > 160);
-  if (descriptions.length >= 7 && descIssues.length === 0) {
+  if (descriptions.length >= 8 && descIssues.length === 0) {
     add("SEO", "pass", "All static meta descriptions are 120–160 characters", 1);
   } else if (descIssues.length > 0) {
     add("SEO", "fail", `${descIssues.length} meta description(s) outside 120–160 chars`, 0);
@@ -408,6 +432,12 @@ function runCodeChecks() {
   }
 
   // AEO code checks
+  if (read("public/llms.txt")?.includes("/journal")) {
+    add("AEO", "pass", "llms.txt lists The Journal of ZION", 1);
+  } else {
+    add("AEO", "warn", "llms.txt missing /journal", 0.5);
+  }
+
   if (read("public/llms.txt")?.includes("Destination Alchemist Lab")) {
     add("AEO", "pass", "llms.txt file includes entity summary", 1);
   } else {
@@ -532,6 +562,18 @@ function runCodeChecks() {
     add("GEO", "fail", "Slug page structured data incomplete in source", 0);
   }
 
+  if (read("src/app/journal/page.tsx")?.includes("JournalStructuredData")) {
+    add("GEO", "pass", "Journal page uses Blog + CollectionPage structured data", 1);
+  } else {
+    add("GEO", "fail", "Journal page missing structured data component", 0);
+  }
+
+  if (read("src/app/journal/page.tsx")?.includes("journalFaqs")) {
+    add("GEO", "pass", "Journal page wires FAQ schema in source", 1);
+  } else {
+    add("GEO", "warn", "Journal page lacks FAQ schema in source", 0.5);
+  }
+
   if (["experiences", "destination", "legacy", "the-artisans"].every((p) =>
     read(`src/app/${p}/page.tsx`)?.includes("ListingStructuredData"),
   )) {
@@ -552,7 +594,7 @@ function runCodeChecks() {
     add("GEO", "fail", "Ignite Us missing ContactPage or FAQ schema in source", 0);
   }
 
-  if (["experiences", "destination", "legacy"].every(
+  if (["experiences", "destination", "legacy", "journal"].every(
     (p) => read(`src/app/${p}/page.tsx`)?.includes("faqs"),
   )) {
     add("GEO", "pass", "Listing pages wire FAQ schema in source", 1);

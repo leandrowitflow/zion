@@ -575,6 +575,16 @@ main.site-main .relative.overflow-hidden img {
   }
 }
 
+/* Blog — journal card titles (Figma 24.425px ivypresto) */
+.blog-card-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.5vw, 24.425px);
+  line-height: 1.35;
+  color: #292725;
+  margin: 0;
+}
+
 /* FAQ — editorial accordion (Good to know sections) */
 .faq-section-layout {
   display: grid;
