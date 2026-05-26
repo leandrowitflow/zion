@@ -11,8 +11,16 @@ export type BlogPost = {
   datePublished?: string;
 };
 
+export type JournalAuthor = {
+  name: string;
+  jobTitle?: string | null;
+  bio?: string | null;
+  avatarUrl?: string | null;
+};
+
 export type JournalArticle = BlogPost & {
   content: string;
+  author?: JournalAuthor | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
   structuredData?: unknown;
@@ -55,6 +63,19 @@ function mapListItem(post: CmsPostListItem, locale: string): BlogPost {
   };
 }
 
+function mapJournalAuthor(post: CmsPost): JournalAuthor | null {
+  if (!post.author) {
+    return null;
+  }
+
+  return {
+    name: post.author.name,
+    jobTitle: post.author.jobTitle,
+    bio: post.author.bio,
+    avatarUrl: post.author.avatarUrl ?? undefined,
+  };
+}
+
 function mapArticle(post: CmsPost, locale: string): JournalArticle {
   const localized = pickLocalizedFields(post, locale);
   const translation = post.translations[locale];
@@ -67,6 +88,7 @@ function mapArticle(post: CmsPost, locale: string): JournalArticle {
     title: localized.title,
     description: localized.description ?? seoDescription ?? undefined,
     content: sanitizeJournalContent(rawContent, localized.title),
+    author: mapJournalAuthor(post),
     seoTitle,
     seoDescription,
     structuredData: post.structuredData,
