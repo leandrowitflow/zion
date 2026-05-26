@@ -6,4 +6,5 @@ export {
   getJournalPosts,
   type BlogPost,
   type JournalArticle,
+  type JournalAuthor,
 } from "@/lib/cms/posts";

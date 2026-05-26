@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { JournalAuthorBlock } from "@/components/journal/JournalAuthorBlock";
 import { JournalMarkdown } from "@/components/journal/JournalMarkdown";
 import type { JournalArticle } from "@/lib/blog";
 
@@ -62,6 +63,7 @@ export function JournalArticleView({ article }: JournalArticleViewProps) {
 
       <div className="journal-prose mt-10 max-w-3xl">
         <JournalMarkdown content={article.content} />
+        {article.author ? <JournalAuthorBlock author={article.author} /> : null}
       </div>
     </article>
   );

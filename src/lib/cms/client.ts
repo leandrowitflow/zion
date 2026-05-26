@@ -48,6 +48,7 @@ export async function fetchCmsPosts(page = 1, limit = 100): Promise<CmsPostsResp
     status: "published",
     page: String(page),
     limit: String(limit),
+    locale: config.contentLocale,
   });
 
   return cmsFetch<CmsPostsResponse>(`/api/v1/sites/${config.siteId}/posts?${params}`);
@@ -75,7 +76,10 @@ export async function fetchCmsPostBySlug(slug: string): Promise<CmsPost | null> 
   }
 
   try {
-    return await cmsFetch<CmsPost>(`/api/v1/sites/${config.siteId}/posts/${encodeURIComponent(slug)}`);
+    const locale = config.contentLocale;
+    return await cmsFetch<CmsPost>(
+      `/api/v1/sites/${config.siteId}/posts/${encodeURIComponent(slug)}?locale=${encodeURIComponent(locale)}`,
+    );
   } catch (error) {
     if (error instanceof CmsApiError && error.status === 404) {
       return null;

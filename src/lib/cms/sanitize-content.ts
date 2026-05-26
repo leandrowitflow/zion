@@ -29,6 +29,13 @@ export function stripDuplicateTitleHeading(content: string, title: string): stri
   return content.replace(new RegExp(`^#\\s+${escaped}\\s*\\n+`, "i"), "");
 }
 
+/** Removes embedded CMS author card — rendered via JournalAuthorBlock from API author. */
+export function stripAuthorBlockHtml(content: string): string {
+  return content.replace(/\n?<div id="author-block"[\s\S]*?<\/div>\s*$/i, "").trimEnd();
+}
+
 export function sanitizeJournalContent(content: string, title: string): string {
-  return stripDuplicateTitleHeading(stripLeadingCoverImageMarkdown(content), title);
+  return stripAuthorBlockHtml(
+    stripDuplicateTitleHeading(stripLeadingCoverImageMarkdown(content), title),
+  );
 }

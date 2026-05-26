@@ -27,6 +27,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "ivypresto-display";
+  src: url("/Ivy-Presto-font-Family/fonts/fonnts.com-Ivy-Presto-Display-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #2a2826;
@@ -205,12 +214,15 @@ body {
   letter-spacing: 0;
 }
 
-/* ivypresto-display — header nav (live menu: 17px / 1.5em / 400) */
-.font-nav {
-  font-family: var(--font-display);
+/* ivypresto-display — header nav (17px / 26px / 400) */
+.header-nav-link {
+  font-family: ivypresto-display, serif;
   font-weight: 400;
+  font-style: normal;
   font-size: 17px;
-  line-height: 1.5em;
+  line-height: 26px;
+  color: rgb(42, 40, 38);
+  font-synthesis: none;
 }
 
 @keyframes ken-burns-in {
