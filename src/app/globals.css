@@ -501,3 +501,59 @@ main.site-main .relative.overflow-hidden img {
   background-color: var(--foreground);
   transition: width 0.8s ease-out;
 }
+
+/* Subpage card hover — title greys out, "Read More" reveals (live experiences grid) */
+.subpage-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subpage-card-title {
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.subpage-card-readmore {
+  display: block;
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    max-height 0.35s ease,
+    transform 0.35s ease;
+}
+
+.subpage-card:hover .subpage-card-title,
+.subpage-card:focus-visible .subpage-card-title {
+  color: var(--muted);
+  transform: translateY(-2px);
+}
+
+.subpage-card:hover .subpage-card-readmore,
+.subpage-card:focus-visible .subpage-card-readmore {
+  opacity: 1;
+  max-height: 1.75rem;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subpage-card-title,
+  .subpage-card-readmore {
+    transition: none;
+  }
+
+  .subpage-card-readmore {
+    opacity: 1;
+    max-height: none;
+    transform: none;
+  }
+}

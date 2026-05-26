@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-
 import { destinationCards } from "@/lib/assets/destination";
+import { SubpageCardLink } from "@/components/ui/SubpageCardLink";
 import {
   buildInfiniteSlides,
   isInfiniteSlideClone,
@@ -74,20 +72,12 @@ export function DestinationsCarousel() {
               aria-hidden={isInfiniteSlideClone(index, destinationCards.length) || undefined}
               className="w-[min(92vw,417px)] shrink-0 lg:w-[calc((100%-38px)/3)] lg:flex-[0_0_calc((100%-38px)/3)]"
             >
-              <Link href={`/destination/${item.id}`} className="group block">
-                <div className="relative aspect-[417/500] w-full overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                    sizes="(max-width: 1023px) 92vw, 33vw"
-                  />
-                </div>
-                <p className="font-card-title mt-3 text-center text-[clamp(11px,2.4vw,24.425px)] text-[#292725] transition-colors group-hover:text-accent lg:text-[24.425px]">
-                  {item.title}
-                </p>
-              </Link>
+              <SubpageCardLink
+                href={`/destination/${item.id}`}
+                title={item.title}
+                image={item.image}
+                sizes="(max-width: 1023px) 92vw, 33vw"
+              />
             </article>
           ))}
         </div>
