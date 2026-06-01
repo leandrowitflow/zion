@@ -82,21 +82,24 @@ function FormField({
   disabled?: boolean;
 }) {
   return (
-    <div>
-      <label htmlFor={id} className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
-        <span className="lg:hidden">
-          <FieldIcon icon={icon} />
-        </span>
-        {label}
-      </label>
-      <input
-        id={id}
-        name={id}
-        type={type}
-        required={required}
-        disabled={disabled}
-        className="mt-0.5 block h-[15px] w-full border-0 border-b border-[#696866] bg-transparent px-0 py-0 text-[15px] leading-none text-black outline-none focus:border-[#2b2e2b] disabled:opacity-50"
-      />
+    <div className="flex items-center gap-2">
+      <span className="lg:hidden">
+        <FieldIcon icon={icon} />
+      </span>
+      <div className="min-w-0 flex-1">
+        <label htmlFor={id} className="sr-only">
+          {label}
+        </label>
+        <input
+          id={id}
+          name={id}
+          type={type}
+          required={required}
+          disabled={disabled}
+          placeholder={label}
+          className="block h-[26px] w-full border-0 border-b border-[#696866] bg-transparent px-0 py-0 text-[15px] leading-[26px] text-black outline-none placeholder:text-black/50 focus:border-[#2b2e2b] focus:placeholder:text-transparent disabled:opacity-50"
+        />
+      </div>
     </div>
   );
 }
@@ -227,20 +230,25 @@ export function IgniteContactSection() {
         </div>
 
         <div className="mt-5 lg:mt-8">
-          <label htmlFor="message" className="flex items-center gap-2 text-[15px] leading-[26px] text-black">
+          <div className="flex items-start gap-2">
             <span className="lg:hidden">
               <FieldIcon icon="message" />
             </span>
-            How can we help you? Feel free to get in touch!
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={3}
-            required
-            disabled={isSubmitting}
-            className="mt-0.5 w-full resize-none border-0 border-b border-[#696866] bg-transparent px-0 py-0 text-[15px] leading-[22px] text-black outline-none focus:border-[#2b2e2b] disabled:opacity-50"
-          />
+            <div className="min-w-0 flex-1">
+              <label htmlFor="message" className="sr-only">
+                How can we help you? Feel free to get in touch!
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={3}
+                required
+                disabled={isSubmitting}
+                placeholder="How can we help you? Feel free to get in touch!"
+                className="w-full resize-none border-0 border-b border-[#696866] bg-transparent px-0 py-0 text-[15px] leading-[22px] text-black outline-none placeholder:text-black/50 focus:border-[#2b2e2b] focus:placeholder:text-transparent disabled:opacity-50"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="mt-6 flex flex-col items-center gap-6 lg:mt-10 lg:flex-row lg:items-center">
