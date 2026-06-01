@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
-import { MouseHelper } from "@/components/ui/MouseHelper";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/site";
 import "./globals.css";
 
@@ -56,13 +55,13 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
         <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
         <link rel="author" href="/llms.txt" />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <RootStructuredData />
-        <MouseHelper />
-        <ScrollReveal />
+        <ClientEnhancements />
         {children}
       </body>
     </html>

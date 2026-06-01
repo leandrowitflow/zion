@@ -66,7 +66,7 @@ function SplitPanel({
           alt={`${title} — Portugal`}
           fill
           className="object-cover"
-          sizes="(max-width: 1920px) 50vw, 960px"
+          sizes="(max-width: 1023px) 100vw, 50vw"
         />
       ) : null}
       <div className="absolute inset-0 z-10 bg-black/20" />
@@ -88,7 +88,11 @@ export default function HomePage() {
       <main className="site-main bg-white">
         {/* Hero — full bleed */}
         <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
-          <HeroVideoBackground src={homeAssets.heroVideoSrc} poster={homeAssets.heroVideo} />
+          <HeroVideoBackground
+            src={homeAssets.heroVideoSrc}
+            poster={homeAssets.heroVideo}
+            priority
+          />
           {/* Figma desktop (1400+): title top 25.07%, button top 39.04% within 1081px hero */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center min-[1400px]:block">
             <h1 className="heading-section mb-0 text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[25.07%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2">
@@ -111,7 +115,13 @@ export default function HomePage() {
             >
               <div className="flex flex-col justify-end">
                 <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden">
-                  <Image src={homeAssets.window} alt="Elegant interior" fill className="object-cover" sizes="524px" />
+                  <Image
+                    src={homeAssets.window}
+                    alt="Elegant interior"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1023px) 100vw, 524px"
+                  />
                 </div>
               </div>
 
@@ -135,7 +145,13 @@ export default function HomePage() {
                 </div>
 
                 <div className="relative mt-[var(--space-medium)] aspect-[634/426] w-full max-w-[634px] overflow-hidden lg:mt-auto lg:pt-[var(--space-medium)]">
-                  <Image src={homeAssets.people} alt="Family journey" fill className="object-cover" sizes="634px" />
+                  <Image
+                    src={homeAssets.people}
+                    alt="Family journey"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1023px) 100vw, 634px"
+                  />
                 </div>
               </div>
             </div>

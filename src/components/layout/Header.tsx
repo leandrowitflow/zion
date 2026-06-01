@@ -51,7 +51,7 @@ function LogoLink({
           width={230}
           height={228}
           className="absolute left-0 top-[-72.07%] h-[245.05%] w-full max-w-none"
-          priority={!inverted}
+          sizes="230px"
         />
       </div>
     </Link>

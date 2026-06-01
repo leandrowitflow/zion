@@ -178,17 +178,6 @@ body {
   padding-top: 0;
 }
 
-/* Top inset for full-bleed bands after a .site-section — pairs with that section's bottom padding */
-.site-section-band-inset {
-  padding-top: var(--site-section-gap-mobile);
-}
-
-@media (min-width: 1024px) {
-  .site-section-band-inset {
-    padding-top: var(--site-section-gap);
-  }
-}
-
 /* Partners — equal vertical padding on the content container */
 .partners-section-inner {
   padding-block: var(--site-section-gap-mobile);

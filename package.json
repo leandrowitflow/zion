@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "audit:seo": "node scripts/audit-seo-aeo-geo.mjs"
+    "audit:seo": "node scripts/audit-seo-aeo-geo.mjs",
+    "compress:images": "node scripts/compress-static-images.mjs",
+    "generate:mobile-videos": "node scripts/generate-mobile-videos.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
