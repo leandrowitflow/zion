@@ -15,7 +15,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
           secondary={member.hoverImage}
           alt={member.name}
         />
-        <div className="mt-6 flex flex-col gap-1.5 text-left">
+        <div className="mt-4 flex flex-col gap-1.5 text-left">
           <p className="font-card-title text-foreground transition-colors group-hover:text-accent">
             {member.name}
           </p>

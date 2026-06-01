@@ -102,15 +102,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* The Art of Zion — Figma 2292:99: window & people share bottom edge (870px / 426px) */}
+        {/* The Art of Zion — Figma 2292:99: window & people share bottom edge (524×870 / 634×426) */}
         <SiteSection>
           <SiteContainer>
             <div
-              className="grid grid-cols-1 lg:grid-cols-2 lg:items-end"
+              className="grid grid-cols-1 lg:grid-cols-2 lg:items-stretch"
               style={{ gap: "var(--site-column-gap)" }}
             >
-              <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden lg:max-w-none">
-                <Image src={homeAssets.window} alt="Elegant interior" fill className="object-cover" sizes="524px" />
+              <div className="flex flex-col justify-end">
+                <div className="relative aspect-[524/870] w-full max-w-[524px] overflow-hidden">
+                  <Image src={homeAssets.window} alt="Elegant interior" fill className="object-cover" sizes="524px" />
+                </div>
               </div>
 
               <div className="flex flex-col">
@@ -132,7 +134,7 @@ export default function HomePage() {
                   <FilledButton href="/the-artisans">About Zion</FilledButton>
                 </div>
 
-                <div className="relative mt-[var(--space-medium)] aspect-[634/426] w-full max-w-[634px] overflow-hidden">
+                <div className="relative mt-[var(--space-medium)] aspect-[634/426] w-full max-w-[634px] overflow-hidden lg:mt-auto lg:pt-[var(--space-medium)]">
                   <Image src={homeAssets.people} alt="Family journey" fill className="object-cover" sizes="634px" />
                 </div>
               </div>
@@ -196,11 +198,14 @@ export default function HomePage() {
             objectPosition="object-bottom"
           />
           <div className="absolute inset-0 z-10 bg-black/25" />
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center">
-            <h2 className="heading-section mb-0 text-white">
+          {/* Match home hero overlay — Figma title 25.07%, button 39.04%; +1lh title offset for single line */}
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center min-[1400px]:block">
+            <h2 className="heading-section mb-0 text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[calc(25.07%+1lh)] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2">
               Sustainability
             </h2>
-            <OutlineButton href="/ignite-us">Contact Us</OutlineButton>
+            <div className="min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[39.04%] min-[1400px]:-translate-x-1/2">
+              <OutlineButton href="/ignite-us">Contact Us</OutlineButton>
+            </div>
           </div>
         </section>
       </main>

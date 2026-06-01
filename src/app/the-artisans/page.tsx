@@ -78,18 +78,12 @@ export default function TheArtisansPage() {
         </SiteContainer>
       </SiteSection>
 
-      {/* Who we are — portrait top aligns with title (Figma 2326:10) */}
-      <SiteSection>
+      {/* Who we are — flush bottom so band top inset = single gap (matches Our Artisans below video) */}
+      <SiteSection className="site-section-flush-bottom">
         <SiteContainer>
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-8">
-            <SectionHeading
-              before="Who we "
-              accent="are"
-              align="left"
-              className="lg:col-start-2 lg:row-start-1"
-            />
             {/* Portrait — desktop only; on mobile it stacks under gallery in Art of Zion */}
-            <div className="relative mx-auto hidden aspect-[521/780] w-full max-w-[521px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:block lg:row-span-3">
+            <div className="relative mx-auto hidden aspect-[521/780] w-full max-w-[521px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:block lg:row-span-2">
               <Image
                 src={artisansAssets.portrait}
                 alt="The team"
@@ -98,29 +92,37 @@ export default function TheArtisansPage() {
                 sizes="(max-width: 1023px) 100vw, 521px"
               />
             </div>
-            <div className="max-w-[628px] space-y-6 text-body lg:col-start-2 lg:row-start-2 lg:max-w-none">
-              <p>
-                We are a collective of visionary travel artisans, storytellers, and experience curators
-                who believe in crafting more than just itineraries — we create deeply immersive journeys
-                that resonate on a personal level.
-              </p>
-              <p>
-                As a{" "}
-                <strong className="font-bold text-foreground">Destination Alchemist Lab</strong>, we bring
-                a wealth of expertise within the destination, cultural immersion, and personalized service,
-                shaping each journey to be as unique as the traveler themselves.
-              </p>
-              <p>
-                Rooted in creativity, innovation, and a deep appreciation for art, history, and refined
-                living, we transform destinations into living narratives. Whether you seek the serenity of
-                a beach, the tranquility of the countryside, or the vibrancy of an urban escape, we tailor
-                every detail with care and purpose. Embracing the belief that simplicity is the new
-                sophistication, we focus on what truly matters, crafting meaningful moments that evoke
-                elegance without excess. Our approach goes beyond planning — we sculpt experiences that
-                leave a lasting impression, stories that stay with you long after your journey has ended.
-              </p>
+            <div className="max-w-[628px] lg:col-start-2 lg:row-start-1 lg:max-w-none">
+              <SectionHeading
+                before="Who we "
+                accent="are"
+                align="left"
+                className="mb-8 lg:mb-10"
+              />
+              <div className="space-y-6 text-body">
+                <p>
+                  We are a collective of visionary travel artisans, storytellers, and experience curators
+                  who believe in crafting more than just itineraries — we create deeply immersive journeys
+                  that resonate on a personal level.
+                </p>
+                <p>
+                  As a{" "}
+                  <strong className="font-bold text-foreground">Destination Alchemist Lab</strong>, we bring
+                  a wealth of expertise within the destination, cultural immersion, and personalized service,
+                  shaping each journey to be as unique as the traveler themselves.
+                </p>
+                <p>
+                  Rooted in creativity, innovation, and a deep appreciation for art, history, and refined
+                  living, we transform destinations into living narratives. Whether you seek the serenity of
+                  a beach, the tranquility of the countryside, or the vibrancy of an urban escape, we tailor
+                  every detail with care and purpose. Embracing the belief that simplicity is the new
+                  sophistication, we focus on what truly matters, crafting meaningful moments that evoke
+                  elegance without excess. Our approach goes beyond planning — we sculpt experiences that
+                  leave a lasting impression, stories that stay with you long after your journey has ended.
+                </p>
+              </div>
             </div>
-            <div className="relative aspect-[625/416] w-full overflow-hidden lg:col-start-2 lg:row-start-3 lg:max-w-[625px]">
+            <div className="relative aspect-[625/416] w-full overflow-hidden lg:col-start-2 lg:row-start-2 lg:max-w-[625px]">
               <Image
                 src={artisansAssets.sunset}
                 alt="Couple at sunset"
@@ -133,19 +135,24 @@ export default function TheArtisansPage() {
         </SiteContainer>
       </SiteSection>
 
-      <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
-        <HeroVideoBackground
-          src={artisansAssets.videoSrc}
-          poster={artisansAssets.video}
-          objectPosition="object-bottom"
-        />
-        <div className="absolute inset-0 z-10 bg-black/10" />
-      </section>
+      {/* Full-bleed video — top inset only (single gap after Who we are) */}
+      <SiteSection spacing="none">
+        <div className="site-section-band-inset">
+          <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
+            <HeroVideoBackground
+              src={artisansAssets.videoSrc}
+              poster={artisansAssets.video}
+              objectPosition="object-bottom"
+            />
+            <div className="absolute inset-0 z-10 bg-black/10" />
+          </section>
+        </div>
+      </SiteSection>
 
       {/* Our Artisans (Figma 2326:39) */}
       <SiteSection>
         <SiteContainer>
-          <SectionHeading before="Our " accent="Artisans" headingLevel="h1" className="mb-8 lg:mb-12" />
+          <SectionHeading before="Our " accent="Artisans" headingLevel="h1" className="mb-10 lg:mb-14" />
           <div className="grid grid-cols-1 gap-x-7 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-6">
             {teamMembers.map((member) => (
               <TeamMemberCard key={member.slug} member={member} />
