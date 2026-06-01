@@ -14,6 +14,11 @@ import { partnerLogos } from "@/lib/assets/partners";
 
 type PartnerLogo = (typeof partnerLogos)[number];
 
+type PartnersCarouselProps = {
+  /** Pairs with adjacent flush sections (e.g. Craft → Partners → Sustainability on home) */
+  edgeToEdge?: boolean;
+};
+
 function buildPartnerPages(logosPerSlide: number): PartnerLogo[][] {
   return Array.from({ length: partnerLogos.length }, (_, start) =>
     Array.from({ length: logosPerSlide }, (_, offset) => {
@@ -45,56 +50,72 @@ function partnerLogoClassName(logosPerSlide: number) {
 const PARTNERS_AUTOPLAY_MS = 8000;
 const PARTNERS_SCROLL_MS = 1600;
 
-function PartnersCarouselStatic() {
-  const partner = partnerLogos[0];
+const PARTNERS_DOTS_ROW_CLASS =
+  "mt-[var(--space-small)] flex h-[6px] flex-wrap items-center justify-center gap-[11px]";
+const PARTNER_DOT_CLASS = "size-[6px] shrink-0 rounded-full";
+
+function PartnersSection({
+  children,
+  edgeToEdge,
+}: {
+  children: React.ReactNode;
+  edgeToEdge?: boolean;
+}) {
+  const sectionClass = edgeToEdge
+    ? "site-section-flush-top site-section-flush-bottom"
+    : "";
 
   return (
-    <SiteSection>
-      <SiteContainer>
-        <p className="font-partners-heading text-center text-foreground">
-          Check Our Partners
-        </p>
-
-        <div className="mt-[var(--space-small)] w-full overflow-hidden">
-          <div
-            className="flex items-end justify-center"
-            aria-roledescription="carousel"
-            aria-label="Partner logos"
-          >
-            <Image
-              src={partner.image}
-              alt={partner.alt}
-              width={partner.width}
-              height={partner.height}
-              className={partnerLogoClassName(1)}
-              sizes="(max-width: 1023px) 72vw, 233px"
-            />
-          </div>
-        </div>
-
-        <div
-          className="mt-6 flex flex-wrap items-center justify-center gap-2"
-          role="tablist"
-          aria-label="Partner logos"
-        >
-          {partnerLogos.map((item, index) => (
-            <span
-              key={item.id}
-              role="tab"
-              aria-selected={index === 0}
-              aria-label={`Show ${item.alt}`}
-              className={`h-[9px] w-[9px] rounded-full ${
-                index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
-              }`}
-            />
-          ))}
-        </div>
-      </SiteContainer>
+    <SiteSection spacing="none" className={sectionClass}>
+      <SiteContainer className="partners-section-inner">{children}</SiteContainer>
     </SiteSection>
   );
 }
 
-function PartnersCarouselInteractive() {
+function PartnersCarouselStatic({ edgeToEdge }: PartnersCarouselProps) {
+  const partner = partnerLogos[0];
+
+  return (
+    <PartnersSection edgeToEdge={edgeToEdge}>
+      <p className="font-partners-heading text-center text-foreground">
+        Check Our Partners
+      </p>
+
+      <div className="mt-[var(--space-small)] w-full overflow-hidden">
+        <div
+          className="flex items-end justify-center"
+          aria-roledescription="carousel"
+          aria-label="Partner logos"
+        >
+          <Image
+            src={partner.image}
+            alt={partner.alt}
+            width={partner.width}
+            height={partner.height}
+            className={partnerLogoClassName(1)}
+            sizes="(max-width: 1023px) 72vw, 233px"
+          />
+        </div>
+      </div>
+
+      <div className={PARTNERS_DOTS_ROW_CLASS} role="tablist" aria-label="Partner logos">
+        {partnerLogos.map((item, index) => (
+          <span
+            key={item.id}
+            role="tab"
+            aria-selected={index === 0}
+            aria-label={`Show ${item.alt}`}
+            className={`${PARTNER_DOT_CLASS} ${
+              index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
+            }`}
+          />
+        ))}
+      </div>
+    </PartnersSection>
+  );
+}
+
+function PartnersCarouselInteractive({ edgeToEdge }: PartnersCarouselProps) {
   const logosPerSlide = useLogosPerSlide();
   const partnerPages = useMemo(() => buildPartnerPages(logosPerSlide), [logosPerSlide]);
   const { trackRef, scrollToIndex, activeIndex } = useInfiniteCarousel(
@@ -108,71 +129,69 @@ function PartnersCarouselInteractive() {
   const logoClassName = partnerLogoClassName(logosPerSlide);
 
   return (
-    <SiteSection>
-      <SiteContainer>
-        <p className="font-partners-heading text-center text-foreground">
-          Check Our Partners
-        </p>
+    <PartnersSection edgeToEdge={edgeToEdge}>
+      <p className="font-partners-heading text-center text-foreground">
+        Check Our Partners
+      </p>
 
-        <div className="mt-[var(--space-small)] w-full overflow-hidden">
-          <div
-            key={logosPerSlide}
-            ref={trackRef}
-            className="flex overflow-x-auto scroll-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            aria-roledescription="carousel"
-            aria-label="Partner logos"
-          >
-            {slides.map((page, index) => (
-              <article
-                key={`${page[0]?.id ?? "page"}-${index}`}
-                aria-hidden={isInfiniteSlideClone(index, partnerPages.length) ? true : undefined}
-                className="flex min-w-full shrink-0 grow-0 basis-full items-end justify-center gap-[clamp(24px,4vw,72px)]"
-              >
-                {page.map((partner) => (
-                  <Image
-                    key={partner.id}
-                    src={partner.image}
-                    alt={partner.alt}
-                    width={partner.width}
-                    height={partner.height}
-                    className={logoClassName}
-                    sizes={logosPerSlide === 1 ? "(max-width: 1023px) 72vw, 233px" : "(max-width: 1023px) 28vw, 233px"}
-                  />
-                ))}
-              </article>
-            ))}
-          </div>
-        </div>
-
+      <div className="mt-[var(--space-small)] w-full overflow-hidden">
         <div
-          className="mt-6 flex flex-wrap items-center justify-center gap-2"
-          role="tablist"
+          key={logosPerSlide}
+          ref={trackRef}
+          className="flex overflow-x-auto scroll-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          aria-roledescription="carousel"
           aria-label="Partner logos"
         >
-          {partnerLogos.map((partner, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <button
-                key={partner.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                aria-label={`Show ${partner.alt}`}
-                onClick={() => scrollToIndex(index)}
-                className={`h-[9px] w-[9px] rounded-full transition-colors ${
-                  isActive ? "bg-foreground" : "bg-[#d9d9d9] hover:bg-[#b8b8b8]"
-                }`}
-              />
-            );
-          })}
+          {slides.map((page, index) => (
+            <article
+              key={`${page[0]?.id ?? "page"}-${index}`}
+              aria-hidden={isInfiniteSlideClone(index, partnerPages.length) ? true : undefined}
+              className="flex min-w-full shrink-0 grow-0 basis-full items-end justify-center gap-[clamp(24px,4vw,72px)]"
+            >
+              {page.map((partner) => (
+                <Image
+                  key={partner.id}
+                  src={partner.image}
+                  alt={partner.alt}
+                  width={partner.width}
+                  height={partner.height}
+                  className={logoClassName}
+                  sizes={
+                    logosPerSlide === 1
+                      ? "(max-width: 1023px) 72vw, 233px"
+                      : "(max-width: 1023px) 28vw, 233px"
+                  }
+                />
+              ))}
+            </article>
+          ))}
         </div>
-      </SiteContainer>
-    </SiteSection>
+      </div>
+
+      <div className={PARTNERS_DOTS_ROW_CLASS} role="tablist" aria-label="Partner logos">
+        {partnerLogos.map((partner, index) => {
+          const isActive = index === activeIndex;
+          return (
+            <button
+              key={partner.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              aria-label={`Show ${partner.alt}`}
+              onClick={() => scrollToIndex(index)}
+              className={`${PARTNER_DOT_CLASS} transition-colors ${
+                isActive ? "bg-foreground" : "bg-[#d9d9d9] hover:bg-[#b8b8b8]"
+              }`}
+            />
+          );
+        })}
+      </div>
+    </PartnersSection>
   );
 }
 
 /** Partner logos — 1 on mobile (2552:34), 3 on desktop; slides one logo at a time */
-export function PartnersCarousel() {
+export function PartnersCarousel({ edgeToEdge }: PartnersCarouselProps = {}) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -180,8 +199,8 @@ export function PartnersCarousel() {
   }, []);
 
   if (!mounted) {
-    return <PartnersCarouselStatic />;
+    return <PartnersCarouselStatic edgeToEdge={edgeToEdge} />;
   }
 
-  return <PartnersCarouselInteractive />;
+  return <PartnersCarouselInteractive edgeToEdge={edgeToEdge} />;
 }
