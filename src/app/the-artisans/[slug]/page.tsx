@@ -80,7 +80,7 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
                 alt={member.name}
                 width={840}
                 height={1260}
-                className="team-photo-frame h-auto w-full object-cover"
+                className="h-auto w-full object-cover"
                 sizes="(max-width: 1023px) 560px, 840px"
                 priority
               />

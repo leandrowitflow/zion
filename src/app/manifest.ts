@@ -13,12 +13,12 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en",
     icons: [
       {
-        src: "/Logos/ZION/Favicon-01.png",
-        sizes: "any",
+        src: "/favicon-64x64.png",
+        sizes: "64x64",
         type: "image/png",
       },
       {
-        src: "/Logos/ZION/Favicon-02.png",
+        src: "/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
       },

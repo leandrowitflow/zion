@@ -505,11 +505,6 @@ main.site-main .relative.overflow-hidden img {
   }
 }
 
-/* Team member photo — thin frame (grid + profile) */
-.team-photo-frame {
-  border: 1px solid #000;
-}
-
 /* Team member photo hover — hover image fades in over a steady base (no white flash) */
 .team-photo-base {
   z-index: 0;
