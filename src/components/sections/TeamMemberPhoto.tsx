@@ -21,7 +21,7 @@ export function TeamMemberPhoto({
 }: TeamMemberPhotoProps) {
   return (
     <div
-      className={`group relative overflow-hidden bg-[#2b2e2b] ${aspectClassName} ${className}`.trim()}
+      className={`team-photo-frame group relative overflow-hidden bg-[#2b2e2b] ${aspectClassName} ${className}`.trim()}
     >
       <Image
         src={primary}

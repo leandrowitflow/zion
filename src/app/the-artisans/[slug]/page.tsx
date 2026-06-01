@@ -73,22 +73,23 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
             <h1 className="heading-section text-left">{member.name}</h1>
           </div>
 
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(360px,640px)_minmax(0,1fr)] lg:items-stretch lg:gap-x-16 xl:gap-x-20">
-            <div className="relative mx-auto aspect-[840/1260] w-full max-w-[560px] lg:mx-0 lg:max-w-none">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(360px,840px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
+            <div className="mx-auto w-full max-w-[560px] shrink-0 lg:mx-0 lg:max-w-[840px]">
               <Image
                 src={member.hoverImage}
                 alt={member.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1023px) 560px, 40vw"
+                width={840}
+                height={1260}
+                className="team-photo-frame h-auto w-full object-cover"
+                sizes="(max-width: 1023px) 560px, 840px"
                 priority
               />
             </div>
 
-            <div className="flex flex-col lg:self-stretch lg:justify-between lg:pt-2 xl:pt-6">
+            <div className="flex flex-col lg:pt-2 xl:pt-6">
               <TeamTraitBars traits={member.traits} />
 
-              <div className="relative z-10 mt-10 bg-background px-6 py-10 lg:-ml-32 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:px-10 lg:py-16 xl:-ml-44">
+              <div className="relative z-10 mt-10 bg-background px-6 py-10 lg:-ml-32 lg:mb-20 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:px-10 lg:py-16 xl:-ml-44 xl:mb-24">
                 {bioColumns.map((column, index) => (
                   <div key={index} className="max-w-[260px] space-y-6">
                     {column.map((paragraph) => (
