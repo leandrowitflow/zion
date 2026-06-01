@@ -52,7 +52,9 @@ const PARTNERS_SCROLL_MS = 1600;
 
 const PARTNERS_DOTS_ROW_CLASS =
   "mt-[var(--space-small)] flex h-[6px] flex-wrap items-center justify-center gap-[11px]";
-const PARTNER_DOT_CLASS = "size-[6px] shrink-0 rounded-full";
+const PARTNER_DOT_BUTTON_CLASS =
+  "relative size-[6px] shrink-0 border-0 bg-transparent p-0 before:absolute before:-inset-5 before:content-['']";
+const PARTNER_DOT_VISUAL_CLASS = "block size-[6px] rounded-full";
 
 function PartnersSection({
   children,
@@ -105,7 +107,7 @@ function PartnersCarouselStatic({ edgeToEdge }: PartnersCarouselProps) {
             role="tab"
             aria-selected={index === 0}
             aria-label={`Show ${item.alt}`}
-            className={`${PARTNER_DOT_CLASS} ${
+            className={`${PARTNER_DOT_VISUAL_CLASS} ${
               index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
             }`}
           />
@@ -179,10 +181,15 @@ function PartnersCarouselInteractive({ edgeToEdge }: PartnersCarouselProps) {
               aria-selected={isActive}
               aria-label={`Show ${partner.alt}`}
               onClick={() => scrollToIndex(index)}
-              className={`${PARTNER_DOT_CLASS} transition-colors ${
-                isActive ? "bg-foreground" : "bg-[#d9d9d9] hover:bg-[#b8b8b8]"
-              }`}
-            />
+              className={PARTNER_DOT_BUTTON_CLASS}
+            >
+              <span
+                className={`${PARTNER_DOT_VISUAL_CLASS} transition-colors ${
+                  isActive ? "bg-foreground" : "bg-[#d9d9d9]"
+                }`}
+                aria-hidden
+              />
+            </button>
           );
         })}
       </div>

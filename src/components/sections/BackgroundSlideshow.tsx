@@ -13,14 +13,15 @@ type BackgroundSlideshowProps = {
   subject?: string;
 };
 
-/** Fade slideshow with Ken Burns zoom — matches Elementor background_slideshow on live site */
+/** Fade slideshow — loads only the active slide (+ next) to cut mobile bandwidth. */
 export function BackgroundSlideshow({
   images,
-  sizes = "(max-width: 1920px) 50vw, 960px",
+  sizes = "(max-width: 1023px) 100vw, 50vw",
   subject,
 }: BackgroundSlideshowProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [loadedSlides, setLoadedSlides] = useState<Set<number>>(() => new Set([0]));
 
   useEffect(() => {
     setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -38,6 +39,19 @@ export function BackgroundSlideshow({
     return () => window.clearInterval(timer);
   }, [images.length, reduceMotion]);
 
+  useEffect(() => {
+    const nextIndex = (activeIndex + 1) % images.length;
+    setLoadedSlides((current) => {
+      if (current.has(activeIndex) && current.has(nextIndex)) {
+        return current;
+      }
+      const updated = new Set(current);
+      updated.add(activeIndex);
+      updated.add(nextIndex);
+      return updated;
+    });
+  }, [activeIndex, images.length]);
+
   if (images.length === 0) {
     return null;
   }
@@ -53,7 +67,7 @@ export function BackgroundSlideshow({
           fill
           className="object-cover"
           sizes={sizes}
-          priority
+          loading="lazy"
           aria-hidden={!slideAlt}
         />
       </div>
@@ -63,6 +77,10 @@ export function BackgroundSlideshow({
   return (
     <div className="absolute inset-0 z-0" aria-hidden={!!subject}>
       {images.map((src, index) => {
+        if (!loadedSlides.has(index)) {
+          return null;
+        }
+
         const isActive = index === activeIndex;
 
         return (
@@ -85,7 +103,7 @@ export function BackgroundSlideshow({
                 fill
                 className="object-cover"
                 sizes={sizes}
-                priority={index === 0}
+                loading="lazy"
                 aria-hidden={index !== 0 || !slideAlt}
               />
             </div>
