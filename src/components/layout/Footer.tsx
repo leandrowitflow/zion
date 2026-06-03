@@ -6,7 +6,13 @@ import { usePathname } from "next/navigation";
 import { NavLink } from "@/components/layout/NavLink";
 import { navItems } from "@/lib/navigation";
 import { sharedAssets } from "@/lib/assets/shared";
+import { openCookiePreferences } from "@/lib/legal/consent";
 import { SITE_SOCIAL } from "@/lib/seo/site";
+
+const legalLinks = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-of-service", label: "Terms of Service" },
+] as const;
 
 export function Footer() {
   const pathname = usePathname();
@@ -121,8 +127,29 @@ export function Footer() {
 
         {/* Bottom bar — Figma 2326:54 */}
         <div className="mt-[72px] border-t border-[#c4c4bc]/30 pt-[17px]">
+          <nav
+            className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[14px] leading-[22px] xl:justify-start"
+            aria-label="Legal"
+          >
+            {legalLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[#c4c4bc] underline decoration-solid underline-offset-2 transition-opacity hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <button
+              type="button"
+              onClick={openCookiePreferences}
+              className="text-[#c4c4bc] underline decoration-solid underline-offset-2 transition-opacity hover:text-white"
+            >
+              Cookie settings
+            </button>
+          </nav>
           <div className="flex flex-col items-center gap-6 xl:flex-row xl:items-end xl:justify-between">
-            <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 xl:justify-start">
+            <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 xl:justify-start" aria-label="Site">
               {navItems.map((item) => (
                 <NavLink
                   key={item.href}

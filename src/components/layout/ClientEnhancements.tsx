@@ -12,12 +12,18 @@ const ScrollReveal = dynamic(
   { ssr: false },
 );
 
+const CookieConsent = dynamic(
+  () => import("@/components/legal/CookieConsent").then((mod) => mod.CookieConsent),
+  { ssr: false },
+);
+
 /** Non-critical UI enhancements — loaded after hydration. */
 export function ClientEnhancements() {
   return (
     <>
       <MouseHelper />
       <ScrollReveal />
+      <CookieConsent />
     </>
   );
 }

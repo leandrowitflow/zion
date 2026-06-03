@@ -60,20 +60,42 @@ export const staticPageMetadata = {
     path: "/journal",
     image: ogImages.journal,
   }),
+  privacy: buildPageMetadata({
+    title: "Privacy Policy",
+    description:
+      "How ZION Creative Artisans collects, uses, and protects your personal data — including cookies, analytics, and your rights under GDPR.",
+    path: "/privacy-policy",
+  }),
+  terms: buildPageMetadata({
+    title: "Terms of Service",
+    description:
+      "Terms governing use of the ZION Creative Artisans website — content, enquiries, liability, and governing law in Portugal.",
+    path: "/terms-of-service",
+  }),
 } satisfies Record<string, Metadata>;
 
-export const staticRoutes = Object.entries(staticPageMetadata).map(([key, meta]) => ({
-  key,
-  path:
-    key === "home"
-      ? "/"
-      : key === "ignite"
-        ? "/ignite-us"
-        : key === "journal"
-          ? "/journal"
-          : key === "artisans"
-            ? "/the-artisans"
-            : `/${key}`,
-  title: typeof meta.title === "string" ? meta.title : String(meta.title),
-  description: meta.description ?? "",
-}));
+/** Canonical paths for static routes (sitemap, audits). */
+export const staticPagePaths: Record<keyof typeof staticPageMetadata, string> = {
+  home: "/",
+  artisans: "/the-artisans",
+  experiences: "/experiences",
+  legacy: "/legacy",
+  destination: "/destination",
+  sustainability: "/sustainability",
+  ignite: "/ignite-us",
+  journal: "/journal",
+  privacy: "/privacy-policy",
+  terms: "/terms-of-service",
+};
+
+export const staticRoutes = (
+  Object.keys(staticPageMetadata) as Array<keyof typeof staticPageMetadata>
+).map((key) => {
+  const meta = staticPageMetadata[key];
+  return {
+    key,
+    path: staticPagePaths[key],
+    title: typeof meta.title === "string" ? meta.title : String(meta.title),
+    description: meta.description ?? "",
+  };
+});
