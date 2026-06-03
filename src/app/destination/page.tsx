@@ -31,6 +31,7 @@ export default function DestinationPage() {
         <HeroVideoBackground
           src={destinationAssets.heroVideoSrc}
           poster={destinationAssets.heroVideo}
+          priority
         />
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center min-[1400px]:block">
           <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[32.4%] min-[1400px]:-translate-x-1/2 min-[1400px]:whitespace-nowrap">
@@ -52,6 +53,7 @@ export default function DestinationPage() {
           src={destinationAssets.videoSrc}
           poster={destinationAssets.video}
           objectPosition="object-bottom"
+          loadStrategy="visible"
         />
         <div className="absolute inset-0 z-10 bg-black/10" />
       </section>

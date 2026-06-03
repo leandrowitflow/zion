@@ -66,7 +66,7 @@ function SplitPanel({
           alt={`${title} — Portugal`}
           fill
           className="object-cover"
-          sizes="(max-width: 1023px) 100vw, 50vw"
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 720px"
         />
       ) : null}
       <div className="absolute inset-0 z-10 bg-black/20" />
@@ -212,6 +212,7 @@ export default function HomePage() {
             src={homeAssets.sustainabilityVideoSrc}
             poster={homeAssets.sustainability}
             objectPosition="object-bottom"
+            loadStrategy="visible"
           />
           <div className="absolute inset-0 z-10 bg-black/25" />
           {/* Match home hero overlay — Figma title 25.07%, button 39.04%; +1lh title offset for single line */}

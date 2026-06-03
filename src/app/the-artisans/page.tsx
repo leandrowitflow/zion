@@ -29,6 +29,7 @@ export default function TheArtisansPage() {
         <HeroVideoBackground
           src={artisansAssets.heroVideoSrc}
           poster={artisansAssets.heroVideo}
+          priority
         />
       </section>
 
@@ -138,6 +139,7 @@ export default function TheArtisansPage() {
           src={artisansAssets.videoSrc}
           poster={artisansAssets.video}
           objectPosition="object-bottom"
+          loadStrategy="visible"
         />
         <div className="absolute inset-0 z-10 bg-black/10" />
       </section>

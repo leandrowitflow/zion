@@ -16,7 +16,7 @@ type BackgroundSlideshowProps = {
 /** Fade slideshow — loads only the active slide (+ next) to cut mobile bandwidth. */
 export function BackgroundSlideshow({
   images,
-  sizes = "(max-width: 1023px) 100vw, 50vw",
+  sizes = "(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 720px",
   subject,
 }: BackgroundSlideshowProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -68,6 +68,7 @@ export function BackgroundSlideshow({
           className="object-cover"
           sizes={sizes}
           loading="lazy"
+          quality={72}
           aria-hidden={!slideAlt}
         />
       </div>
@@ -104,6 +105,7 @@ export function BackgroundSlideshow({
                 className="object-cover"
                 sizes={sizes}
                 loading="lazy"
+                quality={72}
                 aria-hidden={index !== 0 || !slideAlt}
               />
             </div>
