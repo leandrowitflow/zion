@@ -73,25 +73,24 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
             <h1 className="heading-section text-left">{member.name}</h1>
           </div>
 
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(360px,840px)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
-            <div className="mx-auto w-full max-w-[560px] shrink-0 lg:mx-0 lg:max-w-[840px]">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(220px,360px)_minmax(0,1fr)] lg:gap-x-10 xl:grid-cols-[minmax(280px,440px)_minmax(0,1fr)] xl:gap-x-14 min-[1400px]:grid-cols-[minmax(360px,640px)_minmax(0,1fr)] min-[1400px]:items-stretch min-[1400px]:gap-x-20">
+            <div className="relative mx-auto aspect-[2/3] w-full max-w-[560px] overflow-hidden lg:mx-0 lg:max-w-[360px] xl:max-w-[440px] min-[1400px]:max-w-none">
               <Image
                 src={member.hoverImage}
                 alt={member.name}
-                width={840}
-                height={1260}
-                className="h-auto w-full object-cover"
-                sizes="(max-width: 1023px) 560px, 840px"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1023px) 560px, (max-width: 1399px) 360px, 640px"
                 priority
               />
             </div>
 
-            <div className="flex flex-col lg:pt-2 xl:pt-6">
+            <div className="flex min-w-0 flex-col lg:pt-2 min-[1400px]:self-stretch min-[1400px]:justify-between xl:pt-6">
               <TeamTraitBars traits={member.traits} />
 
-              <div className="relative z-10 mt-10 bg-background px-6 py-10 lg:-ml-32 lg:mb-20 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:px-10 lg:py-16 xl:-ml-44 xl:mb-24">
+              <div className="relative z-10 mt-10 bg-background px-6 py-10 lg:-ml-8 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:py-12 xl:-ml-16 xl:gap-x-10 xl:px-10 xl:py-14 min-[1400px]:-ml-44 min-[1400px]:py-16">
                 {bioColumns.map((column, index) => (
-                  <div key={index} className="max-w-[260px] space-y-6">
+                  <div key={index} className="min-w-0 space-y-6 lg:max-w-none min-[1400px]:max-w-[260px]">
                     {column.map((paragraph) => (
                       <p key={paragraph.slice(0, 48)} className="text-body">
                         {paragraph}
