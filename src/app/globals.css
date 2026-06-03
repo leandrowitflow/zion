@@ -27,15 +27,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "ivypresto-display";
-  src: url("/Ivy-Presto-font-Family/fonts/fonnts.com-Ivy-Presto-Display-Light.otf")
-    format("opentype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --background: #ffffff;
   --foreground: #2a2826;
@@ -47,6 +38,7 @@
 
   /* Live Splendour theme typography (uyr3aws.css + __custom.css) */
   --font-display: ivypresto-display, serif;
+  --font-body: var(--font-open-sans), system-ui, sans-serif;
 
   /* Breakpoint tiers (see src/lib/breakpoints.ts)
      lg 1024px — Figma mobile → staggered columns
@@ -108,6 +100,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-open-sans), system-ui, sans-serif;
+  font-style: normal;
 }
 
 .site-container {
@@ -192,11 +185,13 @@ body {
 /* Shared display family alias */
 .font-display {
   font-family: var(--font-display);
+  font-style: normal;
 }
 
 /* ivypresto-display — section & hero titles (57px / 60px) */
 .heading-section {
   font-family: var(--font-display);
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(2rem, 4.2vw, 57px);
   line-height: clamp(2.1rem, 4.4vw, 60px);
@@ -215,6 +210,7 @@ body {
 /* ivypresto-display — carousel / card labels (24px / 31px / 300) */
 .font-card-title {
   font-family: var(--font-display);
+  font-style: normal;
   font-weight: 300;
   font-size: 24px;
   line-height: 31px;
@@ -223,6 +219,7 @@ body {
 /* ivypresto-display — CTA buttons (live: 17px / 21px / 400) */
 .font-button {
   font-family: var(--font-display);
+  font-style: normal;
   font-weight: 400;
   font-size: 17px;
   line-height: 21px;
@@ -310,6 +307,7 @@ body {
 /* Open Sans — body copy (live p: 1rem / 1.8em / #696866) */
 .text-body {
   font-family: var(--font-open-sans), sans-serif;
+  font-style: normal;
   font-size: 1rem;
   line-height: 1.8em;
   color: var(--muted);
