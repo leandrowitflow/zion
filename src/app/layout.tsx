@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import { GoogleTagManagerHead, GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
 import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/site";
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
+        <GoogleTagManagerHead />
         <link rel="icon" href="/favicon-64x64.png" type="image/png" sizes="64x64" />
         <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
         <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
@@ -60,6 +62,7 @@ export default function RootLayout({
         <link rel="author" href="/llms.txt" />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <GoogleTagManagerNoscript />
         <RootStructuredData />
         <ClientEnhancements />
         {children}
