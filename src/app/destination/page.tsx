@@ -31,7 +31,7 @@ export default function DestinationPage() {
         <HeroVideoBackground
           src={destinationAssets.heroVideoSrc}
           poster={destinationAssets.heroVideo}
-          priority
+          lcp
         />
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center min-[1400px]:block">
           <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[32.4%] min-[1400px]:-translate-x-1/2 min-[1400px]:whitespace-nowrap">

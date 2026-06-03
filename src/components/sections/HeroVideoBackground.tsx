@@ -8,7 +8,7 @@ type HeroVideoBackgroundProps = {
   poster: string;
   objectPosition?: string;
   /** Above-the-fold hero — poster is LCP (server-rendered). */
-  priority?: boolean;
+  lcp?: boolean;
   /** visible = load video only when section enters viewport (below-fold bands). */
   loadStrategy?: VideoLoadStrategy;
 };
@@ -19,22 +19,35 @@ export function HeroVideoBackground({
   mobileSrc,
   poster,
   objectPosition = "object-center",
-  priority = false,
+  lcp = false,
   loadStrategy = "hero",
 }: HeroVideoBackgroundProps) {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-      <Image
-        src={poster}
-        alt=""
-        fill
-        priority={priority}
-        fetchPriority={priority ? "high" : "auto"}
-        quality={priority ? 68 : 75}
-        sizes="100vw"
-        className={`object-cover ${objectPosition}`}
-        aria-hidden
-      />
+      {lcp ? (
+        // Native img for home LCP — avoids /_next/image pipeline latency in lab & field.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={poster}
+          alt=""
+          decoding="async"
+          fetchPriority="high"
+          loading="eager"
+          className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
+          aria-hidden
+        />
+      ) : (
+        <Image
+          src={poster}
+          alt=""
+          fill
+          loading="lazy"
+          quality={75}
+          sizes="100vw"
+          className={`object-cover ${objectPosition}`}
+          aria-hidden
+        />
+      )}
       <HeroVideoLayer
         src={src}
         mobileSrc={mobileSrc}

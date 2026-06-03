@@ -11,7 +11,8 @@ import "./globals.css";
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -60,13 +61,17 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link
           rel="preload"
-          href="/images/home/hero-video-poster.jpg"
+          href="/images/home/hero-video-poster-sm.jpg"
           as="image"
           fetchPriority="high"
         />
-        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
-        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
-        <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
+        <link
+          rel="preload"
+          href="/Ivy-Presto-font-Family/fonts/fonnts.com-Ivy-Presto-Display-Light.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
         <link rel="author" href="/llms.txt" />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>

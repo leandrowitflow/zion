@@ -29,7 +29,7 @@ export default function TheArtisansPage() {
         <HeroVideoBackground
           src={artisansAssets.heroVideoSrc}
           poster={artisansAssets.heroVideo}
-          priority
+          lcp
         />
       </section>
 

@@ -31,7 +31,7 @@ export default function ExperiencesPage() {
         <HeroVideoBackground
           src={experiencesAssets.heroVideoSrc}
           poster={experiencesAssets.heroVideo}
-          priority
+          lcp
         />
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center min-[1400px]:block">
           <h1 className="heading-section text-white min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:top-[31.77%] min-[1400px]:w-max min-[1400px]:max-w-[min(100%,720px)] min-[1400px]:-translate-x-1/2 min-[1400px]:px-4 min-[1400px]:whitespace-nowrap">

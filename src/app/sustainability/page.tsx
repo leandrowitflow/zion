@@ -34,7 +34,7 @@ export default function SustainabilityPage() {
           src={sustainabilityAssets.heroVideoSrc}
           poster={sustainabilityAssets.heroVideo}
           objectPosition="object-bottom"
-          priority
+          lcp
         />
         <div className="absolute inset-0 z-10 hidden min-[1400px]:block">
           <h1 className="heading-section absolute left-1/2 top-[28.7%] -translate-x-1/2 whitespace-nowrap text-white">

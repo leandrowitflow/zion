@@ -90,8 +90,8 @@ export default function HomePage() {
         <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
           <HeroVideoBackground
             src={homeAssets.heroVideoSrc}
-            poster={homeAssets.heroVideo}
-            priority
+            poster={homeAssets.heroVideoLcp}
+            lcp
           />
           {/* Figma desktop (1400+): title top 25.07%, button top 39.04% within 1081px hero */}
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-[var(--space-medium)] px-6 text-center min-[1400px]:block">

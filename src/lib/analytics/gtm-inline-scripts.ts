@@ -67,11 +67,20 @@ function zionLoadGtm(){
   j.src='${GTM_JS_URL}';
   document.head.appendChild(j);
 }
+function zionShouldLoadGtm(){
+  if(zionGtmDebugMode())return true;
+  try{return localStorage.getItem('${CONSENT_STORAGE_KEY}')==='all';}catch(e){return false;}
+}
 function zionScheduleGtm(){
-  if(typeof requestIdleCallback==='function'){requestIdleCallback(zionLoadGtm,{timeout:4000});}
-  else{setTimeout(zionLoadGtm,1500);}
+  if(!zionShouldLoadGtm())return;
+  if(typeof requestIdleCallback==='function'){requestIdleCallback(zionLoadGtm,{timeout:5000});}
+  else{setTimeout(zionLoadGtm,2000);}
 }
 if(document.readyState==='complete'){zionScheduleGtm();}
 else{window.addEventListener('load',zionScheduleGtm,{once:true});}
+window.addEventListener('storage',function(e){
+  if(e.key==='${CONSENT_STORAGE_KEY}'&&e.newValue==='all'){zionScheduleGtm();}
+});
+window.addEventListener('zion:analytics-consent',zionScheduleGtm);
 `.trim();
 }

@@ -39,6 +39,8 @@ export function readStoredConsent(): ConsentChoice | null {
   return null;
 }
 
+export const ANALYTICS_CONSENT_EVENT = "zion:analytics-consent";
+
 export function storeConsent(choice: ConsentChoice) {
   try {
     localStorage.setItem(CONSENT_STORAGE_KEY, choice);
@@ -46,6 +48,9 @@ export function storeConsent(choice: ConsentChoice) {
     /* private browsing */
   }
   applyConsent(choice);
+  if (choice === "all" && typeof window !== "undefined") {
+    window.dispatchEvent(new Event(ANALYTICS_CONSENT_EVENT));
+  }
 }
 
 /** Re-open the cookie banner (e.g. from footer “Cookie settings”). */
