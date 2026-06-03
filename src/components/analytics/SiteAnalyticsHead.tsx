@@ -1,14 +1,6 @@
-import { buildConsentBootstrapScript, buildGtmHeadScript } from "@/lib/analytics/gtm-inline-scripts";
+import { buildConsentBootstrapScript } from "@/lib/analytics/gtm-inline-scripts";
 
-/**
- * Plain inline scripts in document order (consent → GTM).
- * Avoids Next.js Script scheduling issues that can cause GTM / Tag Assistant timeouts.
- */
+/** Consent Mode only — kept minimal in <head>. */
 export function SiteAnalyticsHead() {
-  return (
-    <>
-      <script dangerouslySetInnerHTML={{ __html: buildConsentBootstrapScript() }} />
-      <script dangerouslySetInnerHTML={{ __html: buildGtmHeadScript() }} />
-    </>
-  );
+  return <script dangerouslySetInnerHTML={{ __html: buildConsentBootstrapScript() }} />;
 }

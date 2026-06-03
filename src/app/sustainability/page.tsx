@@ -34,6 +34,7 @@ export default function SustainabilityPage() {
           src={sustainabilityAssets.heroVideoSrc}
           poster={sustainabilityAssets.heroVideo}
           objectPosition="object-bottom"
+          priority
         />
         <div className="absolute inset-0 z-10 hidden min-[1400px]:block">
           <h1 className="heading-section absolute left-1/2 top-[28.7%] -translate-x-1/2 whitespace-nowrap text-white">
@@ -56,6 +57,7 @@ export default function SustainabilityPage() {
           src={sustainabilityAssets.videoSrc}
           poster={sustainabilityAssets.video}
           objectPosition="object-bottom"
+          loadStrategy="visible"
         />
         <div className="absolute inset-0 z-10 bg-black/10" />
       </section>
@@ -65,6 +67,7 @@ export default function SustainabilityPage() {
           src={sustainabilityAssets.videoSrc}
           poster={sustainabilityAssets.video}
           objectPosition="object-bottom"
+          loadStrategy="visible"
         />
         <div className="absolute inset-0 z-10 bg-black/10" />
       </section>

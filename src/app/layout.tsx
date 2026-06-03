@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
+import { SiteAnalyticsBody } from "@/components/analytics/SiteAnalyticsBody";
 import { SiteAnalyticsHead } from "@/components/analytics/SiteAnalyticsHead";
 import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
@@ -57,12 +58,19 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
         <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link
+          rel="preload"
+          href="/images/home/hero-video-poster.jpg"
+          as="image"
+          fetchPriority="high"
+        />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
         <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
         <link rel="author" href="/llms.txt" />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <SiteAnalyticsBody />
         <GoogleTagManagerNoscript />
         <RootStructuredData />
         <ClientEnhancements />
