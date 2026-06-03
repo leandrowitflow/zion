@@ -2,8 +2,6 @@ export const homeAssets = {
   logo: "/images/home/logo.png",
   navUnderline: "/images/home/nav-underline.png",
   heroVideo: "/images/home/hero-video-poster.jpg",
-  /** 640px encode — smaller LCP payload on mobile. */
-  heroVideoLcp: "/images/home/hero-video-poster-sm.jpg",
   heroVideoSrc: "/videos/home-hero.mp4?v=1080",
   window: "/images/home/window.jpg",
   people: "/images/home/people.jpg",
