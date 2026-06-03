@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import { GoogleConsentDefaults } from "@/components/analytics/GoogleConsentDefaults";
 import { GoogleTagManagerHead, GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
 import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
+        <GoogleConsentDefaults />
         <GoogleTagManagerHead />
         <link rel="icon" href="/favicon-64x64.png" type="image/png" sizes="64x64" />
         <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
