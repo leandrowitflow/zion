@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import { GoogleConsentDefaults } from "@/components/analytics/GoogleConsentDefaults";
-import { GoogleTagManagerHead, GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
+import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
+import { SiteAnalyticsHead } from "@/components/analytics/SiteAnalyticsHead";
 import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/site";
@@ -51,8 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <GoogleConsentDefaults />
-        <GoogleTagManagerHead />
+        <SiteAnalyticsHead />
         <link rel="icon" href="/favicon-64x64.png" type="image/png" sizes="64x64" />
         <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
         <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
