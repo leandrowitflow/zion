@@ -43,7 +43,6 @@ export async function sendContactEmail(payload: ContactFormPayload): Promise<voi
     throw new Error("RESEND_API_KEY is not configured");
   }
 
-  const to = process.env.CONTACT_TO?.trim() || SITE_EMAIL;
   const from =
     process.env.CONTACT_FROM?.trim() || `${SITE_NAME} Website <onboarding@resend.dev>`;
 
@@ -52,7 +51,7 @@ export async function sendContactEmail(payload: ContactFormPayload): Promise<voi
 
   const { error } = await resend.emails.send({
     from,
-    to: [to],
+    to: [SITE_EMAIL],
     replyTo: payload.email,
     subject,
     html: buildEmailHtml(payload),
