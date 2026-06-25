@@ -12,6 +12,7 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -60,13 +61,30 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <link
           rel="preload"
+          href="/images/home/hero-video-poster-sm.jpg"
+          as="image"
+          fetchPriority="high"
+          media="(max-width: 1023px)"
+        />
+        <link
+          rel="preload"
           href="/images/home/hero-video-poster.jpg"
           as="image"
           fetchPriority="high"
+          media="(min-width: 1024px)"
         />
-        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
-        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
-        <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var h="https://use.typekit.net/uyr3aws.css";var l=document.createElement("link");l.rel="stylesheet";l.href=h;l.media="print";l.onload=function(){this.media="all"};document.head.appendChild(l);})();`,
+          }}
+        />
+        <noscript>
+          <link rel="stylesheet" href="https://use.typekit.net/uyr3aws.css" />
+        </noscript>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-oriented site summary" />
+        <link rel="alternate" type="application/json" href="/agents.json" title="Agent manifest" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <link rel="author" href="/llms.txt" />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>

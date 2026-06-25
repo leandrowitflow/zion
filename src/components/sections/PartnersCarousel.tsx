@@ -51,9 +51,9 @@ const PARTNERS_AUTOPLAY_MS = 8000;
 const PARTNERS_SCROLL_MS = 1600;
 
 const PARTNERS_DOTS_ROW_CLASS =
-  "mt-[var(--space-small)] flex h-[6px] flex-wrap items-center justify-center gap-[11px]";
+  "mt-[var(--space-small)] flex flex-wrap items-center justify-center gap-1";
 const PARTNER_DOT_BUTTON_CLASS =
-  "relative size-[6px] shrink-0 border-0 bg-transparent p-0 before:absolute before:-inset-5 before:content-['']";
+  "flex min-h-11 min-w-11 shrink-0 items-center justify-center border-0 bg-transparent p-0";
 const PARTNER_DOT_VISUAL_CLASS = "block size-[6px] rounded-full";
 
 function PartnersSection({
@@ -102,15 +102,23 @@ function PartnersCarouselStatic({ edgeToEdge }: PartnersCarouselProps) {
 
       <div className={PARTNERS_DOTS_ROW_CLASS} role="tablist" aria-label="Partner logos">
         {partnerLogos.map((item, index) => (
-          <span
+          <button
             key={item.id}
+            type="button"
             role="tab"
             aria-selected={index === 0}
             aria-label={`Show ${item.alt}`}
-            className={`${PARTNER_DOT_VISUAL_CLASS} ${
-              index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
-            }`}
-          />
+            tabIndex={index === 0 ? 0 : -1}
+            disabled
+            className={PARTNER_DOT_BUTTON_CLASS}
+          >
+            <span
+              className={`${PARTNER_DOT_VISUAL_CLASS} ${
+                index === 0 ? "bg-foreground" : "bg-[#d9d9d9]"
+              }`}
+              aria-hidden
+            />
+          </button>
         ))}
       </div>
     </PartnersSection>
