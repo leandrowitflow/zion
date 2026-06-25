@@ -2,11 +2,16 @@
 
 > ZION Creative Artisans is a Destination Alchemist Lab — a Portugal-based luxury destination management company crafting bespoke journeys, immersive experiences, and legacy events.
 
+## Canonical site
+
+- Website: https://www.zion-creativeartisans.com
+- Sitemap: https://www.zion-creativeartisans.com/sitemap.xml
+- Agent manifest: https://www.zion-creativeartisans.com/agents.json
+
 ## Entity
 
 - Name: ZION Creative Artisans
 - Type: Luxury destination management company (DMC / Destination Alchemist Lab)
-- Website: https://zion-creativeartisans.com
 - Headquarters: Av. Defensores de Chaves, 15, 4ª D, 1000-109 Lisbon, Portugal
 - Branches: Porto, Algarve, Madeira, Azores
 - Email: ignite@zion-creativeartisans.com
@@ -23,21 +28,23 @@
 
 ## Key pages
 
-- Home: /
-- The Artisans: /the-artisans
-- Experiences: /experiences
-- Legacy: /legacy
-- Destination: /destination
-- Sustainability: /sustainability
-- Contact (Ignite Us): /ignite-us
-- The Journal of ZION: /journal
+- [Home](https://www.zion-creativeartisans.com/)
+- [The Artisans](https://www.zion-creativeartisans.com/the-artisans)
+- [Experiences](https://www.zion-creativeartisans.com/experiences)
+- [Legacy](https://www.zion-creativeartisans.com/legacy)
+- [Destination](https://www.zion-creativeartisans.com/destination)
+- [Sustainability](https://www.zion-creativeartisans.com/sustainability)
+- [Contact (Ignite Us)](https://www.zion-creativeartisans.com/ignite-us)
+- [The Journal of ZION](https://www.zion-creativeartisans.com/journal)
+- [Privacy Policy](https://www.zion-creativeartisans.com/privacy-policy)
+- [Terms of Service](https://www.zion-creativeartisans.com/terms-of-service)
 
 ## Social
 
-- Instagram: https://www.instagram.com/zion.creativeartisans
-- LinkedIn: https://www.linkedin.com/company/zion-creative-artisans/
-- Facebook: https://www.facebook.com/people/ZION-Creative-Artisans/61573884781076/
-- Spotify: https://open.spotify.com/user/31gzi7oymgkqdctv6flf23yqxmou
+- [Instagram](https://www.instagram.com/zion.creativeartisans)
+- [LinkedIn](https://www.linkedin.com/company/zion-creative-artisans/)
+- [Facebook](https://www.facebook.com/people/ZION-Creative-Artisans/61573884781076/)
+- [Spotify](https://open.spotify.com/user/31gzi7oymgkqdctv6flf23yqxmou)
 
 ## Citation guidance
 

@@ -91,6 +91,7 @@ export default function HomePage() {
           <HeroVideoBackground
             src={homeAssets.heroVideoSrc}
             poster={homeAssets.heroVideo}
+            mobilePoster={homeAssets.heroVideoMobile}
             lcp
           />
           {/* Figma desktop (1400+): title top 25.07%, button top 39.04% within 1081px hero */}

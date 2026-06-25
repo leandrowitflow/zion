@@ -6,6 +6,8 @@ type HeroVideoBackgroundProps = {
   src: string;
   mobileSrc?: string;
   poster: string;
+  /** Smaller poster for mobile LCP — same crop, lower payload. */
+  mobilePoster?: string;
   objectPosition?: string;
   /** Above-the-fold hero — poster is LCP (server-rendered). */
   lcp?: boolean;
@@ -18,6 +20,7 @@ export function HeroVideoBackground({
   src,
   mobileSrc,
   poster,
+  mobilePoster,
   objectPosition = "object-center",
   lcp = false,
   loadStrategy = "hero",
@@ -25,17 +28,24 @@ export function HeroVideoBackground({
   return (
     <div className="absolute inset-0 z-0 overflow-hidden bg-black">
       {lcp ? (
-        // Native img for home LCP — avoids /_next/image pipeline latency in lab & field.
+        // Native picture for home LCP — mobile gets a smaller encode; desktop keeps full poster.
         // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={poster}
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-          loading="eager"
-          className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
-          aria-hidden
-        />
+        <picture>
+          {mobilePoster ? (
+            <source media="(max-width: 1023px)" srcSet={mobilePoster} />
+          ) : null}
+          <img
+            src={poster}
+            alt=""
+            width={1920}
+            height={1280}
+            decoding="async"
+            fetchPriority="high"
+            loading="eager"
+            className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
+            aria-hidden
+          />
+        </picture>
       ) : (
         <Image
           src={poster}

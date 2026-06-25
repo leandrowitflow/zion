@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "name": "ZION Creative Artisans",
+  "description": "Portugal-based luxury destination management company (Destination Alchemist Lab) offering bespoke journeys, experiences, and legacy events.",
+  "url": "https://www.zion-creativeartisans.com",
+  "documentation": "https://www.zion-creativeartisans.com/llms.txt",
+  "contact": {
+    "email": "ignite@zion-creativeartisans.com",
+    "phone": "+351 210 188 406",
+    "page": "https://www.zion-creativeartisans.com/ignite-us"
+  },
+  "actions": [
+    {
+      "name": "contact_enquiry",
+      "description": "Submit a bespoke travel or experience enquiry via the Ignite Us contact form.",
+      "url": "https://www.zion-creativeartisans.com/ignite-us",
+      "method": "POST",
+      "endpoint": "https://www.zion-creativeartisans.com/api/contact"
+    },
+    {
+      "name": "browse_journal",
+      "description": "Read curated editorial articles on luxury travel in Portugal.",
+      "url": "https://www.zion-creativeartisans.com/journal"
+    }
+  ]
+}
