@@ -20,7 +20,15 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return [{ source: "/blog", destination: "/journal", permanent: true }];
+    return [
+      { source: "/blog", destination: "/journal", permanent: true },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "zion-creativeartisans.com" }],
+        destination: "https://www.zion-creativeartisans.com/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 

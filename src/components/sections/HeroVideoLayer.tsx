@@ -101,7 +101,7 @@ export function HeroVideoLayer({
     }
 
     if (isMobile) {
-      scheduleIdleLoad(startLoad, 6000);
+      scheduleIdleLoad(startLoad, 10000);
       return;
     }
 

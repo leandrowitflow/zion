@@ -6,6 +6,15 @@
   },
   "headers": [
     {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</images/home/hero-video-poster-sm.jpg>; rel=preload; as=image; media=\"(max-width: 1023px)\", </images/home/hero-video-poster.jpg>; rel=preload; as=image; media=\"(min-width: 1024px)\""
+        }
+      ]
+    },
+    {
       "source": "/videos/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }

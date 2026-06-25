@@ -76,7 +76,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var h="https://use.typekit.net/uyr3aws.css";var l=document.createElement("link");l.rel="stylesheet";l.href=h;l.media="print";l.onload=function(){this.media="all"};document.head.appendChild(l);})();`,
+            __html: `(function(){function loadTk(){var h="https://use.typekit.net/uyr3aws.css";var l=document.createElement("link");l.rel="stylesheet";l.href=h;l.media="print";l.onload=function(){this.media="all"};document.head.appendChild(l);}if(document.readyState==="complete"){loadTk();}else{window.addEventListener("load",loadTk,{once:true});}})();`,
           }}
         />
         <noscript>

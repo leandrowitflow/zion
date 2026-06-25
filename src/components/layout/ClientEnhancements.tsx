@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const MouseHelper = dynamic(
   () => import("@/components/ui/MouseHelper").then((mod) => mod.MouseHelper),
@@ -17,8 +18,34 @@ const CookieConsent = dynamic(
   { ssr: false },
 );
 
-/** Non-critical UI enhancements — loaded after hydration. */
+function scheduleAfterLoad(callback: () => void) {
+  const run = () => {
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(callback, { timeout: 2500 });
+    } else {
+      window.setTimeout(callback, 1500);
+    }
+  };
+
+  if (document.readyState === "complete") {
+    run();
+  } else {
+    window.addEventListener("load", run, { once: true });
+  }
+}
+
+/** Non-critical UI — deferred until after load so mobile LCP is not competing with hydration. */
 export function ClientEnhancements() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    scheduleAfterLoad(() => setReady(true));
+  }, []);
+
+  if (!ready) {
+    return null;
+  }
+
   return (
     <>
       <MouseHelper />

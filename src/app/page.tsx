@@ -120,6 +120,8 @@ export default function HomePage() {
                     src={homeAssets.window}
                     alt="Elegant interior"
                     fill
+                    loading="lazy"
+                    fetchPriority="low"
                     className="object-cover"
                     sizes="(max-width: 1023px) 100vw, 524px"
                   />
@@ -150,6 +152,8 @@ export default function HomePage() {
                     src={homeAssets.people}
                     alt="Family journey"
                     fill
+                    loading="lazy"
+                    fetchPriority="low"
                     className="object-cover"
                     sizes="(max-width: 1023px) 100vw, 634px"
                   />

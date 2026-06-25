@@ -1,6 +1,6 @@
 /** Canonical site identity — used by metadata, JSON-LD, sitemap, and audits. */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://zion-creativeartisans.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.zion-creativeartisans.com";
 
 export const SITE_NAME = "ZION Creative Artisans";
 
