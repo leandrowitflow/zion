@@ -37,9 +37,10 @@ export function HeroVideoBackground({
           <img
             src={poster}
             alt=""
-            width={1920}
-            height={1280}
-            decoding="async"
+            width={640}
+            height={960}
+            sizes="100vw"
+            decoding="sync"
             fetchPriority="high"
             loading="eager"
             className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
