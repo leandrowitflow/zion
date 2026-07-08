@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { HeroLcpPoster } from "@/components/sections/HeroLcpPoster";
 import { HeroVideoLayer, type VideoLoadStrategy } from "@/components/sections/HeroVideoLayer";
 
 type HeroVideoBackgroundProps = {
@@ -26,27 +27,12 @@ export function HeroVideoBackground({
   loadStrategy = "hero",
 }: HeroVideoBackgroundProps) {
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+    <div
+      className="absolute inset-0 z-0 overflow-hidden bg-black"
+      style={{ position: "absolute", inset: 0, overflow: "hidden", backgroundColor: "#000" }}
+    >
       {lcp ? (
-        // Native picture for home LCP — mobile gets a smaller encode; desktop keeps full poster.
-        // eslint-disable-next-line @next/next/no-img-element
-        <picture>
-          {mobilePoster ? (
-            <source media="(max-width: 1023px)" srcSet={mobilePoster} />
-          ) : null}
-          <img
-            src={poster}
-            alt=""
-            width={640}
-            height={960}
-            sizes="100vw"
-            decoding="sync"
-            fetchPriority="high"
-            loading="eager"
-            className={`absolute inset-0 h-full w-full object-cover ${objectPosition}`}
-            aria-hidden
-          />
-        </picture>
+        <HeroLcpPoster poster={poster} mobilePoster={mobilePoster} objectPosition={objectPosition} />
       ) : (
         <Image
           src={poster}
