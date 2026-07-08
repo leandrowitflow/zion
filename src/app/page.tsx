@@ -87,7 +87,16 @@ export default function HomePage() {
       <Header />
       <main className="site-main bg-white">
         {/* Hero — full bleed */}
-        <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">
+        <section
+          className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]"
+          style={{
+            position: "relative",
+            width: "100%",
+            minHeight: 480,
+            height: "clamp(480px, 56.25vw, 1400px)",
+            overflow: "hidden",
+          }}
+        >
           <HeroVideoBackground
             src={homeAssets.heroVideoSrc}
             poster={homeAssets.heroVideo}

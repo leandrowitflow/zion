@@ -4,6 +4,7 @@ import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManage
 import { SiteAnalyticsBody } from "@/components/analytics/SiteAnalyticsBody";
 import { SiteAnalyticsHead } from "@/components/analytics/SiteAnalyticsHead";
 import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
+import { LcpImagePreloads } from "@/components/seo/LcpImagePreloads";
 import { RootStructuredData } from "@/components/seo/RootStructuredData";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/site";
 import "./globals.css";
@@ -59,20 +60,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
         <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-        <link
-          rel="preload"
-          href="/images/home/hero-video-poster-sm.jpg"
-          as="image"
-          fetchPriority="high"
-          media="(max-width: 1023px)"
-        />
-        <link
-          rel="preload"
-          href="/images/home/hero-video-poster.jpg"
-          as="image"
-          fetchPriority="high"
-          media="(min-width: 1024px)"
-        />
+        <LcpImagePreloads />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
         <script
           dangerouslySetInnerHTML={{

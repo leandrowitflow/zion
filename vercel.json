@@ -10,7 +10,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</images/home/hero-video-poster-sm.jpg>; rel=preload; as=image; media=\"(max-width: 1023px)\", </images/home/hero-video-poster.jpg>; rel=preload; as=image; media=\"(min-width: 1024px)\""
+          "value": "</images/home/hero-video-poster-sm.jpg>; rel=preload; as=image; fetchpriority=high; media=\"(max-width: 1023px)\", </images/home/hero-video-poster.jpg>; rel=preload; as=image; fetchpriority=high; media=\"(min-width: 1024px)\""
         }
       ]
     },
