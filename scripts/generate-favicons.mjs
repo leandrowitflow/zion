@@ -7,6 +7,32 @@ const PUBLIC = join(ROOT, "public");
 const APP = join(ROOT, "src/app");
 
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
+/** Logo occupies this fraction of the icon canvas — lower = smaller in browser tabs. */
+const LOGO_SCALE = 0.68;
+
+async function renderIcon(logo, size) {
+  const logoSize = Math.round(size * LOGO_SCALE);
+  const inset = Math.round((size - logoSize) / 2);
+  const resized = await sharp(logo)
+    .resize(logoSize, logoSize, {
+      fit: "contain",
+      background: TRANSPARENT,
+    })
+    .png()
+    .toBuffer();
+
+  return sharp({
+    create: {
+      width: size,
+      height: size,
+      channels: 4,
+      background: TRANSPARENT,
+    },
+  })
+    .composite([{ input: resized, left: inset, top: inset }])
+    .png()
+    .toBuffer();
+}
 
 /** Detect non-background logo bounds. */
 async function findLogoBounds(input) {
@@ -130,41 +156,20 @@ async function writeFavicons(source, prefix = "") {
   ];
 
   for (const { file, size } of sizes) {
-    await sharp(logo)
-      .resize(size, size, {
-        fit: "contain",
-        background: TRANSPARENT,
-      })
-      .png()
-      .toFile(join(PUBLIC, file));
+    const icon = await renderIcon(logo, size);
+    await sharp(icon).toFile(join(PUBLIC, file));
   }
 
-  const favicon32 = await sharp(logo)
-    .resize(32, 32, {
-      fit: "contain",
-      background: TRANSPARENT,
-    })
-    .png()
-    .toBuffer();
+  const favicon32 = await renderIcon(logo, 32);
 
   await sharp(favicon32).toFile(join(PUBLIC, `${prefix}favicon.ico`));
 
   if (!prefix) {
     await sharp(favicon32).toFile(join(APP, "favicon.ico"));
-    await sharp(logo)
-      .resize(64, 64, {
-        fit: "contain",
-        background: TRANSPARENT,
-      })
-      .png()
-      .toFile(join(APP, "icon.png"));
-    await sharp(logo)
-      .resize(180, 180, {
-        fit: "contain",
-        background: TRANSPARENT,
-      })
-      .png()
-      .toFile(join(APP, "apple-icon.png"));
+    const icon64 = await renderIcon(logo, 64);
+    const apple180 = await renderIcon(logo, 180);
+    await sharp(icon64).toFile(join(APP, "icon.png"));
+    await sharp(apple180).toFile(join(APP, "apple-icon.png"));
   }
 }
 
