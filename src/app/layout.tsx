@@ -23,15 +23,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
-  icons: {
-    icon: [
-      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
-      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
   openGraph: {
     type: "website",
     locale: "en_GB",
@@ -55,11 +46,6 @@ export default function RootLayout({
     <html lang="en" className={`${openSans.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <SiteAnalyticsHead />
-        <link rel="icon" href="/favicon-64x64.png" type="image/png" sizes="64x64" />
-        <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
-        <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
-        <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         <LcpImagePreloads />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
         <script
