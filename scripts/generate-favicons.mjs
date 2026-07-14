@@ -4,6 +4,7 @@ import { join } from "node:path";
 const ROOT = join(import.meta.dirname, "..");
 const SOURCE = join(ROOT, "public/Logos/ZION/Favicon-01.png");
 const PUBLIC = join(ROOT, "public");
+const APP = join(ROOT, "src/app");
 
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 
@@ -138,14 +139,34 @@ async function writeFavicons(source, prefix = "") {
       .toFile(join(PUBLIC, file));
   }
 
-  await sharp(logo)
+  const favicon32 = await sharp(logo)
     .resize(32, 32, {
       fit: "contain",
       background: TRANSPARENT,
     })
     .png()
-    .toFile(join(PUBLIC, `${prefix}favicon.ico`));
+    .toBuffer();
+
+  await sharp(favicon32).toFile(join(PUBLIC, `${prefix}favicon.ico`));
+
+  if (!prefix) {
+    await sharp(favicon32).toFile(join(APP, "favicon.ico"));
+    await sharp(logo)
+      .resize(64, 64, {
+        fit: "contain",
+        background: TRANSPARENT,
+      })
+      .png()
+      .toFile(join(APP, "icon.png"));
+    await sharp(logo)
+      .resize(180, 180, {
+        fit: "contain",
+        background: TRANSPARENT,
+      })
+      .png()
+      .toFile(join(APP, "apple-icon.png"));
+  }
 }
 
 await writeFavicons(SOURCE);
-console.log("Favicons generated in public/");
+console.log("Favicons generated in public/ and src/app/");
