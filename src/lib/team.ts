@@ -73,7 +73,7 @@ export const teamMembers: TeamMember[] = [
   {
     slug: "jessica-campos",
     name: "Jéssica Campos",
-    role: "Brand Alchemist",
+    role: "Alchemist",
     image: `${teamBase}/Jéssica_02.png`,
     hoverImage: `${teamBase}/Jéssica.png`,
     traits: [
@@ -89,7 +89,7 @@ export const teamMembers: TeamMember[] = [
   {
     slug: "anabela-santos",
     name: "Anabela Santos",
-    role: "Brand Alchemist",
+    role: "Alchemist",
     image: `${teamBase}/Anabela_02.png`,
     hoverImage: `${teamBase}/Anabela_01.png`,
     traits: [
@@ -106,7 +106,7 @@ export const teamMembers: TeamMember[] = [
   {
     slug: "ana-gomes",
     name: "Ana Gomes",
-    role: "Brand Alchemist",
+    role: "Alchemist",
     image: `${teamBase}/Ana.jpg`,
     hoverImage: `${teamBase}/Ana_02.jpg`,
     traits: [
@@ -123,7 +123,7 @@ export const teamMembers: TeamMember[] = [
   {
     slug: "margarida-duarte",
     name: "Margarida Duarte",
-    role: "Brand Alchemist",
+    role: "Alchemist",
     image: `${teamBase}/Margarida_02.jpg`,
     hoverImage: `${teamBase}/Margarida.jpg`,
     traits: [
@@ -140,7 +140,7 @@ export const teamMembers: TeamMember[] = [
   {
     slug: "goncalo-quelhas",
     name: "Gonçalo Quelhas",
-    role: "Brand Alchemist",
+    role: "Alchemist",
     image: `${teamBase}/Gonçalo_01.jpeg`,
     hoverImage: `${teamBase}/Gonçalo_02.jpeg`,
     traits: [

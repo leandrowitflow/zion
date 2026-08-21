@@ -73,7 +73,9 @@ export default function ExperiencesPage() {
         buttonLabel="Ignite Us"
       />
 
-      <PartnersCarousel />
+      <div className="hidden lg:block">
+        <PartnersCarousel />
+      </div>
 
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>

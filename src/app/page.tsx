@@ -218,7 +218,9 @@ export default function HomePage() {
         </SiteSection>
 
         {/* Partners */}
-        <PartnersCarousel />
+        <div className="hidden lg:block">
+          <PartnersCarousel />
+        </div>
 
         {/* Sustainability — full bleed */}
         <section className="site-full-bleed relative w-full overflow-hidden min-h-[480px] h-[clamp(480px,56.25vw,1400px)]">

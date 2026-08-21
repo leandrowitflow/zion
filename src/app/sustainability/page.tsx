@@ -79,7 +79,9 @@ export default function SustainabilityPage() {
         </SiteContainer>
       </SiteSection>
 
-      <PartnersCarousel />
+      <div className="hidden lg:block">
+        <PartnersCarousel />
+      </div>
 
       <SiteSection className="bg-[#FAF8F6]">
         <SiteContainer>
