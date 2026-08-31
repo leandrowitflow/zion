@@ -39,7 +39,7 @@ function LogoLink({
       href="/"
       className={
         className ??
-        "absolute left-0 top-[9px] flex h-[93px] w-[min(230px,calc(100%-3.5rem))] max-w-[230px] items-center"
+        "absolute left-0 top-1/2 flex h-[68px] w-[min(167px,calc(100%-3.5rem))] max-w-[167px] -translate-y-1/2 items-center"
       }
       onClick={onClick}
     >
@@ -48,8 +48,8 @@ function LogoLink({
       <img
         src={homeAssets.logo}
         alt="ZION Creative Artisans"
-        width={230}
-        height={99}
+        width={167}
+        height={72}
         decoding="async"
         fetchPriority="low"
         className={`h-auto max-h-full w-full object-contain object-left ${inverted ? "brightness-0 invert" : ""}`}
@@ -79,7 +79,7 @@ export function Header() {
       <header className="relative z-50 h-[111px] w-full bg-white">
         {/* Mobile — logo + menu icon aligned to desktop header gutters */}
         <div className="header-nav-mobile relative h-[111px]">
-          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] flex h-[93px] w-[min(230px,calc(100%-var(--header-gutter-left)-var(--header-gutter-right)-2.75rem))] max-w-[230px] items-center" />
+          <LogoLink className="absolute left-[var(--header-gutter-left)] top-1/2 flex h-[68px] w-[min(167px,calc(100%-var(--header-gutter-left)-var(--header-gutter-right)-2.75rem))] max-w-[167px] -translate-y-1/2 items-center" />
 
           {!menuOpen && (
             <button
@@ -96,7 +96,7 @@ export function Header() {
 
         {/* Desktop — logo 21px from left, nav 71px from right */}
         <div className="header-nav-desktop relative h-[111px] w-full">
-          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] flex h-[93px] w-[230px] items-center" />
+          <LogoLink className="absolute left-[var(--header-gutter-left)] top-1/2 flex h-[68px] w-[167px] -translate-y-1/2 items-center" />
 
           <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-4 xl:gap-8">
             {headerNavItems.map((item) => (
