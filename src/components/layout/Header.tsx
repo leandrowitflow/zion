@@ -40,20 +40,20 @@ function LogoLink({
       href="/"
       className={
         className ??
-        "absolute left-0 top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]"
+        "absolute left-0 top-[9px] flex h-[93px] w-[min(230px,calc(100%-3.5rem))] max-w-[230px] items-center"
       }
       onClick={onClick}
     >
-      <div className={`relative h-full w-full overflow-hidden ${inverted ? "brightness-0 invert" : ""}`}>
-        <Image
-          src={homeAssets.logo}
-          alt="ZION Creative Artisans"
-          width={230}
-          height={228}
-          className="absolute left-0 top-[-72.07%] h-[245.05%] w-full max-w-none"
-          sizes="230px"
-        />
-      </div>
+      <Image
+        src={homeAssets.logo}
+        alt="ZION Creative Artisans"
+        width={1218}
+        height={522}
+        quality={100}
+        priority
+        className={`h-auto max-h-full w-full object-contain object-left ${inverted ? "brightness-0 invert" : ""}`}
+        sizes="230px"
+      />
     </Link>
   );
 }
@@ -79,7 +79,7 @@ export function Header() {
       <header className="relative z-50 h-[111px] w-full bg-white">
         {/* Mobile — logo + menu icon aligned to desktop header gutters */}
         <div className="header-nav-mobile relative h-[111px]">
-          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] h-[93px] w-[min(230px,40vw)] max-w-[230px]" />
+          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] flex h-[93px] w-[min(230px,calc(100%-var(--header-gutter-left)-var(--header-gutter-right)-2.75rem))] max-w-[230px] items-center" />
 
           {!menuOpen && (
             <button
@@ -96,7 +96,7 @@ export function Header() {
 
         {/* Desktop — logo 21px from left, nav 71px from right */}
         <div className="header-nav-desktop relative h-[111px] w-full">
-          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] h-[93px] w-[230px]" />
+          <LogoLink className="absolute left-[var(--header-gutter-left)] top-[9px] flex h-[93px] w-[230px] items-center" />
 
           <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-4 xl:gap-8">
             {headerNavItems.map((item) => (
