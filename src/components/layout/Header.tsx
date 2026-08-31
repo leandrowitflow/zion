@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -44,15 +43,16 @@ function LogoLink({
       }
       onClick={onClick}
     >
-      <Image
+      {/* Static PNG — skip the image optimizer so this does not compete with LCP. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={homeAssets.logo}
         alt="ZION Creative Artisans"
-        width={1218}
-        height={522}
-        quality={100}
-        priority
+        width={230}
+        height={99}
+        decoding="async"
+        fetchPriority="low"
         className={`h-auto max-h-full w-full object-contain object-left ${inverted ? "brightness-0 invert" : ""}`}
-        sizes="230px"
       />
     </Link>
   );

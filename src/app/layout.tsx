@@ -14,6 +14,7 @@ const openSans = Open_Sans({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){function loadTk(){var h="https://use.typekit.net/uyr3aws.css";var l=document.createElement("link");l.rel="stylesheet";l.href=h;l.media="print";l.onload=function(){this.media="all"};document.head.appendChild(l);}if(document.readyState==="complete"){loadTk();}else{window.addEventListener("load",loadTk,{once:true});}})();`,
+            __html: `(function(){function loadTk(){var h="https://use.typekit.net/uyr3aws.css";var l=document.createElement("link");l.rel="stylesheet";l.href=h;l.media="print";l.onload=function(){this.media="all"};document.head.appendChild(l);}function schedule(){setTimeout(function(){if(typeof requestIdleCallback==="function"){requestIdleCallback(loadTk,{timeout:2500});}else{loadTk();}},1500);}if(document.readyState==="complete"){schedule();}else{window.addEventListener("load",schedule,{once:true});}})();`,
           }}
         />
         <noscript>
