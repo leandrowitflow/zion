@@ -25,34 +25,47 @@ function CloseIcon() {
   );
 }
 
+const HEADER_HEIGHT = 111;
+const LOGO_INSET = 25;
+const LOGO_HEIGHT = HEADER_HEIGHT - LOGO_INSET * 2;
+const LOGO_WIDTH = Math.round(LOGO_HEIGHT * (1218 / 522));
+
 function LogoLink({
   inverted = false,
   onClick,
-  className,
 }: {
   inverted?: boolean;
   onClick?: () => void;
-  className?: string;
 }) {
   return (
     <Link
       href="/"
-      className={
-        className ??
-        "absolute left-0 top-1/2 flex h-[68px] w-[min(167px,calc(100%-3.5rem))] max-w-[167px] -translate-y-1/2 items-center"
-      }
       onClick={onClick}
+      className="absolute block overflow-hidden"
+      style={{
+        top: LOGO_INSET,
+        left: LOGO_INSET,
+        width: LOGO_WIDTH,
+        height: LOGO_HEIGHT,
+      }}
     >
       {/* Static PNG — skip the image optimizer so this does not compete with LCP. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={homeAssets.logo}
         alt="ZION Creative Artisans"
-        width={167}
-        height={72}
+        width={LOGO_WIDTH}
+        height={LOGO_HEIGHT}
         decoding="async"
         fetchPriority="low"
-        className={`h-auto max-h-full w-full object-contain object-left ${inverted ? "brightness-0 invert" : ""}`}
+        className={inverted ? "brightness-0 invert" : undefined}
+        style={{
+          display: "block",
+          width: LOGO_WIDTH,
+          height: LOGO_HEIGHT,
+          objectFit: "contain",
+          objectPosition: "left center",
+        }}
       />
     </Link>
   );
@@ -76,10 +89,10 @@ export function Header() {
 
   return (
     <>
-      <header className="relative z-50 h-[111px] w-full bg-white">
+      <header className="relative z-50 h-[111px] w-full overflow-hidden bg-white">
         {/* Mobile — logo + menu icon aligned to desktop header gutters */}
         <div className="header-nav-mobile relative h-[111px]">
-          <LogoLink className="absolute left-[var(--header-gutter-left)] top-1/2 flex h-[68px] w-[min(167px,calc(100%-var(--header-gutter-left)-var(--header-gutter-right)-2.75rem))] max-w-[167px] -translate-y-1/2 items-center" />
+          <LogoLink />
 
           {!menuOpen && (
             <button
@@ -96,7 +109,7 @@ export function Header() {
 
         {/* Desktop — logo 21px from left, nav 71px from right */}
         <div className="header-nav-desktop relative h-[111px] w-full">
-          <LogoLink className="absolute left-[var(--header-gutter-left)] top-1/2 flex h-[68px] w-[167px] -translate-y-1/2 items-center" />
+          <LogoLink />
 
           <nav className="absolute right-[var(--header-gutter-right)] top-0 flex h-[111px] items-center gap-4 xl:gap-8">
             {headerNavItems.map((item) => (
@@ -115,12 +128,12 @@ export function Header() {
       {/* Mobile menu — Figma 2552:33 */}
       {menuOpen && (
         <div className="header-menu-overlay fixed inset-0 z-[100] flex flex-col overflow-hidden bg-[#1a1815]">
-          <div className="site-container relative h-[111px] shrink-0">
+          <div className="relative h-[111px] shrink-0">
             <LogoLink inverted onClick={() => setMenuOpen(false)} />
 
             <button
               type="button"
-              className="absolute right-0 top-1/2 -translate-y-1/2 p-2"
+              className="absolute right-[var(--header-logo-inset)] top-1/2 -translate-y-1/2 p-2"
               aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
             >

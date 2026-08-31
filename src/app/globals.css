@@ -48,6 +48,8 @@
   --site-gutter: 1.5rem;
   --header-gutter-left: 21px;
   --header-gutter-right: 71px;
+  /* Equal top / left / bottom gap around the header logo in the 111px bar. */
+  --header-logo-inset: 25px;
   /* Elementor sc_height_huge at desktop */
   --site-section-gap: clamp(3.375rem, 5.2vw, 100px);
   --site-section-gap-mobile: clamp(2.25rem, 7vw, 54px);
