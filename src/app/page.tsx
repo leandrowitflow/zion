@@ -131,6 +131,7 @@ export default function HomePage() {
                     fill
                     loading="lazy"
                     fetchPriority="low"
+                    quality={68}
                     className="object-cover"
                     sizes="(max-width: 1023px) 100vw, 524px"
                   />
@@ -163,6 +164,7 @@ export default function HomePage() {
                     fill
                     loading="lazy"
                     fetchPriority="low"
+                    quality={68}
                     className="object-cover"
                     sizes="(max-width: 1023px) 100vw, 634px"
                   />

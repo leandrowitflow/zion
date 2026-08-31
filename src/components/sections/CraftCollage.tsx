@@ -15,6 +15,9 @@ export function CraftCollage({ className = "" }: { className?: string }) {
           src={homeAssets.craftPool}
           alt="Poolside luxury"
           fill
+          loading="lazy"
+          fetchPriority="low"
+          quality={68}
           className="object-cover"
           sizes="(max-width: 1280px) 67vw, 441px"
         />
@@ -24,6 +27,9 @@ export function CraftCollage({ className = "" }: { className?: string }) {
           src={homeAssets.craftBust}
           alt="Classical sculpture"
           fill
+          loading="lazy"
+          fetchPriority="low"
+          quality={68}
           className="object-cover"
           sizes="(max-width: 1280px) 62vw, 410px"
         />

@@ -1,28 +1,22 @@
-import type { LinkHTMLAttributes } from "react";
-
-type PreloadLinkProps = LinkHTMLAttributes<HTMLLinkElement> & {
-  fetchpriority?: "high" | "low" | "auto";
-};
-
-/** LCP poster preloads — lowercase fetchpriority required for Lighthouse discovery audit. */
+/** LCP poster preloads. HTTP Link headers in vercel.json also send fetchpriority=high. */
 export function LcpImagePreloads() {
-  const highPriority = { fetchpriority: "high" } as PreloadLinkProps;
-
   return (
     <>
       <link
         rel="preload"
         href="/images/home/hero-video-poster-sm.jpg"
         as="image"
+        type="image/jpeg"
         media="(max-width: 1023px)"
-        {...highPriority}
+        fetchPriority="high"
       />
       <link
         rel="preload"
         href="/images/home/hero-video-poster.jpg"
         as="image"
+        type="image/jpeg"
         media="(min-width: 1024px)"
-        {...highPriority}
+        fetchPriority="high"
       />
     </>
   );
