@@ -190,6 +190,25 @@ body {
   font-style: normal;
 }
 
+.md-download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: currentColor;
+  opacity: 0.4;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.md-download-button:hover,
+.md-download-button:focus-visible {
+  opacity: 0.9;
+}
+
 /* ivypresto-display — section & hero titles (57px / 60px) */
 .heading-section {
   font-family: var(--font-display);
