@@ -18,6 +18,11 @@ const CookieConsent = dynamic(
   { ssr: false },
 );
 
+const MarkdownDownload = dynamic(
+  () => import("@/components/seo/MarkdownDownload").then((mod) => mod.MarkdownDownload),
+  { ssr: false },
+);
+
 function scheduleAfterLoad(callback: () => void) {
   const run = () => {
     if (typeof window.requestIdleCallback === "function") {
@@ -42,15 +47,16 @@ export function ClientEnhancements() {
     scheduleAfterLoad(() => setReady(true));
   }, []);
 
-  if (!ready) {
-    return null;
-  }
-
   return (
     <>
-      <MouseHelper />
-      <ScrollReveal />
-      <CookieConsent />
+      <MarkdownDownload />
+      {ready ? (
+        <>
+          <MouseHelper />
+          <ScrollReveal />
+          <CookieConsent />
+        </>
+      ) : null}
     </>
   );
 }
