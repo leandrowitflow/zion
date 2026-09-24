@@ -28,7 +28,7 @@ function CloseIcon() {
 const HEADER_HEIGHT = 111;
 const LOGO_INSET = 25;
 const LOGO_HEIGHT = HEADER_HEIGHT - LOGO_INSET * 2;
-const LOGO_WIDTH = Math.round(LOGO_HEIGHT * (1218 / 522));
+const LOGO_WIDTH = Math.round(LOGO_HEIGHT * (1210 / 506));
 
 function LogoLink({
   inverted = false,

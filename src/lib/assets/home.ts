@@ -1,5 +1,5 @@
 export const homeAssets = {
-  logo: "/images/home/header-logo.png",
+  logo: "/Logos/Logo-04.png",
   navUnderline: "/images/home/nav-underline.png",
   heroVideo: "/images/home/hero-video-poster.jpg",
   /** Mobile LCP — 640px-wide encode (~16KB) for faster first paint. */
