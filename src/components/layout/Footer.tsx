@@ -28,13 +28,21 @@ export function Footer() {
               Redefining luxury through Unique Journeys
             </p>
             <div className="relative mx-auto mt-10 h-[57px] w-[373px] max-w-full overflow-hidden xl:mx-0">
-              <Image
-                src={sharedAssets.footerLogos}
-                alt="Partner certifications"
-                width={398}
-                height={153}
-                className="absolute left-[-6.52%] top-[-86.84%] h-[268.42%] w-[106.62%] max-w-none"
-              />
+              <a
+                href="/docs/algarve-2030.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Algarve 2030 — PDF"
+                className="absolute inset-0"
+              >
+                <Image
+                  src={sharedAssets.footerLogos}
+                  alt="Partner certifications"
+                  width={398}
+                  height={153}
+                  className="absolute left-[-6.52%] top-[-86.84%] h-[268.42%] w-[106.62%] max-w-none"
+                />
+              </a>
             </div>
           </div>
 
